@@ -10,10 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_112406) do
+ActiveRecord::Schema.define(version: 2018_12_03_131348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "commitments", force: :cascade do |t|
+    t.string "title"
+    t.string "order_ref"
+    t.bigint "user_id"
+    t.bigint "supplier_id"
+    t.text "description"
+    t.integer "amount"
+    t.integer "recurrence"
+    t.integer "payment_method"
+    t.integer "retrieval_mode"
+    t.string "due_date"
+    t.string "payment_date"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["supplier_id"], name: "index_commitments_on_supplier_id"
+    t.index ["user_id"], name: "index_commitments_on_user_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name"
+    t.bigint "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_suppliers_on_organization_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +56,16 @@ ActiveRecord::Schema.define(version: 2018_12_03_112406) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "photo"
+    t.bigint "organization_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "commitments", "suppliers"
+  add_foreign_key "commitments", "users"
+  add_foreign_key "suppliers", "organizations"
 end
