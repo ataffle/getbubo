@@ -1,6 +1,8 @@
 class SuppliersController < ApplicationController
+  before_action :set_suppliers, only: [:index, :create]
+
   def index
-    @suppliers = Supplier.all
+    @supplier = Supplier.new
   end
 
   def show
@@ -8,15 +10,15 @@ class SuppliersController < ApplicationController
   end
 
   def new
-    @supplier = Supplier.new
   end
 
   def create
     @supplier = Supplier.new(supplier_params)
+    @supplier.organization = current_user.organization
     if @supplier.save
-      redirect_to suplier_path(@suplier)
+      redirect_to suppliers_path
     else
-      render :new
+      render :index
     end
   end
 
@@ -27,7 +29,7 @@ class SuppliersController < ApplicationController
   def update
     @supplier = Supplier.find(params[:id])
     @supplier.update(supplier_params)
-    redirect_to supplier_path(@supplier)
+    redirect_to suppliers_path
   end
 
   def destroy
@@ -37,7 +39,11 @@ class SuppliersController < ApplicationController
 
   private
 
+  def set_suppliers
+    @suppliers = Supplier.all
+  end
+
   def supplier_params
-    params.require(:supplier).permit(:name)
+    params.require(:supplier).permit(:name, :organization_id)
   end
 end
