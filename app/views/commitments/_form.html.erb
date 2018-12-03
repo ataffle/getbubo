@@ -1,0 +1,22 @@
+<%= simple_form_for(@commitment) do |f| %>
+  <% if @commitment.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @commitment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :title %>
+  <%= f.input :amount %>
+  <%= f.input :payment_method, collection: Commitment.payment_methods.keys %>
+  <%= f.input :retrieval_mode, collection: Commitment.retrieval_modes.keys %>
+  <%= f.input :description %>
+  <%= f.input :due_date %>
+  <%= f.input :payment_date %>
+  <%= f.input :status, collection: Commitment.statuses.keys %>
+  <%= f.input :recurrence, collection: Commitment.recurrences.keys %>
+  <%= f.association :supplier, collection: current_user.organization.suppliers, label: "Supplier", selected: @commitment.supplier_id %>
+  <%= f.submit "Add this commitment", class: "btn btn-primary" %>
+<% end %>
