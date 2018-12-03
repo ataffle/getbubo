@@ -1,7 +1,7 @@
 class CommitmentsController < ApplicationController
   def new
     @commitment = Commitment.new
-    @suppliers = Supplier.all
+    authorize @commitment
   end
 
   def create
@@ -12,6 +12,7 @@ class CommitmentsController < ApplicationController
     else
       render :new
     end
+    authorize @commitment
   end
 
   private
