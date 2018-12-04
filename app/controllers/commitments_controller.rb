@@ -20,6 +20,9 @@ class CommitmentsController < ApplicationController
     @commitment = Commitment.new(commitment_params)
     @commitment.user = current_user
     @commitment.status = "Pending payment" if @commitment.invoice? && @commitment.status == "Pending invoice"
+    @organization = current_user.organization
+    @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
+    @commitment.invoice_ref = "AC - #{@commitment_with_invoices + 1}"
     if @commitment.save
       redirect_to commitment_path(@commitment)
     else
@@ -38,6 +41,9 @@ class CommitmentsController < ApplicationController
   def update
     @commitment = Commitment.find(params[:id])
     @commitment.update(commitment_params)
+    @organization = current_user.organization
+    @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
+    @commitment.invoice_ref = "AC - #{@commitment_with_invoices + 1}"
     authorize @commitment
     redirect_to commitment_path(@commitment)
   end
