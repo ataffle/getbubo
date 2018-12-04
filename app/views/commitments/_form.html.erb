@@ -21,6 +21,8 @@
   <% else %>
     <%= f.input :payment_date %>
   <% end %>
+  <%= f.input :due_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.input :payment_date, as: :string, required: false, input_html: {class: "datepicker"} %>
   <%= f.input :status, collection: Commitment.statuses.keys, default: "Pending invoice" %>
   <%= f.association :supplier, collection: current_user.organization.suppliers, label: "Supplier", selected: @commitment.supplier_id %>
   <%= f.input :invoice %>
