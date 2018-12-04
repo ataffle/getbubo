@@ -14,10 +14,14 @@
   <%= f.input :payment_method, collection: Commitment.payment_methods.keys, default: "Credit card"  %>
   <%= f.input :retrieval_mode, collection: Commitment.retrieval_modes.keys, default: "Email" %>
   <%= f.input :description %>
-  <%= f.input :due_date %>
-  <%= f.input :payment_date %>
-  <%= f.input :status, collection: Commitment.statuses.keys, default: "Pending invoice" %>
   <%= f.input :recurrence, collection: Commitment.recurrences.keys, default: "One off" %>
+  <%= f.input :due_date %>
+  <% if @commitment.recurrence == "Monthly" %>
+    <%= f.input :payment_date, value: "baba" %>
+  <% else %>
+    <%= f.input :payment_date %>
+  <% end %>
+  <%= f.input :status, collection: Commitment.statuses.keys, default: "Pending invoice" %>
   <%= f.association :supplier, collection: current_user.organization.suppliers, label: "Supplier", selected: @commitment.supplier_id %>
   <%= f.input :invoice %>
   <%= f.input :invoice_cache, as: :hidden %>
