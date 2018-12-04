@@ -1,4 +1,42 @@
-<div class="container" style="text-decoration:none;">
+<div class="container-commmitments">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Recurrence</th>
+        <th scope="col">Status</th>
+        <th scope="col">Invoice</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @commitments.each do |commitment| %>
+        <tr>
+          <td><img src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="" class="avatar"></td>
+          <td><%= commitment.supplier.name %></td>
+          <td><%= commitment.amount %></td>
+          <td><%= commitment.recurrence %></td>
+          <td><%= commitment.status %></td>
+          <td><i class="fas fa-paperclip"></i></td>
+          <td>
+            <%= link_to commitment_path(commitment), method: :patch do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+          </td>
+          <td><i class="fas fa-trash-alt"></i></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- <div class="container" style="text-decoration:none;">
   <div class="row" style="text-decoration:none;">
     <% @commitments.each do |commitment| %>
     <%= link_to commitment_path(commitment) do %>
@@ -29,5 +67,5 @@
     <% end %>
     <% end %>
   </div>
-</div>
+</div> -->
 
