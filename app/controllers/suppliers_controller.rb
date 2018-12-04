@@ -2,7 +2,6 @@ class SuppliersController < ApplicationController
   before_action :set_suppliers, only: [:index, :create]
 
   def index
-    @supplier = Supplier.new
     @suppliers = policy_scope(Supplier)
     authorize @suppliers
   end
@@ -13,6 +12,8 @@ class SuppliersController < ApplicationController
   end
 
   def new
+    @supplier = Supplier.new
+    authorize @supplier
   end
 
   def create
