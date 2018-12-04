@@ -8,6 +8,7 @@
 Commitment.destroy_all
 Supplier.destroy_all
 Organization.destroy_all
+User.destroy_all
 
 puts "Destroyed Everything"
 
