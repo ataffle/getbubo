@@ -9,7 +9,6 @@ class Commitment < ApplicationRecord
 
   validates :title, presence: true
   validates :retrieval_mode, presence: true
-  validates :description, presence: true
   validates :amount, presence: true
   validates :payment_method, presence: true
   validates :recurrence, presence: true

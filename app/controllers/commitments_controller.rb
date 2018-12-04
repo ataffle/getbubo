@@ -10,8 +10,10 @@ class CommitmentsController < ApplicationController
   end
 
   def new
+    @supplier = Supplier.new
     @commitment = Commitment.new
     authorize @commitment
+    authorize @supplier
   end
 
   def create
