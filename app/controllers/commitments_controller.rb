@@ -19,6 +19,8 @@ class CommitmentsController < ApplicationController
   def create
     @commitment = Commitment.new(commitment_params)
     @commitment.user = current_user
+    @commitments = Commitment.count
+    @commitment.order_ref = "PO - 2018 - #{@commitments + 1}"
     @commitment.status = "Pending payment" if @commitment.invoice? && @commitment.status == "Pending invoice"
     if @commitment.save
       redirect_to commitment_path(@commitment)
