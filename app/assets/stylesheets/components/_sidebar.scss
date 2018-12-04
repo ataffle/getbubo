@@ -1,6 +1,5 @@
 .sidebar {
-  min-width: 300px;
-  max-width: 300px;
+  width: 400px;
   background: $primary;
   color: #fff;
   h3 {
@@ -9,7 +8,7 @@
 
   a {
     color: white;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: bold;
     &:hover {
       text-decoration:none;
