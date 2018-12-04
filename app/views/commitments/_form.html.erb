@@ -18,6 +18,9 @@
   <%= f.input :payment_date %>
   <%= f.input :status, collection: Commitment.statuses.keys, default: "Pending invoice" %>
   <%= f.input :recurrence, collection: Commitment.recurrences.keys, default: "One off" %>
+  <%= f.association :supplier, collection: current_user.organization.suppliers, label: "Supplier", selected: @commitment.supplier_id %>
+  <%= f.input :invoice %>
+  <%= f.input :invoice_cache, as: :hidden %>
   <%= f.submit "Add this commitment", class: "btn btn-primary" %>
 <% end %>
 

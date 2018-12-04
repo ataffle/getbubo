@@ -15,4 +15,6 @@ class Commitment < ApplicationRecord
   validates :payment_date, presence: true
   validates :due_date, presence: true
   validates :status, presence: true
+
+  mount_uploader :invoice, PhotoUploader
 end
