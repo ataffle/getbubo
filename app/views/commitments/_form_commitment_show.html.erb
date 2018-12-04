@@ -1,0 +1,9 @@
+<% if @commitment.invoice? %>
+  <i class="fas fa-paperclip"></i>
+<% else %>
+  <%= simple_form_for(@commitment) do |f| %>
+    <%= f.input :invoice %>
+    <%= f.input :invoice_cache, as: :hidden %>
+    <%= f.submit "Add this commitment", class: "btn btn-primary" %>
+  <%= end %>
+<%= end %>
