@@ -1,0 +1,46 @@
+.sidebar {
+  min-width: 300px;
+  max-width: 300px;
+  background: $primary;
+  color: #fff;
+  h3 {
+    font-weight: bold;
+  }
+
+  a {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    &:hover {
+      text-decoration:none;
+      opacity: 0.7;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    padding: 10px 35px;
+  }
+
+  i {
+    padding-right: 10px;
+  }
+
+  p {
+    font-weight: bold;
+  }
+}
+
+.sidebar-info {
+  padding-bottom: 15px;
+  text-align: center;
+  border-bottom: 1px solid lightgrey;
+}
+
+.sidebar-links {
+  padding-top: 15px;
+}
