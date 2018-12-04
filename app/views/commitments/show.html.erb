@@ -1,6 +1,9 @@
 <div class="commitment_container">
   <div class="message" style="justify-content: space-around;">
     <h3><strong>Details</strong></h3>
+    <%= link_to edit_commitment_path(@commitment) do %>
+      <i class="fas fa-edit"></i>
+    <% end %>
   </div>
   <div class="message">
     <div class="message-name">
@@ -10,7 +13,6 @@
       <%= @commitment.title %>
     </div>
     <div class="message-status">
-      <i class="fas fa-edit"></i>
     </div>
   </div>
   <div class="message">
@@ -21,7 +23,6 @@
       <%= @commitment.description %>
     </div>
     <div class="message-status">
-      <i class="fas fa-edit"></i>
     </div>
   </div>
   <div class="message">
@@ -32,7 +33,6 @@
       <%= @commitment.order_ref %>
     </div>
     <div class="message-status">
-      <i class="fas fa-edit"></i>
     </div>
   </div>
   <div class="message">
@@ -43,7 +43,6 @@
       <%= @commitment.status %>
     </div>
     <div class="message-status">
-      <i class="fas fa-edit"></i>
     </div>
   </div>
   <div class="message">
@@ -54,7 +53,6 @@
       <%= @commitment.amount %>
     </div>
     <div class="message-status">
-      <i class="fas fa-edit"></i>
     </div>
   </div>
   <div class="message">
@@ -65,7 +63,6 @@
       <%= @commitment.supplier.name %>
     </div>
     <div class="message-status">
-      <i class="fas fa-edit"></i>
     </div>
   </div>
   <div class="message">
@@ -76,7 +73,6 @@
       <%= @commitment.recurrence %>
     </div>
     <div class="message-status">
-      <i class="fas fa-edit"></i>
     </div>
   </div>
   <div class="message">
@@ -87,7 +83,6 @@
       <%= @commitment.due_date %>
     </div>
     <div class="message-status">
-      <i class="fas fa-edit"></i>
     </div>
   </div>
   <div class="message">
@@ -98,7 +93,6 @@
       <%= @commitment.payment_date %>
     </div>
     <div class="message-status">
-      <i class="fas fa-edit"></i>
     </div>
   </div>
   <div class="message">
@@ -109,7 +103,6 @@
       <%= @commitment.payment_method %>
     </div>
     <div class="message-status">
-      <i class="fas fa-edit"></i>
     </div>
   </div>
   <div class="message">
@@ -120,7 +113,6 @@
       <%= @commitment.retrieval_mode %>
     </div>
     <div class="message-status">
-      <i class="fas fa-edit"></i>
     </div>
   </div>
   <div class="message">
