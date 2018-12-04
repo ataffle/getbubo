@@ -44,6 +44,7 @@ class CommitmentsController < ApplicationController
     @organization = current_user.organization
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
     @commitment.invoice_ref = "AC - #{@commitment_with_invoices + 1}"
+    @commitment.save
     authorize @commitment
     redirect_to commitment_path(@commitment)
   end
