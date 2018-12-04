@@ -18,6 +18,10 @@
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
+          <%= f.input :organization,
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "organization" } %>
         </div>
 
         <div class="form-actions">
