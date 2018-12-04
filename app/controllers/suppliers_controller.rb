@@ -19,12 +19,12 @@ class SuppliersController < ApplicationController
   def create
     @supplier = Supplier.new(supplier_params)
     @supplier.organization = current_user.organization
-    if @supplier.save
-      redirect_to suppliers_path
-    else
-      render :index
-    end
     authorize @supplier
+    if @supplier.save
+      redirect_to new_commitment_path
+    else
+      render "commitments/new"
+    end
   end
 
   def edit
