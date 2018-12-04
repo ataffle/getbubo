@@ -130,7 +130,11 @@
     <div class="message-body">
     </div>
     <div class="message-status">
-      <%= render "form_commitment_show" %>
+      <% if @commitment.invoice? %>
+        <i class="fas fa-file-pdf"></i>
+      <% else %>
+        <i class="fas fa-paperclip"></i>
+      <% end %>
     </div>
   </div>
 </div>
