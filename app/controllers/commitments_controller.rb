@@ -17,8 +17,11 @@ class CommitmentsController < ApplicationController
   end
 
   def create
-    @commitment = Commitment.new(player_params)
+    @commitment = Commitment.new(commitment_params)
     @commitment.user = current_user
+    @commitments = Commitment.count
+    @commitment.order_ref = "PO - 2018 - #{@commitments + 1}"
+    @commitment.status = "Pending payment" if @commitment.invoice? && @commitment.status == "Pending invoice"
     if @commitment.save
       redirect_to commitment_path(@commitment)
     else
@@ -27,13 +30,23 @@ class CommitmentsController < ApplicationController
     authorize @commitment
   end
 
-  def update
+  def edit
+    @supplier = Supplier.new
+    @commitment = Commitment.find(params[:id])
+    authorize @commitment
+    authorize @supplier
+  end
 
+  def update
+    @commitment = Commitment.find(params[:id])
+    @commitment.update(commitment_params)
+    authorize @commitment
+    redirect_to commitment_path(@commitment)
   end
 
   private
 
-  def player_params
+  def commitment_params
     params.require(:commitment).permit(:title, :amount, :description, :due_date, :payment_date, :status, :recurrence, :supplier_id, :retrieval_mode, :payment_method, :invoice)
   end
 end
