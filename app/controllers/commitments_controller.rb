@@ -27,9 +27,13 @@ class CommitmentsController < ApplicationController
     authorize @commitment
   end
 
+  def update
+
+  end
+
   private
 
   def player_params
-    params.require(:commitment).permit(:title, :amount, :description, :due_date, :payment_date, :status, :recurrence, :supplier_id, :retrieval_mode, :payment_method)
+    params.require(:commitment).permit(:title, :amount, :description, :due_date, :payment_date, :status, :recurrence, :supplier_id, :retrieval_mode, :payment_method, :invoice)
   end
 end

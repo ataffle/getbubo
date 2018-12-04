@@ -1,28 +1,32 @@
-<div class="container">
-  <div class="row">
+<div class="container" style="text-decoration:none;">
+  <div class="row" style="text-decoration:none;">
     <% @commitments.each do |commitment| %>
-    <div class="message-index-display">
-      <div class="message-body">
-        <p><strong>Supplier</strong></p>
-        <p><%= commitment.supplier.name %></p>
+    <%= link_to commitment_path(commitment) do %>
+      <div class="card-commitment">
+        <div class="message-index-display" style="text-decoration:none;">
+          <div class="message-body" style="text-decoration:none;">
+            <p style="text-decoration:none;"><strong>Supplier</strong></p>
+            <p><%= commitment.supplier.name %></p>
+          </div>
+          <div class="message-body">
+            <p><strong>Amount</strong></p>
+            <p class="status pending"><%= commitment.amount %></p>
+          </div>
+          <div class="message-body">
+            <p><strong>Recurrence</strong></p>
+            <p><%= commitment.recurrence %></p>
+          </div>
+          <div class="message-body">
+            <p><strong>Status</strong></p>
+            <p class="status pending"><%= commitment.status %></p>
+          </div>
+          <div class="message-body">
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-trash-alt"></i>
+          </div>
+        </div>
       </div>
-      <div class="message-body">
-        <p><strong>Amount</strong></p>
-        <p class="status pending"><%= commitment.amount %></p>
-      </div>
-      <div class="message-body">
-        <p><strong>Recurrence</strong></p>
-        <p><%= commitment.recurrence %></p>
-      </div>
-      <div class="message-body">
-        <p><strong>Status</strong></p>
-        <p class="status pending"><%= commitment.status %></p>
-      </div>
-      <div class="message-body">
-        <i class="fas fa-edit"></i>
-        <i class="fas fa-trash-alt"></i>
-      </div>
-    </div>
+    <% end %>
     <% end %>
   </div>
 </div>

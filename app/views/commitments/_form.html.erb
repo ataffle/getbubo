@@ -18,6 +18,8 @@
   <%= f.input :due_date, as: :string, required: false, input_html: {class: "datepicker"} %>
   <%= f.input :payment_date, as: :string, required: false, input_html: {class: "datepicker"} %>
   <%= f.input :status, collection: Commitment.statuses.keys, default: "Pending invoice" %>
+  <%= f.input :invoice %>
+  <%= f.input :invoice_cache, as: :hidden %>
   <%= f.submit "Add this commitment", class: "btn btn-primary" %>
 <% end %>
 
