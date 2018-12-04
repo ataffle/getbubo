@@ -1,18 +1,19 @@
-
-<div class="container">
-  <div class="row">
-    <% @suppliers.each do |supplier| %>
-    <div class="col-xs-12 col-sm-2">
-      <div class="card-supplier">
-        <div class="card-description">
-          <h2><%= supplier.name %></h2>
-          <%= link_to edit_supplier_path(supplier), class: "button", method: :get do %>
-            <i class="fas fa-edit"></i>
-          <% end %>
+<div class="container-commitments">
+  <div class="commitment_container">
+    <div class="row">
+      <% @suppliers.each do |supplier| %>
+      <div class="col-xs-12 col-sm-2">
+        <div class="card-supplier">
+          <div class="card-description">
+            <h2><%= supplier.name %></h2>
+            <%= link_to edit_supplier_path(supplier), class: "button", method: :get do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+          </div>
         </div>
       </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>
 
