@@ -7,6 +7,7 @@ class Commitment < ApplicationRecord
   enum retrieval_mode: { "Email" => 0, "Online" => 1, "Paper" => 2 }
   enum status: { "Pending invoice" => 0, "Pending payment" => 1, "Paid" => 2 }
 
+  validate :payment_date_greater_than_due_date
   validates :title, presence: true
   validates :retrieval_mode, presence: true
   validates :amount, presence: true
@@ -17,4 +18,11 @@ class Commitment < ApplicationRecord
   validates :status, presence: true
 
   mount_uploader :invoice, PhotoUploader
+
+  def payment_date_greater_than_due_date
+    if payment_date < due_date
+      errors.add(:payment_date, "can't be before due date")
+    end
+  end
+
 end
