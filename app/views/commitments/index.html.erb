@@ -1,33 +1,35 @@
-<div class="container">
-  <div class="row" style="text-decoration:none;">
-    <% @commitments.each do |commitment| %>
-    <%= link_to commitment_path(commitment) do %>
-      <div class="card-commitment">
-        <div class="message-index-display">
-          <div class="message-body">
-            <p><strong>Supplier</strong></p>
-            <p><%= commitment.supplier.name %></p>
-          </div>
-          <div class="message-body">
-            <p><strong>Amount</strong></p>
-            <p class="status pending"><%= commitment.amount %></p>
-          </div>
-          <div class="message-body">
-            <p><strong>Recurrence</strong></p>
-            <p><%= commitment.recurrence %></p>
-          </div>
-          <div class="message-body">
-            <p><strong>Status</strong></p>
-            <p class="status pending"><%= commitment.status %></p>
-          </div>
-          <div class="message-body">
-            <i class="fas fa-edit"></i>
-            <i class="fas fa-trash-alt"></i>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <% end %>
-  </div>
-</div>
+<div class="container-commmitments">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Recurrence</th>
+        <th scope="col">Status</th>
+        <th scope="col">Invoice</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @commitments.each do |commitment| %>
+        <tr>
+          <td><img src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="" class="avatar"></td>
+          <td><%= commitment.supplier.name %></td>
+          <td><%= commitment.amount %></td>
+          <td><%= commitment.recurrence %></td>
+          <td><%= commitment.status %></td>
+          <td><i class="fas fa-paperclip"></i></td>
+          <td>
+            <%= link_to commitment_path(commitment), method: :patch do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
+          </td>
+          <td><i class="fas fa-trash-alt"></i></td>
 
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
