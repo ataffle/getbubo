@@ -3,5 +3,6 @@ class PagesController < ApplicationController
   after_action :verify_authorized, except: :home
 
   def home
+    @commitments = Commitment.all
   end
 end
