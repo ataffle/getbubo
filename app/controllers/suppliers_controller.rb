@@ -3,10 +3,13 @@ class SuppliersController < ApplicationController
 
   def index
     @supplier = Supplier.new
+    @suppliers = policy_scope(Supplier)
+    authorize @suppliers
   end
 
   def show
     @supplier = Supplier.find(params[:id])
+    authorize @supplier
   end
 
   def new
@@ -20,15 +23,18 @@ class SuppliersController < ApplicationController
     else
       render :index
     end
+    authorize @supplier
   end
 
   def edit
     @supplier = Supplier.find(params[:id])
+    authorize @supplier
   end
 
   def update
     @supplier = Supplier.find(params[:id])
     @supplier.update(supplier_params)
+    authorize @supplier
     redirect_to suppliers_path
   end
 

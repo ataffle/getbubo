@@ -1,13 +1,14 @@
 class CommitmentsController < ApplicationController
-
   def index
-    @commitments = Commitment.all
+    @commitments = policy_scope(Commitment)
+    authorize @commitments
   end
 
   def show
     @commitment = Commitment.find(params[:id])
+    authorize @commitment
   end
-  
+
   def new
     @commitment = Commitment.new
     authorize @commitment

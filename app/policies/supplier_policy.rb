@@ -5,8 +5,16 @@ class SupplierPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    true
+  end
+
   def create?
-    return true
+    true
+  end
+
+  def edit?
+    true
   end
 
   def update?
