@@ -2,7 +2,6 @@ class SuppliersController < ApplicationController
   before_action :set_suppliers, only: [:index, :create]
 
   def index
-    @supplier = Supplier.new
     @suppliers = policy_scope(Supplier)
     authorize @suppliers
   end
@@ -13,17 +12,19 @@ class SuppliersController < ApplicationController
   end
 
   def new
+    @supplier = Supplier.new
+    authorize @supplier
   end
 
   def create
     @supplier = Supplier.new(supplier_params)
     @supplier.organization = current_user.organization
-    if @supplier.save
-      redirect_to suppliers_path
-    else
-      render :index
-    end
     authorize @supplier
+    if @supplier.save
+      redirect_to new_commitment_path
+    else
+      render "commitments/new"
+    end
   end
 
   def edit
