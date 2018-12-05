@@ -68,6 +68,15 @@ class CommitmentsController < ApplicationController
     redirect_to commitment_path(@commitment)
   end
 
+  def download_file
+    @commitment = Commitment.find(params[:id])
+    send_file(
+      # "#{Rails.root}/public/uploads/commitment/invoice/#{@commitment.id}/#{@commitment.invoice}",
+      "#{Rails.root}/public/#{@commitment.invoice}",
+      filename: "#{@commitment.invoice.file.identifier}",
+      type: "application/jpg"
+    )
+  end
 
   private
 

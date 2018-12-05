@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :commitments
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :commitments
+
+  get 'download_file/:id', to: 'commitments#download_file', as: 'download_file'
 end

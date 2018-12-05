@@ -1,7 +1,10 @@
 import Chart from "chart.js"
 
 const initChart = () => {
-  const ctx = document.getElementById("commitments-statuses").getContext('2d');
+  let ctx = document.getElementById("commitments-statuses")
+  if (ctx) {
+  ctx = ctx.getContext('2d');
+
   //console.log(ctx)
   //console.log(ctx.canvas.dataset.statuses)
   const statuses = JSON.parse(ctx.canvas.dataset.statuses);
@@ -31,15 +34,25 @@ const initChart = () => {
           }]
       },
       options: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
-              }]
-          }
+        scales: {
+          xAxes: [{
+              gridLines: {
+
+              }
+          }],
+          yAxes: [{
+              gridLines: {
+                  color: "rgba(0, 0, 0, 0)",
+              },
+              ticks: {
+                beginAtZero:true,
+                fixedStepSize: 1
+              }
+          }]
+        }
       }
   });
+  }
 }
 
 export { initChart };

@@ -9,6 +9,7 @@
         <th scope="col">Recurrence</th>
         <th scope="col">Status</th>
         <th scope="col">Invoice</th>
+        <th scope="col">Download</th>
         <th scope="col"></th>
         <th scope="col"></th>
       </tr>
@@ -21,7 +22,19 @@
           <td><%= commitment.amount %></td>
           <td><%= commitment.recurrence %></td>
           <td><%= commitment.status %></td>
-          <td><i class="fas fa-paperclip"></i></td>
+          <td>
+            <% if commitment.invoice.file.nil? %>
+            <% else %>
+              <i class="fas fa-paperclip"></i>
+            <% end %>
+          </td>
+          <td>
+            <% if commitment.invoice.file.nil? %>
+            <% else %>
+              <%#= link_to "Download it", commitment.invoice.url %>
+              <%= link_to "Download", download_file_path(commitment) %>
+            <% end %>
+          </td>
           <td>
             <%= link_to edit_commitment_path(commitment) do %>
               <i class="fas fa-edit"></i>

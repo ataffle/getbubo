@@ -1,7 +1,23 @@
 .sidebar {
-  width: 17%;
+  width: 20%;
   background: $primary;
   color: #fff;
+  a {
+    text-decoration:none;
+    color: white;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    opacity: 0.7;
+    list-style:none;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .sidebar-info {
@@ -17,21 +33,12 @@
 
 .sidebar-links {
   padding-top: 35px;
+  i {
+    padding-right: 15px;
+    padding-left: 15px;
   }
   li {
-    padding: 10px 35px;
+    padding: 10px 25px;
     list-style: none;
-    a {
-      color: white;
-      font-size: 18px;
-      font-weight: normal;
-      text-decoration:none;
-    }
-    :hover {
-      opacity: 0.7;
-      text-decoration:none;
-  }
-  i {
-    margin-right: 13px;
   }
 }
