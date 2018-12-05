@@ -50,6 +50,7 @@ class CommitmentsController < ApplicationController
     redirect_to commitment_path(@commitment)
   end
 
+
   private
 
   def commitment_params
