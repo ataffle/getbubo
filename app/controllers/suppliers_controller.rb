@@ -8,6 +8,7 @@ class SuppliersController < ApplicationController
 
   def show
     @supplier = Supplier.find(params[:id])
+    @commitments_by_supplier = @supplier.commitments
     authorize @supplier
   end
 
