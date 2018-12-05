@@ -1,0 +1,9 @@
+<p>
+<%= @supplier.name %>
+</p>
+
+<ul>
+  <% @commitments_by_supplier.each do |commitment| %>
+    <li> <%= commitment.title %></li>
+  <% end %>
+</ul>
