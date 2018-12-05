@@ -27,7 +27,8 @@ class Commitment < ApplicationRecord
   scope :pending_payment_commitments, -> { where(status: "Pending payment") }
 
 
-  PERIODS = ["Current month", "Previous month", "Year-to-date"]
+  PERIODS = ["Current month", "Previous month", "Year-to-date", "All time"]
+
   # def payment_date_greater_than_due_date
   #   if payment_date < due_date
   #     errors.add(:payment_date, "can't be before due date")

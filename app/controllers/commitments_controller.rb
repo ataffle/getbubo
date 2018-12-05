@@ -1,18 +1,20 @@
 class CommitmentsController < ApplicationController
   def index
     # @commitments = policy_scope(Commitment)
-    @commitments = Commitment.year_to_date
+    @commitments = Commitment.all
     filters = params[:filters]
     if filters
-      if filters[:period] == "Previous month"
+      @period = filters[:period]
+      @status = filters[:status]
+      if @period == "Previous month"
         @commitments = @commitments.previous_month
-      elsif filters[:period] == "Current month"
+      elsif @period == "Current month"
         @commitments = @commitments.current_month
-      elsif filters[:status] == "Pending invoice"
+      elsif @status == "Pending invoice"
         @commitments = @commitments.where(status: "Pending invoice")
-      elsif filters[:status] == "Pending payment"
+      elsif @status == "Pending payment"
         @commitments = @commitments.where(status: "Pending payment")
-      elsif filters[:status] == "Paid"
+      elsif @status == "Paid"
         @commitments = @commitments.where(status: "Paid")
       elsif filters[:user]
         @commitments = @commitments.where(user_id: filters[:user])
