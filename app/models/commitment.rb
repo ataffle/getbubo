@@ -19,10 +19,12 @@ class Commitment < ApplicationRecord
 
   mount_uploader :invoice, PhotoUploader
 
+  scope :current_month, -> { where("created_at > ? AND created_at < ?", Time.now.beginning_of_month, Time.now.end_of_month) }
+  scope :previous_month, -> { where("created_at > ? AND created_at < ?", Time.now.prev_month.beginning_of_month, Time.now.prev_month.end_of_month) }
+
   # def payment_date_greater_than_due_date
   #   if payment_date < due_date
   #     errors.add(:payment_date, "can't be before due date")
   #   end
   # end
-
 end
