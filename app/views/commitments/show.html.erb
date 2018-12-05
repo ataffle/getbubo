@@ -120,6 +120,11 @@
       <p><strong>Invoice File</strong></p>
     </div>
     <div class="message-body">
+      <% if @commitment.invoice? %>
+        <%= @commitment.invoice_ref %>
+      <% else %>
+        <p>No file uploaded</p>
+      <% end %>
     </div>
     <div class="message-status">
       <% if @commitment.invoice? %>
