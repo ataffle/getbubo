@@ -3,8 +3,8 @@ import Chart from "chart.js"
 const myPieChart = () => {
   const ctx = document.getElementById("total-amount").getContext('2d');
   const total_amount = ctx.canvas.dataset.amount
-  // console.log(total_amount);
-  // console.log(typeof(total_amount));
+  console.log(total_amount);
+  console.log(typeof(total_amount));
   // total_amount.forEach((x) => {
   //   console.log(x)
   // });
