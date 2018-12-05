@@ -22,9 +22,9 @@ class Commitment < ApplicationRecord
   scope :current_month, -> { where("created_at > ? AND created_at < ?", Time.now.beginning_of_month, Time.now.end_of_month) }
   scope :previous_month, -> { where("created_at > ? AND created_at < ?", Time.now.prev_month.beginning_of_month, Time.now.prev_month.end_of_month) }
   scope :year_to_date, -> { where("created_at > ? AND created_at < ?", Time.now.beginning_of_year, Time.now) }
-  scope :paid_commitments, -> { where("status" == 'Paid') }
-  scope :pending_invoice_commitmment, -> { where("status" == 'Pending invoice') }
-  scope :pending_payment_commitments, -> { where("status" == 'Pending payment') }
+  scope :paid_commitments, -> { where(status: "Paid") }
+  scope :pending_invoice_commitmment, -> { where(status: "Pending invoice") }
+  scope :pending_payment_commitments, -> { where(status: "Pending payment") }
 
 
   PERIODS = ["Current month", "Previous month", "Year-to-date"]

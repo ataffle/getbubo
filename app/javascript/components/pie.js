@@ -2,21 +2,41 @@ import Chart from "chart.js"
 
 const myPieChart = () => {
   const ctx = document.getElementById("total-amount").getContext('2d');
-  const total_amount = JSON.parse(ctx.canvas.dataset.amount);
-  // console.log(total_amount);
-  // console.log(typeof(total_amount));
-  // total_amount.forEach((x) => {
-  //   console.log(x)
-  // });
-  const p_invoices = total_amount.forEach((x) => {
-    x.filter(function(x) { return x.status === "Pending invoice" })
-    console.log(p_invoices)
+  const paid_amount = JSON.parse(ctx.canvas.dataset.paid);
+  const total_paid = []
+  paid_amount.forEach((x) => {
+    total_paid.push(x.amount);
   });
+  let sum1 = 0;
+  for (let i = 0; i < total_paid.length; i++) {
+   sum1 += total_paid[i]
+  }
+  // console.log(sum1);
 
-  // const payments = statuses.filter(function(x) { return x === "Pending payment" }).length
-  // console.log(payments)
-  // const paid = statuses.filter(function(x) { return x === "Paid" }).length
-  // console.log(paid)
+  const payment_amount = JSON.parse(ctx.canvas.dataset.payment);
+  console.log(payment_amount);
+  const total_payment = []
+  payment_amount.forEach((x) => {
+    total_payment.push(x.amount);
+  });
+  let sum2 = 0;
+  for (let i = 0; i < total_payment.length; i++) {
+   sum2 += total_payment[i]
+  }
+  // console.log(sum2);
+
+  const invoice_amount = JSON.parse(ctx.canvas.dataset.invoice);
+  console.log(invoice_amount);
+  const total_invoice = []
+  invoice_amount.forEach((x) => {
+    total_invoice.push(x.amount);
+  });
+  let sum3 = 0;
+  for (let i = 0; i < total_invoice.length; i++) {
+   sum3 += total_invoice[i]
+  }
+  // console.log(sum3);
+
   const amount = new Chart(ctx,{
       type: 'pie',
       data: {
