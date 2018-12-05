@@ -7,4 +7,9 @@ class User < ApplicationRecord
   belongs_to :organization
   has_many :commitments
   has_many :suppliers, through: :commitments
+
+  def name
+    email
+  end
+
 end
