@@ -18,13 +18,10 @@
               <td><%= supplier.total_payable %></td>
               <td><%= supplier.name %></td>
               <td><%= supplier.name %></td>
-              <td><i class="fas fa-paperclip"></i></td>
-              <td>
-                <%= link_to edit_supplier_path(supplier) do %>
+              <td><%= link_to edit_supplier_path(supplier) do %>
                   <i class="fas fa-edit"></i>
                 <% end %>
               </td>
-              <td><i class="fas fa-trash-alt"></i></td>
             </div>
         </tr>
       <% end %>
