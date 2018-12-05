@@ -4,3 +4,19 @@
   }
 }
 
+.dataTables_length, .dataTables_info {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.dataTables_filter, .dataTables_paginate {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.paginate_button {
+  font-size: 16px;
+  background-color: $primary;
+  color: $secondary;
+ }
+
