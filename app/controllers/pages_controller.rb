@@ -4,5 +4,13 @@ class PagesController < ApplicationController
 
   def home
     @commitments = Commitment.all
+    @statuses = @commitments.map do |commitment|
+      commitment.status
+    end
+    @amounts = @commitments.map do |commitment| {
+      status: commitment.status,
+      amount: commitment.amount
+    }
+    end
   end
 end

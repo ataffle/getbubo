@@ -21,6 +21,8 @@ class CommitmentsController < ApplicationController
     @commitment.user = current_user
     @commitment.status = "Pending payment" if @commitment.invoice? && @commitment.status == "Pending invoice"
     @organization = current_user.organization
+    @commitments = Commitment.count
+    @commitment.order_ref = "PO - 2018 - #{@commitments + 1}"
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
     @commitment.invoice_ref = "AC - #{@commitment_with_invoices + 1}"
     if @commitment.save

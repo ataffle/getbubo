@@ -15,7 +15,7 @@
     <tbody>
       <% @commitments.each do |commitment| %>
         <tr>
-          <td><img src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="" class="avatar"></td>
+          <td><%= image_tag "#{commitment.user.photo}", style:'height:30px;width:30px;border-radius:50%;' %></td>
           <td><%= commitment.supplier.name %></td>
           <td><%= commitment.amount %></td>
           <td><%= commitment.recurrence %></td>
