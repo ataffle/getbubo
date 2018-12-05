@@ -22,7 +22,7 @@
           <td><%= commitment.status %></td>
           <td><i class="fas fa-paperclip"></i></td>
           <td>
-            <%= link_to commitment_path(commitment), method: :patch do %>
+            <%= link_to edit_commitment_path(commitment) do %>
               <i class="fas fa-edit"></i>
             <% end %>
           </td>
