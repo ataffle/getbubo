@@ -9,6 +9,7 @@ class SuppliersController < ApplicationController
   def show
     @supplier = Supplier.find(params[:id])
     @commitments_by_supplier = @supplier.commitments
+    @total_payable = @supplier.total_payable
     authorize @supplier
   end
 
@@ -54,4 +55,5 @@ class SuppliersController < ApplicationController
   def supplier_params
     params.require(:supplier).permit(:name, :organization_id)
   end
+
 end
