@@ -11,8 +11,28 @@
   src: font-url('Avenir/AvenirMedium.eot');
   src: font-url('Avenir/AvenirMedium.eot?#iefix') format('embedded-opentype'),
        font-url('Avenir/AvenirMedium.woff') format('woff'),
-       font-url('Avenir/AvenirMedium.ttf') format('truetype')
+       font-url('Avenir/AvenirMedium.ttf') format('truetype');
+  font-weight: normal;
 }
+
+@font-face {
+  font-family: "Avenir";
+  src: font-url('Avenir/AvenirLight.eot');
+  src: font-url('Avenir/AvenirLight.eot?#iefix') format('embedded-opentype'),
+       font-url('Avenir/AvenirLight.woff') format('woff'),
+       font-url('Avenir/AvenirLight.ttf') format('truetype');
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: font-url('Avenir/AvenirBold.eot');
+  src: font-url('Avenir/AvenirBold.eot?#iefix') format('embedded-opentype'),
+       font-url('Avenir/AvenirBold.woff') format('woff'),
+       font-url('Avenir/AvenirBold.ttf') format('truetype');
+  font-weight: bold;
+}
+
 $my-font: "Avenir";
 $body-font: $my-font;
 $headers-font: $my-font;

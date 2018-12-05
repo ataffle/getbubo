@@ -3,10 +3,18 @@
   <p class="sidebar-info-mail">fred@michel.com</p>
 </div>
 <div class="sidebar-links">
-    <li> <%= link_to '<i class="fas fa-chart-line"></i>Dashboard'.html_safe, root_path %> </li>
-    <li> <%= link_to '<i class="fas fa-list"></i>Commitments'.html_safe, commitments_path %> </li>
-    <li> <%= link_to '<i class="fas fa-address-book"></i>Suppliers'.html_safe, suppliers_path %> </li>
-    <li> <%= link_to '<i class="fas fa-users"></i>Teams'.html_safe, root_path %> </li>
-    <li> <%= link_to '<i class="fas fa-users"></i>Settings'.html_safe, root_path %> </li>
+  <ul>
+    <%= link_to root_path do %>
+      <li><i class="fas fa-chart-pie"></i> Dashboard</li>
+    <% end %>
+    <%= link_to commitments_path do %>
+      <li><i class="fas fa-list"></i> Commitments</li>
+    <% end %>
+    <%= link_to suppliers_path do %>
+      <li><i class="fas fa-address-book"></i> Suppliers</li>
+    <% end %>
+    <li><a href=""><i class="fas fa-users"></i> Teams</a></li>
+    <li><a href=""><i class="fas fa-cog"></i> Settings</a></li>
+  </ul>
 </div>
 
