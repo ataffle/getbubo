@@ -5,8 +5,8 @@ const initChart = () => {
   //console.log(ctx)
   //console.log(ctx.canvas.dataset.statuses)
   const statuses = JSON.parse(ctx.canvas.dataset.statuses);
-  console.log(ctx.canvas.dataset);
-  console.log(typeof statuses);
+  // console.log(ctx.canvas.dataset);
+  // console.log(typeof statuses);
   const invoices = statuses.filter(function(x) { return x === "Pending invoice" }).length
   const payments = statuses.filter(function(x) { return x === "Pending payment" }).length
   const paid = statuses.filter(function(x) { return x === "Paid" }).length

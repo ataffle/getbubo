@@ -2,14 +2,17 @@ import Chart from "chart.js"
 
 const myPieChart = () => {
   const ctx = document.getElementById("total-amount").getContext('2d');
-  const total_amount = ctx.canvas.dataset.amount
-  console.log(total_amount);
-  console.log(typeof(total_amount));
+  const total_amount = JSON.parse(ctx.canvas.dataset.amount);
+  // console.log(total_amount);
+  // console.log(typeof(total_amount));
   // total_amount.forEach((x) => {
   //   console.log(x)
   // });
-  // const p_invoices = total_amount.filter(function(x) { return x === "Pending invoice" })
-  // console.log(invoices)
+  const p_invoices = total_amount.forEach((x) => {
+    x.filter(function(x) { return x.status === "Pending invoice" })
+    console.log(p_invoices)
+  });
+
   // const payments = statuses.filter(function(x) { return x === "Pending payment" }).length
   // console.log(payments)
   // const paid = statuses.filter(function(x) { return x === "Paid" }).length

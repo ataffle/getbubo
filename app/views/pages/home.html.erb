@@ -4,7 +4,7 @@
     <div class="col-md-12">
       <h2>Commitments Status</h2>
       <canvas id="commitments-statuses" width="500" height="200" data-statuses="<%= @statuses.to_json %>"></canvas>
-      <canvas id="total-amount" width="500" height="200" data-amount="<%= @amounts %>"></canvas>
+      <canvas id="total-amount" width="500" height="200" data-amount="<%= @amounts.to_json %>"></canvas>
     </div>
   </div>
 </div>
