@@ -4,20 +4,30 @@
 
 .btn-primary-bubo {
   background-color: $secondary;
-  color: $primary;
+  color: white;
   padding: 10px 13px;
+  a {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+    color:white;
+    opacity: 0.8;
+  }
 }
 
 .btn-primary-bubo-commitment {
   background-color: $secondary;
-  color: $primary;
+  color: white;
   padding: 10px 13px;
   font-weight: bold;
   border-radius: 20px;
   a {
-  text-decoration: none;
+    text-decoration: none;
   }
   &:hover {
-  text-decoration: none;
+    text-decoration: none;
+    color:white;
+    opacity: 0.8;
   }
 }
