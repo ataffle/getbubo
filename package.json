@@ -4,6 +4,7 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
+    "chart.js": "^2.7.3",
     "datatables": "^1.10.18",
     "flatpickr": "^4.5.2",
     "jquery": "^3.3.1",

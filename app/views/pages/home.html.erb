@@ -1,13 +1,11 @@
 <div class="container-commmitments">
   <h1>Dashboard</h1>
   <div class="row">
-    <div class="col-md-3">
-      Number of commitments :
-      <%= @commitments.count %>
+    <div class="col-md-12">
+      <h2>Commitments Status</h2>
+      <canvas id="commitments-statuses" width="500" height="200" data-statuses="<%= @statuses.to_json %>"></canvas>
+      <canvas id="total-amount" width="500" height="200" data-amount="<%= @amounts.to_json %>"></canvas>
     </div>
-    <div class="col-md-3"></div>
-    <div class="col-md-3"></div>
-    <div class="col-md-3"></div>
   </div>
 </div>
 
