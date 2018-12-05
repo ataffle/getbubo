@@ -43,4 +43,4 @@ orangenovembre = Commitment.create!(title: "orangenovembre", amount: 50, due_dat
 sncf = Supplier.create!(name: "sncf", organization: Organization.first)
 sncfbillet = Commitment.create!(title: "billet Paris Marseille", amount: 200, due_date: "01/04/2018".to_date, payment_date: "31/05/2018".to_date, status: 0, supplier: Supplier.last, user: User.first, recurrence: 0, payment_method: 0, retrieval_mode: 1)
 
-puts "Created 1 Organization, 1 User, 7 Supplier & Commitment"
+puts "Created 1 Organization, 3 Users, 7 Suppliers & Commitments"
