@@ -1,9 +1,56 @@
-<p>
-<%= @supplier.name %>
-</p>
+<div>
+<h3><%= @supplier.name %></h3>
+</div>
 
-<ul>
-  <% @commitments_by_supplier.each do |commitment| %>
-    <li> <%= commitment.title %></li>
-  <% end %>
-</ul>
+<div class="container-commmitments">
+  <table class="table table-hover" id="table-commitment">
+    <thead>
+      <tr>
+        <th scope="col">Owner</th>
+        <th scope="col">Title</th>
+        <th scope="col">Total Amount</th>
+        <th scope="col">Status</th>
+        <th scope="col">Payment Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @commitments_by_supplier.each do |commitment| %>
+        <tr>
+          <td><img src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="" class="avatar"></td>
+            <div class="card-description">
+              <td><%= link_to commitment.title, commitment_path(commitment) %></td>
+              <td><%= commitment.amount %></td>
+              <td><%= commitment.status %></td>
+              <td><%= commitment.payment_date %></td>
+              <td><i class="fas fa-paperclip"></i></td>
+              <td>
+                <%= link_to edit_commitment_path(commitment) do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+              </td>
+            </div>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="container-commmitments">
+  <table class="table table-hover" id="table-commitment">
+    <thead>
+      <tr>
+        <th scope="col">Total Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <div class="card-description">
+          <td><%= @total_payable %></td>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
