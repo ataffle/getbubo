@@ -1,46 +1,40 @@
 .sidebar {
-  width: 300px;
+  width: 17%;
   background: $primary;
   color: #fff;
-  padding-top: 20px;
-  h3 {
-    font-weight: bold;
-  }
-
-  a {
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-    &:hover {
-      text-decoration:none;
-      opacity: 0.7;
-    }
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  li {
-    padding: 10px 20px;
-  }
-
-  i {
-    padding-right: 10px;
-  }
-
   p {
     font-weight: bold;
   }
 }
 
 .sidebar-info {
+  padding-top: 35px;
   padding-bottom: 15px;
   text-align: center;
   border-bottom: 1px solid lightgrey;
 }
 
-.sidebar-links {
+.sidebar-info-mail{
   padding-top: 15px;
+}
+
+.sidebar-links {
+  padding-top: 35px;
+  }
+  li {
+    padding: 10px 35px;
+    list-style: none;
+    a {
+      color: white;
+      font-size: 18px;
+      font-weight: normal;
+      text-decoration:none;
+    }
+    :hover {
+      opacity: 0.7;
+      text-decoration:none;
+  }
+  i {
+    margin-right: 13px;
+  }
 }
