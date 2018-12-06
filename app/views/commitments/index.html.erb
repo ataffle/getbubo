@@ -11,6 +11,7 @@
         <th scope="col">Invoice</th>
         <th scope="col"></th>
         <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -18,15 +19,18 @@
         <tr>
           <td><%= image_tag "#{commitment.user.photo}", style:'height:30px;width:30px;border-radius:50%;' %></td>
           <td><%= commitment.supplier.name %></td>
-          <td><%= number_with_delimiter(commitment.amount, :delimiter => ',') %></td>
+          <td><%= number_with_delimiter(commitment.amount, :delimiter => ',') %> €</td>
           <td><%= commitment.recurrence %></td>
           <td><%= commitment.status %></td>
           <td>
             <% if commitment.invoice.file.nil? %>
+              <%= link_to edit_commitment_path(commitment) do %>
+                <i class="fas fa-cloud-upload-alt"></i>
+              <% end %>
             <% else %>
               <%#= link_to "Download it", commitment.invoice.url %>
               <%= link_to download_file_path(commitment) do %>
-                <i class="fas fa-download"></i>
+                <i class="fas fa-paperclip"></i>
               <% end %>
             <% end %>
           </td>
@@ -36,6 +40,11 @@
             <% end %>
           </td>
           <td><i class="fas fa-trash-alt"></i></td>
+          <td>
+            <%= link_to commitment_path(commitment) do %>
+              <i class="fas fa-eye"></i>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

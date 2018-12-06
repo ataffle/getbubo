@@ -15,7 +15,7 @@
           <td><img src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="" class="avatar"></td>
             <div class="card-description">
               <td><%= link_to supplier.name, supplier_path(supplier) %></td>
-              <td><%= number_with_delimiter(supplier.total_payable, :delimiter => ',') %></td>
+              <td><%= number_with_delimiter(supplier.total_payable, :delimiter => ',') %> €</td>
               <td><%= supplier.name %></td>
               <td><%= supplier.name %></td>
               <td><%= link_to edit_supplier_path(supplier) do %>

@@ -6,6 +6,7 @@ class CommitmentsController < ApplicationController
     if filters
       @period = filters[:period]
       @status = filters[:status]
+      @user = filters[:user]
       if @period == "Previous month"
         @commitments = @commitments.previous_month
       elsif @period == "Next month"
