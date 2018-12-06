@@ -88,6 +88,43 @@ class CommitmentsController < ApplicationController
     )
   end
 
+  def pre_closing
+    @to_be_processed = Commitment.previous_month.where(status: "Pending invoice").or(Commitment.previous_month.where(status: "Pending payment", recurrence: "One off"))
+    @processed = Commitment.previous_month.where(status: "Pending payment", recurrence: "Monthly")
+  end
+
+  def closing
+    @processed = Commitment.previous_month.where(status: "Pending payment", recurrence: "Monthly")
+    @processed.each do |monthly_commitment|
+      monthly_commitment.status = "Paid"
+      monthly_commitment.save!
+      new_commitment = monthly_commitment.dup
+      new_commitment.status = "Pending invoice"
+      new_commitment.due_date = monthly_commitment.due_date >> 1
+      new_commitment.invoice = nil
+      new_commitment.save!
+    end
+    @processed_one_off = Commitment.previous_month.where(status: "Pending invoice", recurrence: "One off")
+    @processed_one_off.each do |one_off_commit_without_invoice_but_processed|
+      new_commitment = one_off_commit_without_invoice_but_processed.dup
+      new_commitment.due_date = one_off_commit_without_invoice_but_processed.due_date >> 1
+      new_commitment.save!
+    end
+  end
+# Pseudo code
+# Step 1
+# quand je click sur "Pre-CLOSING" (AddEventListener or link_to) (VIEW COMMITMENT)
+# GO ON THE VIEW CLOSING Where :
+# je prends tout les commitments avec la due date dont le mois == current month (commitment.current_month ou .lastmonth)
+# (GetElement)
+# Si commitment == monthly (En Database)
+#   - je marque le commitment as "PAID" (Update Database)
+#   - je recree un commitment pour le mois d'apres. (Create New Commitment en Database)
+#   - si ce commitment n'a pas d'invoice uploaded >> mark as file missing. (Show à part maybe?)
+# Si commitment == one-off && Invoice present?
+#   - je marque le commitment as "to be PAID"
+# else
+  #   - je change la date au mois d'apres.
   def zip_and_download_files
     @commitments = Commitment.all
 
@@ -111,3 +148,15 @@ class CommitmentsController < ApplicationController
     params.require(:commitment).permit(:title, :amount, :description, :due_date, :payment_date, :status, :recurrence, :supplier_id, :retrieval_mode, :payment_method, :invoice)
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+

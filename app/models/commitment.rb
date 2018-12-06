@@ -36,3 +36,7 @@ class Commitment < ApplicationRecord
   # end
 end
 
+
+
+
+
