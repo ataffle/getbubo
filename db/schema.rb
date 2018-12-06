@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_154734) do
+ActiveRecord::Schema.define(version: 2018_12_06_110951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2018_12_04_154734) do
     t.integer "recurrence"
     t.integer "payment_method"
     t.integer "retrieval_mode"
-    t.string "due_date"
-    t.string "payment_date"
+    t.date "due_date"
+    t.date "payment_date"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
