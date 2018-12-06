@@ -1,4 +1,5 @@
 class CommitmentsController < ApplicationController
+  require 'zip'
   def index
     # @commitments = policy_scope(Commitment)
     @commitments = Commitment.all
@@ -40,9 +41,9 @@ class CommitmentsController < ApplicationController
     @commitment.status = "Pending payment" if @commitment.invoice? && @commitment.status == "Pending invoice"
     @organization = current_user.organization
     @commitments = Commitment.count
-    @commitment.order_ref = "PO - 2018 - #{@commitments + 1}"
+    @commitment.order_ref = "PO-2018-#{@commitments + 1}"
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
-    @commitment.invoice_ref = "AC - #{@commitment_with_invoices + 1}"
+    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}"
     if @commitment.save
       redirect_to commitment_path(@commitment)
     else
@@ -62,7 +63,7 @@ class CommitmentsController < ApplicationController
     @commitment = Commitment.find(params[:id])
     @organization = current_user.organization
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
-    @commitment.invoice_ref? ? @commitment.invoice_ref : @commitment.invoice_ref = "AC - #{@commitment_with_invoices + 1}"
+    @commitment.invoice_ref? ? @commitment.invoice_ref : @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}"
     @commitment.update(commitment_params)
     @commitment.status = "Pending payment" if @commitment.invoice? && @commitment.status == "Pending invoice"
     @commitment.save
@@ -78,6 +79,23 @@ class CommitmentsController < ApplicationController
       filename: "#{@commitment.invoice.file.identifier}",
       type: "application/jpg"
     )
+  end
+
+  def zip_and_download_files
+    @commitments = Commitment.all
+
+    respond_to do |format|
+      format.html
+      format.zip do
+        compressed_filestream = Zip::OutputStream.write_buffer do |zos|
+          @commitments.each do |commitment|
+            zos.put_next_entry "#{commitment.invoice.file.identifier}"
+          end
+        end
+        compressed_filestream.rewind
+        send_data compressed_filestream.read, filename: "invoices.zip"
+      end
+    end
   end
 
   private

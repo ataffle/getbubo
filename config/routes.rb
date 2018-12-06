@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :commitments
 
   get 'download_file/:id', to: 'commitments#download_file', as: 'download_file'
+  get 'download_files', to: 'commitments#zip_and_download_files', as: 'download_files'
 end
