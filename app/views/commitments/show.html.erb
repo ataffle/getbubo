@@ -50,7 +50,7 @@
       <p><strong>Amount</strong></p>
     </div>
     <div class="message-body">
-      <%= @commitment.amount %>
+      <%= number_with_delimiter(@commitment.amount, :delimiter => ',') %>
     </div>
     <div class="message-status">
     </div>

@@ -19,7 +19,7 @@
         <tr>
           <td><%= image_tag "#{commitment.user.photo}", style:'height:30px;width:30px;border-radius:50%;' %></td>
           <td><%= commitment.supplier.name %></td>
-          <td><%= commitment.amount %></td>
+          <td><%= number_with_delimiter(commitment.amount, :delimiter => ',') %></td>
           <td><%= commitment.recurrence %></td>
           <td><%= commitment.status %></td>
           <td>
