@@ -1,0 +1,56 @@
+<div class="container-closing">
+  <h4><strong>Pre Closing Page</strong></h4>
+</div>
+<div class="container-closing">
+  <div class="container-table">
+    <table class="table-closing-1">
+      <thead>
+        <h4><strong>Un-Processed</strong></h4>
+          <th scope="col">Ref</th>
+          <th scope="col">Title</th>
+          <th scope="col"> Reccurence</th>
+          <th scope="col"> Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @to_be_processed.each do |commitment_to_be| %>
+          <tr>
+            <th scope="row"> <%= commitment_to_be.invoice_ref %></th>
+            <td> <%= commitment_to_be.title %></td>
+            <td> <%= commitment_to_be.recurrence %> </td>
+            <td> <%= commitment_to_be.status %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="container-table">
+    <table class="table-closing-2">
+    <h4><strong></strong></h4>
+      <thead>
+        <h4><strong>Processed</strong></h4>
+        <tr>
+          <th scope="col">Ref</th>
+          <th scope="col">Title</th>
+          <th scope="col"> Reccurence</th>
+          <th scope="col"> Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @processed.each do |monthly_commitment| %>
+          <tr>
+            <th scope="row"> <%= monthly_commitment.invoice_ref %></th>
+            <td> <%= monthly_commitment.title %></td>
+            <td> <%= monthly_commitment.recurrence %> </td>
+            <td> <%= monthly_commitment.status %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="container-closing">
+  <h4><%= link_to "Closing", closing_path, class: "btn-primary-bubo-commitment" %></h4>
+</div>
+
+
