@@ -8,8 +8,14 @@ class CommitmentsController < ApplicationController
       @status = filters[:status]
       if @period == "Previous month"
         @commitments = @commitments.previous_month
+      elsif @period == "Next month"
+        @commitments = @commitments.next_month
       elsif @period == "Current month"
         @commitments = @commitments.current_month
+      elsif @period == "Year-to-date"
+        @commitments = @commitments.year_to_date
+      elsif @period == "All time"
+        @commitments = @commitments
       elsif @status == "Pending invoice"
         @commitments = @commitments.where(status: "Pending invoice")
       elsif @status == "Pending payment"
