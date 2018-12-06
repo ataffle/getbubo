@@ -1,4 +1,3 @@
-
 <div class="container-commmitments">
 <div>
 <h3><%= @supplier.name %></h3>
@@ -19,7 +18,7 @@
           <td><img src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="" class="avatar"></td>
             <div class="card-description">
               <td><%= link_to commitment.title, commitment_path(commitment) %></td>
-              <td><%= commitment.amount %></td>
+              <td><%= number_with_delimiter(commitment.amount, :delimiter => ',') %></td>
               <td><%= commitment.status %></td>
               <td><%= commitment.payment_date %></td>
               <td><%= link_to edit_commitment_path(commitment) do %>
@@ -44,7 +43,7 @@
     <tbody>
       <tr>
         <div class="card-description">
-          <td><%= @total_payable %></td>
+          <td><%= number_with_delimiter(@total_payable, :delimiter => ',') %></td>
         </div>
       </tr>
     </tbody>
