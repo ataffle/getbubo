@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get 'download_file/:id', to: 'commitments#download_file', as: 'download_file'
   get 'pre_closing', to: 'commitments#pre_closing', as: 'pre_closing'
   get 'closing', to: 'commitments#closing', as: 'closing'
+  get 'download_files', to: 'commitments#zip_and_download_files', as: 'download_files'
+
 end

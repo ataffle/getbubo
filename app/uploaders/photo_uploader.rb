@@ -6,6 +6,9 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
+  def filename
+    "#{model.invoice_ref}.#{file.extension}" if original_filename
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
