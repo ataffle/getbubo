@@ -54,6 +54,7 @@ class CommitmentsController < ApplicationController
     if @commitment.save
       redirect_to commitment_path(@commitment)
     else
+      @supplier = Supplier.new
       render :new
     end
     authorize @commitment
