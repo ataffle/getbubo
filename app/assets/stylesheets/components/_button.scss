@@ -5,7 +5,9 @@
 .btn-primary-bubo {
   background-color: $secondary;
   color: white;
-  padding: 7px 14px;
+  padding: 10px 13px;
+  font-weight: bold;
+  text-decoration:none;
   a {
     text-decoration: none;
   }
@@ -21,7 +23,6 @@
   color: white;
   padding: 10px 13px;
   font-weight: bold;
-  border-radius: 20px;
   text-decoration:none;
   a {
     text-decoration: none;

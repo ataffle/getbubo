@@ -91,7 +91,19 @@ class CommitmentsController < ApplicationController
 
   def pre_closing
     @to_be_processed = Commitment.previous_month.where(status: "Pending invoice").or(Commitment.previous_month.where(status: "Pending payment", recurrence: "One off"))
-    @processed = Commitment.previous_month.where(status: "Pending payment", recurrence: "Monthly")
+    @processed = Commitment.previous_month.where(status: "Pending payment", recurrence: "Monthly").or(Commitment.previous_month.where(status: "Paid", recurrence: "One off")).or(Commitment.current_month.where(status: "Postpone", recurrence: "One off"))
+  end
+
+  def commitment_payment_proceed
+    @commitment = Commitment.find(params[:commitment_id])
+    @commitment.update(status: 'Paid')
+    redirect_to pre_closing_path
+  end
+
+  def commitment_postpone
+    @commitment = Commitment.find(params[:commitment_id])
+    @commitment.update(status: 'Postpone', due_date: @commitment.due_date >> 1)
+    redirect_to pre_closing_path
   end
 
   def closing
@@ -105,42 +117,17 @@ class CommitmentsController < ApplicationController
       new_commitment.invoice = nil
       new_commitment.save!
     end
-    @processed_one_off = Commitment.previous_month.where(status: "Pending invoice", recurrence: "One off")
-    @processed_one_off.each do |one_off_commit_without_invoice_but_processed|
-      new_commitment = one_off_commit_without_invoice_but_processed.dup
-      new_commitment.due_date = one_off_commit_without_invoice_but_processed.due_date >> 1
-      new_commitment.save!
-    end
+    # @processed_one_off = Commitment.previous_month.where(status: "Pending invoice", recurrence: "One off")
+    # @processed_one_off.each do |one_off_commit_without_invoice_but_processed|
+    #   new_commitment = one_off_commit_without_invoice_but_processed.dup
+    #   new_commitment.due_date = one_off_commit_without_invoice_but_processed.due_date >> 1
+    #   new_commitment.save!
+    # end
   end
-# Pseudo code
-# Step 1
-# quand je click sur "Pre-CLOSING" (AddEventListener or link_to) (VIEW COMMITMENT)
-# GO ON THE VIEW CLOSING Where :
-# je prends tout les commitments avec la due date dont le mois == current month (commitment.current_month ou .lastmonth)
-# (GetElement)
-# Si commitment == monthly (En Database)
-#   - je marque le commitment as "PAID" (Update Database)
-#   - je recree un commitment pour le mois d'apres. (Create New Commitment en Database)
-#   - si ce commitment n'a pas d'invoice uploaded >> mark as file missing. (Show à part maybe?)
-# Si commitment == one-off && Invoice present?
-#   - je marque le commitment as "to be PAID"
-# else
-  #   - je change la date au mois d'apres.
-  def zip_and_download_files
-    @commitments = Commitment.all
 
-    respond_to do |format|
-      format.html
-      format.zip do
-        compressed_filestream = Zip::OutputStream.write_buffer do |zos|
-          @commitments.each do |commitment|
-            zos.put_next_entry "#{commitment.invoice.file.identifier}"
-          end
-        end
-        compressed_filestream.rewind
-        send_data compressed_filestream.read, filename: "invoices.zip"
-      end
-    end
+  def zip_and_download_files
+    #@commitments = Commitment.all
+    Cloudinary::Utils.download_zip_url(public_ids: ['lus56dee3azuf3tnudmu', 'aqvlquwqnljhpqcasgn1'])
   end
 
   private

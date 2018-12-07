@@ -11,3 +11,25 @@
 .row a:hover{
   text-decoration: none;
 }
+
+.card-stat {
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: rgba(54, 162, 235, 0.2);
+  box-shadow: 7px 5px 5px #F4F9FA;
+  width: 250px;
+  height: 200px;
+  text-align: center;
+  padding-top: 50px;
+  text-decoration: none;
+  #analytics-dashboard {
+    p{
+      padding-top: 10px;
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+}

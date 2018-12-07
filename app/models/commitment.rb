@@ -5,7 +5,7 @@ class Commitment < ApplicationRecord
   enum recurrence: { "One off" => 0, "Monthly" => 1 }
   enum payment_method: { "Credit card" => 0, "SEPA" => 1, "Transfer" => 2 }
   enum retrieval_mode: { "Email" => 0, "Online" => 1, "Paper" => 2 }
-  enum status: { "Pending invoice" => 0, "Pending payment" => 1, "Paid" => 2 }
+  enum status: { "Pending invoice" => 0, "Pending payment" => 1, "Paid" => 2, "Postpone" => 3 }
 
   # validate :payment_date_greater_than_due_date
   validates :title, presence: true
@@ -23,6 +23,7 @@ class Commitment < ApplicationRecord
   scope :next_month, -> { where("due_date > ? AND due_date < ?", Time.now.next_month.beginning_of_month, Time.now.next_month.end_of_month) }
   scope :year_to_date, -> { where("due_date > ? AND due_date < ?", Time.now.beginning_of_year, Time.now) }
   scope :paid_commitments, -> { where(status: "Paid") }
+  scope :unpaid_commitments, -> { where.not(status: "Paid") }
   scope :pending_invoice_commitmment, -> { where(status: "Pending invoice") }
   scope :pending_payment_commitments, -> { where(status: "Pending payment") }
 
