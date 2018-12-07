@@ -5,42 +5,44 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Commitment.destroy_all
-Supplier.destroy_all
-Organization.destroy_all
-User.destroy_all
+# Commitment.destroy_all
+# Supplier.destroy_all
+# Organization.destroy_all
+# User.destroy_all
 
-puts "Destroyed Everything"
+# puts "Destroyed Everything"
 
-jarvis = Organization.create(name: "Jarvis")
 
-photo_a = "https://i.f1g.fr/media/figaro/805x453_crop/2017/10/25/XVMec083c12-b965-11e7-8bd2-4d87b82d3252.jpg"
-photo_b = "https://i.eurosport.com/2018/05/07/2329586-48490499-640-360.jpg"
-photo_c = "https://content.mosaiquefm.net/uploads/content/thumbnails/ronaldinho_1527164870.jpg"
 
-a = User.create(first_name: "test", last_name: "test", email: "test@test.com", organization: Organization.last, password: "123456", photo: photo_a)
-b = User.create(first_name: "test2", last_name: "test2", email: "test2@test2.com", organization: Organization.last, password: "123456", photo: photo_b)
-c = User.create(first_name: "test3", last_name: "test3", email: "test3@test3.com", organization: Organization.last, password: "123456", photo: photo_c)
+photo_a = "https://kitt.lewagon.com/placeholder/users/random"
+photo_b = "https://kitt.lewagon.com/placeholder/users/random"
+photo_c = "https://kitt.lewagon.com/placeholder/users/random"
+photo_d = "https://kitt.lewagon.com/placeholder/users/random"
 
-leboncoin = Supplier.create!(name: "Leboncoin", organization: Organization.first)
-leboncoin1 = Commitment.create!(title: "achat d'un meuble", amount: 1400, due_date: "01/11/2018".to_date, payment_date: "02/11/2018".to_date, status: 0, supplier: Supplier.last, user: User.first, recurrence: 0, payment_method: 0, retrieval_mode: 1)
+a = User.create(first_name: "Fred", last_name: "Delacompta", email: "fred@michel.com", organization: Organization.last, password: "123456", photo: photo_a)
+b = User.create(first_name: "Kevin", last_name: "Mbappe", email: "kevin@michel.com", organization: Organization.last, password: "123456", photo: photo_b)
+c = User.create(first_name: "Carine", last_name: "Desachats", email: "carine@michel.com", organization: Organization.last, password: "123456", photo: photo_c)
+d = User.create(first_name: "Yoon", last_name: "Kim", email: "yoon@michel.com", organization: Organization.last, password: "123456", photo: photo_d)
 
-amazon = Supplier.create!(name: "Amazon", organization: Organization.first)
-amazon2 = Commitment.create!(title: "achat d'ordinateurs", amount: 10000, due_date: "27/11/2018".to_date, payment_date: "28/11/2018".to_date, status: 1, supplier: Supplier.last, user: User.second, recurrence: 0, payment_method: 1, retrieval_mode: 0)
+leboncoin = Supplier.create!(name: "Leboncoin", organization: Organization.last)
+# leboncoin1 = Commitment.create!(title: "achat d'un meuble", amount: 1400, due_date: "01/11/2018".to_date, payment_date: "02/11/2018".to_date, status: 0, supplier: Supplier.last, user: User.first, recurrence: 0, payment_method: 0, retrieval_mode: 1)
 
-apple = Supplier.create!(name: "apple", organization: Organization.first)
-appleios = Commitment.create!(title: "ios dev apple", amount: 4000, due_date: "01/11/2018".to_date, payment_date: "02/11/2018".to_date, status: 1, supplier: Supplier.last, user: User.third, recurrence: 0, payment_method: 0, retrieval_mode: 1)
+amazon = Supplier.create!(name: "Amazon", organization: Organization.last)
+# amazon2 = Commitment.create!(title: "achat d'ordinateurs", amount: 10000, due_date: "27/11/2018".to_date, payment_date: "28/11/2018".to_date, status: 1, supplier: Supplier.last, user: User.second, recurrence: 0, payment_method: 1, retrieval_mode: 0)
 
-facebook = Supplier.create!(name: "facebook", organization: Organization.first)
-facebookads = Commitment.create!(title: "facebookads", amount: 5000, due_date: "27/11/2018".to_date, payment_date: "28/11/2018".to_date, status: 1, supplier: Supplier.last, user: User.first, recurrence: 0, payment_method: 1, retrieval_mode: 0)
+apple = Supplier.create!(name: "Apple", organization: Organization.last)
+# appleios = Commitment.create!(title: "ios dev apple", amount: 4000, due_date: "01/11/2018".to_date, payment_date: "02/11/2018".to_date, status: 1, supplier: Supplier.last, user: User.third, recurrence: 0, payment_method: 0, retrieval_mode: 1)
 
-google = Supplier.create!(name: "google", organization: Organization.first)
-googleads = Commitment.create!(title: "googleads", amount: 10000, due_date: "01/11/2018".to_date, payment_date: "02/11/2018".to_date, status: 0, supplier: Supplier.last, user: User.second, recurrence: 0, payment_method: 0, retrieval_mode: 1)
+facebook = Supplier.create!(name: "Facebook", organization: Organization.last)
+# facebookads = Commitment.create!(title: "facebookads", amount: 5000, due_date: "27/11/2018".to_date, payment_date: "28/11/2018".to_date, status: 1, supplier: Supplier.last, user: User.first, recurrence: 0, payment_method: 1, retrieval_mode: 0)
 
-orange = Supplier.create!(name: "orange", organization: Organization.first)
-orangenovembre = Commitment.create!(title: "orangenovembre", amount: 50, due_date: "27/11/2018".to_date, payment_date: "28/11/2018".to_date, status: 0, supplier: Supplier.last, user: User.third, recurrence: 1, payment_method: 1, retrieval_mode: 0)
+google = Supplier.create!(name: "Google", organization: Organization.last)
+# googleads = Commitment.create!(title: "googleads", amount: 10000, due_date: "01/11/2018".to_date, payment_date: "02/11/2018".to_date, status: 0, supplier: Supplier.last, user: User.second, recurrence: 0, payment_method: 0, retrieval_mode: 1)
 
-sncf = Supplier.create!(name: "sncf", organization: Organization.first)
-sncfbillet = Commitment.create!(title: "billet Paris Marseille", amount: 200, due_date: "01/11/2018".to_date, payment_date: "02/11/2018".to_date, status: 0, supplier: Supplier.last, user: User.first, recurrence: 0, payment_method: 0, retrieval_mode: 1)
+orange = Supplier.create!(name: "Orange", organization: Organization.last)
+# orangenovembre = Commitment.create!(title: "orangenovembre", amount: 50, due_date: "27/11/2018".to_date, payment_date: "28/11/2018".to_date, status: 0, supplier: Supplier.last, user: User.third, recurrence: 1, payment_method: 1, retrieval_mode: 0)
+
+sncf = Supplier.create!(name: "SNCF", organization: Organization.last)
+# sncfbillet = Commitment.create!(title: "billet Paris Marseille", amount: 200, due_date: "01/11/2018".to_date, payment_date: "02/11/2018".to_date, status: 0, supplier: Supplier.last, user: User.first, recurrence: 0, payment_method: 0, retrieval_mode: 1)
 
 puts "Created 1 Organization, 3 Users, 7 Suppliers & Commitments"
