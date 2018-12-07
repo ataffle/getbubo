@@ -8,7 +8,7 @@
       </ul>
     </div>
   <% end %>
-  <%= f.association :supplier, collection: current_user.organization.suppliers, label: "Supplier", selected: @commitment.supplier_id, input_html: { class: "select2" } %>
+  <%= f.association :supplier, collection: current_user.organization.suppliers.order('created_at DESC'), label: "Supplier", selected: @commitment.supplier_id, input_html: { class: "select2" } %>
   <%= f.input :title %>
   <%= f.input :amount %>
   <%= f.input :payment_method, collection: Commitment.payment_methods.keys, default: "Credit card"  %>
