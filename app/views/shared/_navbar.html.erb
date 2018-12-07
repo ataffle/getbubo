@@ -4,11 +4,10 @@
     <% if current_page?(commitments_path) %>
       <%= link_to "New Commitment", new_commitment_path, class: "btn-primary-bubo-commitment" %>
     <% else %>
-      <h3><%#= current_user.organization.name %></h3>
+      <% if user_signed_in? %>
+        <h3><%= current_user.organization.name %></h3>
+      <% end %>
     <% end %>
-  </div>
-  <div>
-    <%= link_to "Pre closing", pre_closing_path, class: "btn-primary-bubo-commitment" %>
   </div>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
