@@ -4,7 +4,7 @@
     <% if current_page?(commitments_path) %>
       <%= link_to "New Commitment", new_commitment_path, class: "btn-primary-bubo-commitment" %>
     <% else %>
-      <h3><%= current_user.organization.name %></h3>
+      <h3><%#= current_user.organization.name %></h3>
     <% end %>
   </div>
   <div>
