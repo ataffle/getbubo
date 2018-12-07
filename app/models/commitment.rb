@@ -23,6 +23,7 @@ class Commitment < ApplicationRecord
   scope :next_month, -> { where("due_date > ? AND due_date < ?", Time.now.next_month.beginning_of_month, Time.now.next_month.end_of_month) }
   scope :year_to_date, -> { where("due_date > ? AND due_date < ?", Time.now.beginning_of_year, Time.now) }
   scope :paid_commitments, -> { where(status: "Paid") }
+  scope :unpaid_commitments, -> { where.not(status: "Paid") }
   scope :pending_invoice_commitmment, -> { where(status: "Pending invoice") }
   scope :pending_payment_commitments, -> { where(status: "Pending payment") }
 
