@@ -3,5 +3,5 @@
   <%= f.input :period, collection: commitments_periods_for_select, required: false, label: false, input_html: { class: "select2" }, prompt: "Select period", selected: @period %>
   <%= f.input :status, collection: commitments_statuses_for_select, required: false, label: false, input_html: { class: "select2" }, prompt: "Filter by status", selected: @status %>
 
-  <%= f.submit "Filter", class: "btn-primary-bubo" %>
+  <%= f.submit "Filter", class: "btn-primary-bubo-filter" %>
 <% end %>

@@ -5,7 +5,7 @@
 .btn-primary-bubo {
   background-color: $secondary;
   color: white;
-  padding: 10px 13px;
+  padding: 7px 14px;
   a {
     text-decoration: none;
   }
@@ -23,6 +23,21 @@
   font-weight: bold;
   border-radius: 20px;
   text-decoration:none;
+  a {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+    color:white;
+    opacity: 0.8;
+  }
+}
+
+.btn-primary-bubo-filter {
+  background-color: $secondary;
+  color: white;
+  padding: 4px 30px;
+  font-weight: bold;
   a {
     text-decoration: none;
   }

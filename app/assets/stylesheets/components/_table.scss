@@ -2,6 +2,13 @@
   i {
   color: $primary;
   }
+  th {
+    color : $primary !important
+  }
+  tr {
+    font-size: 16px;
+  }
+  margin-bottom: 18px;
 }
 
 .dataTables_length, .dataTables_info {
@@ -9,14 +16,30 @@
   font-weight: lighter;
 }
 
-.dataTables_filter, .dataTables_paginate {
-  font-size: 16px;
-  font-weight: normal;
+#table-commitment_paginate {
+  a {
+  font-size: 12px;
+  font-weight: lighter;
+  }
+  a.paginate_button.current {
+padding: 0.2em 0.5em;
+  }
 }
 
-.paginate_button {
-  font-size: 16px;
-  background-color: $primary;
-  color: $secondary;
- }
+#table-commitment_length label {
+  font-size: 12px;
+  font-weight: lighter;
+}
 
+#table-commitment_filter {
+  transform: translateY(-64px);
+  input {
+    box-shadow: none;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid #AAAAAA;
+  }
+  i {
+    color: $primary;
+  }
+}
