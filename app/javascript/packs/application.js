@@ -6,6 +6,7 @@ import { initChart } from '../components/charts';
 import { myPieChart } from '../components/pie';
 import "../components/init_flatpickr"
 import "../components/datatables"
+import "../components/init_active"
 
 initSelect2();
 modalSupplier();

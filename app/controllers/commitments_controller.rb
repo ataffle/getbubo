@@ -127,20 +127,8 @@ class CommitmentsController < ApplicationController
 # else
   #   - je change la date au mois d'apres.
   def zip_and_download_files
-    @commitments = Commitment.all
-
-    respond_to do |format|
-      format.html
-      format.zip do
-        compressed_filestream = Zip::OutputStream.write_buffer do |zos|
-          @commitments.each do |commitment|
-            zos.put_next_entry "#{commitment.invoice.file.identifier}"
-          end
-        end
-        compressed_filestream.rewind
-        send_data compressed_filestream.read, filename: "invoices.zip"
-      end
-    end
+    #@commitments = Commitment.all
+    Cloudinary::Utils.download_zip_url(public_ids: ['lus56dee3azuf3tnudmu', 'aqvlquwqnljhpqcasgn1'])
   end
 
   private

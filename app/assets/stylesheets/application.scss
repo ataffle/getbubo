@@ -25,3 +25,11 @@
   min-height: 100vh;
   width: 83%;
 }
+
+.dropdown-active {
+  display: block !important;
+}
+
+.dropdown-inactive {
+  display: none !important;
+}
