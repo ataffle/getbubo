@@ -32,12 +32,13 @@ padding: 0.2em 0.5em;
 }
 
 #table-commitment_filter {
-  transform: translateY(-64px);
+  transform: translateY(-25px);
   input {
     box-shadow: none;
-  font-size: 14px;
-  border: none;
-  border-bottom: 1px solid #AAAAAA;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid #AAAAAA;
+    font-weight: lighter;
   }
   i {
     color: $primary;
