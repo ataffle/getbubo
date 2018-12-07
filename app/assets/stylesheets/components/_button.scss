@@ -33,3 +33,18 @@
     opacity: 0.8;
   }
 }
+
+.btn-primary-bubo-filter {
+  background-color: $secondary;
+  color: white;
+  padding: 4px 30px;
+  font-weight: bold;
+  a {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+    color:white;
+    opacity: 0.8;
+  }
+}

@@ -17,7 +17,7 @@
     <tbody>
       <% @commitments.each do |commitment| %>
         <tr>
-          <td><%= image_tag "#{commitment.user.photo}", style:'height:30px;width:30px;border-radius:50%;' %></td>
+          <td><%= image_tag "#{commitment.user.photo}", style:'height:20px;width:20px;border-radius:50%;' %></td>
           <td><%= commitment.supplier.name %></td>
           <td><%= number_with_delimiter(commitment.amount, :delimiter => ',') %> €</td>
           <td><%= commitment.recurrence %></td>
@@ -49,7 +49,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to "Download all invoices", download_files_path %>
+  <%#= link_to "Download all invoices", download_files_path(format: :zip) %>
 </div>
 
 
