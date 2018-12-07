@@ -1,7 +1,11 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <div>
-    <%= link_to "New Commitment", new_commitment_path, class: "btn-primary-bubo-commitment" %>
+    <% if current_page?(commitments_path) %>
+      <%= link_to "New Commitment", new_commitment_path, class: "btn-primary-bubo-commitment" %>
+    <% else %>
+      <h3><%= current_user.organization.name %></h3>
+    <% end %>
   </div>
   <div>
     <%= link_to "Pre closing", pre_closing_path, class: "btn-primary-bubo-commitment" %>
@@ -10,34 +14,12 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
-
-      <!-- Links when logged in -->
-
-      <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
-        <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
+        <%= link_to destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" do %>
+          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+        <% end %>
       </div>
     <% else %>
-      <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>

@@ -1,4 +1,13 @@
-<%= simple_form_for @supplier do |f| %>
+<%= simple_form_for(@supplier) do |f| %>
+  <% if @supplier.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @supplier.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= f.input :name %>
-  <%= f.submit "Create", class: "btn-primary-bubo" %>
+  <%= f.submit "Update", class: "btn-primary-bubo" %>
 <% end %>
