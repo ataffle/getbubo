@@ -16,7 +16,7 @@
               <% @unpaid_commitments_amount.each do |item| %>
                   <% total << item.amount %>
               <% end %>
-              <li><%= number_with_delimiter(total.sum, delimiters: ".") %>k</li>
+              <li><%= number_with_delimiter(total.sum, delimiters: ".") %>€</li>
               <li><p style="font-size: 15px">Oustanding Commitments</p></li>
             </ul>
           </h3>
@@ -29,7 +29,7 @@
                   <% total << commitment.amount %>
               <% end %>
               <% average = (total.sum / total.length)  %>
-              <li><%= number_with_delimiter(average, delimiters: ".") %>k</li>
+              <li><%= number_with_delimiter(average, delimiters: ".") %>€</li>
               <li><p style="font-size: 15px">Average Commitment Amount</p></li>
               <li><p style="font-size: 10px">(Current Month)</p></li>
             </ul>
@@ -41,7 +41,7 @@
               <% @current_month_commitments.each do |commitment| %>
                   <% total << commitment.amount %>
               <% end %>
-              <li><%= number_with_delimiter(total.sum, delimiters: ".") %>k</li>
+              <li><%= number_with_delimiter(total.sum, delimiters: ".") %>€</li>
               <li><p style="font-size: 15px">Current Month Total Commitments</p></li>
             </ul>
           </h3>
