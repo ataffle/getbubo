@@ -5,7 +5,7 @@ class Commitment < ApplicationRecord
   enum recurrence: { "One off" => 0, "Monthly" => 1 }
   enum payment_method: { "Credit card" => 0, "SEPA" => 1, "Transfer" => 2 }
   enum retrieval_mode: { "Email" => 0, "Online" => 1, "Paper" => 2 }
-  enum status: { "Pending invoice" => 0, "Pending payment" => 1, "Paid" => 2 }
+  enum status: { "Pending invoice" => 0, "Pending payment" => 1, "Paid" => 2, "Postpone" => 3 }
 
   # validate :payment_date_greater_than_due_date
   validates :title, presence: true

@@ -4,7 +4,13 @@ Rails.application.routes.draw do
   resources :suppliers
   resources :commitments
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :commitments
+  resources :commitments do
+    get 'commitment_payment_proceed', to: 'commitments#commitment_payment_proceed'
+  end
+
+  resources :commitments do
+    get 'commitment_postpone', to: 'commitments#commitment_postpone'
+  end
 
   get 'download_file/:id', to: 'commitments#download_file', as: 'download_file'
   get 'pre_closing', to: 'commitments#pre_closing', as: 'pre_closing'
