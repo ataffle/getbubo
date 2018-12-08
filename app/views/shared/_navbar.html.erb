@@ -15,7 +15,7 @@
     <% if user_signed_in? %>
       <div class="navbar-wagon-item">
         <%= link_to destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" do %>
-          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
         <% end %>
       </div>
     <% else %>
