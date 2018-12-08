@@ -1,6 +1,7 @@
 class Supplier < ApplicationRecord
   belongs_to :organization
   has_many :commitments
+  validates :name, presence: true, uniqueness: true
 
   def total_payable
     sum = 0
