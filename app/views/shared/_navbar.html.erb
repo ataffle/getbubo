@@ -2,7 +2,7 @@
   <!-- Logo -->
   <div>
     <% if current_page?(commitments_path) %>
-      <%= link_to "New Commitment", new_commitment_path, class: "btn-primary-bubo-commitment" %>
+      <%= link_to "+ Ajouter en-cours", new_commitment_path, class: "btn-primary-bubo-commitment" %>
     <% else %>
       <% if user_signed_in? %>
         <h3><%= current_user.organization.name %></h3>
