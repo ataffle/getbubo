@@ -2,10 +2,10 @@ class Commitment < ApplicationRecord
   belongs_to :user
   belongs_to :supplier
 
-  enum recurrence: { "One off" => 0, "Monthly" => 1 }
-  enum payment_method: { "Credit card" => 0, "SEPA" => 1, "Transfer" => 2 }
-  enum retrieval_mode: { "Email" => 0, "Online" => 1, "Paper" => 2 }
-  enum status: { "Pending invoice" => 0, "Pending payment" => 1, "Paid" => 2, "Postpone" => 3 }
+  enum recurrence: { "Ponctuel" => 0, "Mensuel" => 1 }
+  enum payment_method: { "Carte bancaire" => 0, "SEPA" => 1, "Transfert" => 2 }
+  enum retrieval_mode: { "Email" => 0, "En ligne" => 1, "Papier" => 2 }
+  enum status: { "Facture en attente" => 0, "Paiement en attente" => 1, "Payé" => 2, "Reporter" => 3 }
 
   # validate :payment_date_greater_than_due_date
   validates :title, presence: true
@@ -22,13 +22,12 @@ class Commitment < ApplicationRecord
   scope :previous_month, -> { where("due_date > ? AND due_date < ?", Time.now.prev_month.beginning_of_month, Time.now.prev_month.end_of_month) }
   scope :next_month, -> { where("due_date > ? AND due_date < ?", Time.now.next_month.beginning_of_month, Time.now.next_month.end_of_month) }
   scope :year_to_date, -> { where("due_date > ? AND due_date < ?", Time.now.beginning_of_year, Time.now) }
-  scope :paid_commitments, -> { where(status: "Paid") }
-  scope :unpaid_commitments, -> { where.not(status: "Paid") }
-  scope :pending_invoice_commitmment, -> { where(status: "Pending invoice") }
-  scope :pending_payment_commitments, -> { where(status: "Pending payment") }
+  scope :paid_commitments, -> { where(status: "Payé") }
+  scope :unpaid_commitments, -> { where.not(status: "Payé") }
+  scope :pending_invoice_commitmment, -> { where(status: "Facture en attente") }
+  scope :pending_payment_commitments, -> { where(status: "Paiement en attente") }
 
-
-  PERIODS = ["Current month", "Next month", "Previous month", "Year-to-date", "All time"]
+  PERIODS = ["Mois en cours", "Mois suivant", "Mois précédent", "Cumul annuel", "Toutes périodes"]
 
   # def payment_date_greater_than_due_date
   #   if payment_date < due_date
