@@ -10,13 +10,13 @@ const initChart = () => {
   const statuses = JSON.parse(ctx.canvas.dataset.statuses);
   // console.log(ctx.canvas.dataset);
   // console.log(typeof statuses);
-  const invoices = statuses.filter(function(x) { return x === "Pending invoice" }).length
-  const payments = statuses.filter(function(x) { return x === "Pending payment" }).length
-  const paid = statuses.filter(function(x) { return x === "Paid" }).length
+  const invoices = statuses.filter(function(x) { return x === "Facture en attente" }).length
+  const payments = statuses.filter(function(x) { return x === "Paiement en attente" }).length
+  const paid = statuses.filter(function(x) { return x === "Payé" }).length
   const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-          labels: ["Pending Invoice", "Pending Payment", "Paid"],
+          labels: ["Facture en attente", "Paiement en attente", "Payé"],
           datasets: [{
               label: '# of Commitments',
               data: [invoices, payments, paid],
