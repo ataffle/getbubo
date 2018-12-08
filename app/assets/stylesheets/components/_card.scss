@@ -13,15 +13,17 @@
 }
 
 .card-stat {
-  border-style: solid;
-  border-width: 1.5px;
-  border-color: rgba(15, 51, 78, 0.5);
-  box-shadow: 7px 5px 5px rgba(15, 51, 78, 0.2);
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(15, 51, 78, 0.2);
   width: 250px;
   height: 200px;
   text-align: center;
   padding-top: 50px;
   text-decoration: none;
+  h3 {
+    font-weight: bold;
+  }
   #analytics-dashboard {
     p{
       padding-top: 10px;
@@ -32,4 +34,5 @@
 .cards {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
 }

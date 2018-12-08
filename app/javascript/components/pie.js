@@ -42,9 +42,8 @@ const myPieChart = () => {
     const amount = new Chart(ctx,{
         type: 'pie',
         data: {
-            labels: ["Pending Invoice", "Pending Payment", "Paid"],
+            labels: ["Facture en attente", "Paiement en attente", "Payé"],
             datasets: [{
-                label: '# of Commitments',
                 data: [pending_invoice, pending_payment, paid],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -58,6 +57,16 @@ const myPieChart = () => {
                 ],
                 borderWidth: 1
             }]
+        },
+        options: {
+          layout: {
+           padding: {
+               left: 32,
+               right: 32,
+               top: 32,
+               bottom: 32
+           }
+       }
         }
     });
   }
