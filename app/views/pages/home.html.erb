@@ -43,6 +43,7 @@
         <div class="card-stat">
           <h3>
             <ul id="analytics-dashboard" style="list-style: none; padding-inline-start: 0px;">
+              <% total = [] %>
               <% @current_month_commitments.each do |commitment| %>
                   <% total << commitment.amount %>
               <% end %>
