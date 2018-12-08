@@ -18,7 +18,7 @@ const initChart = () => {
       data: {
           labels: ["Facture en attente", "Paiement en attente", "Payé"],
           datasets: [{
-              label: '# of Commitments',
+              label: "Statut des factures",
               data: [invoices, payments, paid],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
@@ -34,6 +34,17 @@ const initChart = () => {
           }]
       },
       options: {
+        legend: {
+          display: false
+        },
+        layout: {
+         padding: {
+             left: 32,
+             right: 32,
+             top: 32,
+             bottom: 32
+           }
+         },
         scales: {
           xAxes: [{
               gridLines: {

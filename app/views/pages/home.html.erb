@@ -1,12 +1,19 @@
-<div class="container-commmitments">
-  <h2>Tableau de bord</h2>
+<div class="container-dashboard">
+  <div class="dashboard-header-wrapper">
+    <div>
+      <h2>Tableau de bord</h2>
+    </div>
+    <div>
+      <%= simple_form_for(:filters, url: root_path, method: :get, html: { class: 'form-inline filter-commitment' }) do |f| %>
+        <%= f.input :period, collection: commitments_periods_for_select, required: false, label: false, input_html: { class: "select2" }, prompt: "Choisir une période", selected: @period %>
+        <%= f.submit "Filtrer", class: "btn-primary-bubo-filter" %>
+      <% end %>
+    </div>
+  </div>
   <div class="row">
     <!-- <div class="chart-filters">
     </div> -->
     <div class="col-md-12">
-      <canvas id="commitments-statuses" width="500" height="200" data-statuses="<%= @statuses.to_json %>"></canvas>
-      <br>
-      <br>
       <div class="cards">
         <div class="card-stat">
           <h3>
@@ -30,7 +37,6 @@
               <% average = (total.sum / total.length)  %>
               <li><%= number_with_delimiter(average, delimiters: ".") %>€</li>
               <li><p style="font-size: 15px">Montant moyen d'un en-cours</p></li>
-              <li><p style="font-size: 10px">(Mois en cours)</p></li>
             </ul>
           </h3>
         </div>
@@ -46,9 +52,16 @@
           </h3>
         </div>
       </div>
-      <br>
-      <br>
-      <canvas id="total-amount" width="500" height="200" data-paid="<%= @paid_commitment_amount.to_json %>" data-invoice="<%= @pending_invoice_amount.to_json %>" data-payment="<%= @pending_payment_amount.to_json %>"></canvas>
+      <div class="charts-wrapper">
+        <div class="bar-chart">
+          <canvas id="commitments-statuses" width="450" height="300" data-statuses="<%= @statuses.to_json %>"></canvas>
+        </div>
+        <div class="pie-chart">
+          <canvas id="total-amount" width="450" height="300" data-paid="<%= @paid_commitment_amount.to_json %>" data-invoice="<%= @pending_invoice_amount.to_json %>" data-payment="<%= @pending_payment_amount.to_json %>">
+          </canvas>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
