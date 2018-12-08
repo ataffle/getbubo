@@ -1,6 +1,7 @@
 .sidebar {
-  width: 17%;
+  width: 24%;
   background: $primary;
+  opacity: 1;
   color: #fff;
   a {
     text-decoration:none;
@@ -29,7 +30,6 @@
   padding-top: 35px;
   padding-bottom: 15px;
   text-align: center;
-  border-bottom: 1px solid lightgrey;
 }
 
 .sidebar-info-mail{
