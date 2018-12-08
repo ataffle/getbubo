@@ -5,19 +5,19 @@
 <div class="sidebar-links">
   <ul class="nav">
     <%= link_to root_path do %>
-      <li class="nav-item <%= current_class?(root_path) %>"><i class="fas fa-chart-line"></i>Dashboard</li>
+      <li class="nav-item <%= current_class?(root_path) %>"><i class="fas fa-chart-line"></i>Stats</li>
     <% end %>
     <%= link_to commitments_path do %>
-      <li class="nav-item <%= current_class?(commitments_path) %>"><i class="fas fa-list"></i>Commitments</li>
+      <li class="nav-item <%= current_class?(commitments_path) %>"><i class="fas fa-list"></i>En-cours</li>
     <% end %>
     <%= link_to suppliers_path do %>
-      <li class="nav-item <%= current_class?(suppliers_path) %>"><i class="fas fa-address-book"></i>Suppliers</li>
+      <li class="nav-item <%= current_class?(suppliers_path) %>"><i class="fas fa-address-book"></i>Fournisseurs</li>
     <% end %>
     <%= link_to pre_closing_path do %>
-      <li class="nav-item <%= current_class?(closing_path) %>"><i class="fas fa-calendar-check"></i>Closing</li>
+      <li class="nav-item <%= current_class?(closing_path) %>"><i class="fas fa-calendar-check"></i>Clôture</li>
     <% end %>
     <%= link_to suppliers_path do %>
-      <li class="nav-item <%= current_class?(suppliers_path) %>"><i class="fas fa-users"></i>Teams</li>
+      <li class="nav-item <%= current_class?(suppliers_path) %>"><i class="fas fa-users"></i>Equipe</li>
     <% end %>
   </ul>
 </div>

@@ -1,5 +1,5 @@
 <div class="container-commmitments" id="commitment-show">
-  <h3>Details</h3>
+  <h3>Détails</h3>
   <div class="message" style="justify-content: space-around;">
     <%= link_to edit_commitment_path(@commitment) do %>
       <i class="fas fa-edit"></i>
@@ -7,7 +7,7 @@
   </div>
   <div class="message">
     <div class="message-name">
-      <p><strong>Title</strong></p>
+      <p><strong>Nom</strong></p>
     </div>
     <div class="message-body">
       <%= @commitment.title %>
@@ -27,7 +27,7 @@
   </div>
   <div class="message">
     <div class="message-name">
-      <p><strong>Reference</strong></p>
+      <p><strong>Référence</strong></p>
     </div>
     <div class="message-body">
       <%= @commitment.order_ref %>
@@ -37,7 +37,7 @@
   </div>
   <div class="message">
     <div class="message-name">
-      <p><strong>Status</strong></p>
+      <p><strong>Statut</strong></p>
     </div>
     <div class="message-body">
       <%= @commitment.status %>
@@ -47,7 +47,7 @@
   </div>
   <div class="message">
     <div class="message-name">
-      <p><strong>Amount</strong></p>
+      <p><strong>Montant</strong></p>
     </div>
     <div class="message-body">
       <%= number_with_delimiter(@commitment.amount, :delimiter => ',') %> €
@@ -57,7 +57,7 @@
   </div>
   <div class="message">
     <div class="message-name">
-      <p><strong>Supplier</strong></p>
+      <p><strong>Fournisseur</strong></p>
     </div>
     <div class="message-body">
       <%= @commitment.supplier.name %>
@@ -67,7 +67,7 @@
   </div>
   <div class="message">
     <div class="message-name">
-      <p><strong>Recurrence</strong></p>
+      <p><strong>Récurrence</strong></p>
     </div>
     <div class="message-body">
       <%= @commitment.recurrence %>
@@ -77,7 +77,7 @@
   </div>
   <div class="message">
     <div class="message-name">
-      <p><strong>Due Date</strong></p>
+      <p><strong>Echéance</strong></p>
     </div>
     <div class="message-body">
       <%= @commitment.due_date %>
@@ -87,7 +87,7 @@
   </div>
   <div class="message">
     <div class="message-name">
-      <p><strong>Payment Date</strong></p>
+      <p><strong>Paiement</strong></p>
     </div>
     <div class="message-body">
       <%= @commitment.payment_date %>
@@ -97,7 +97,7 @@
   </div>
   <div class="message">
     <div class="message-name">
-      <p><strong>Payment Method</strong></p>
+      <p><strong>Mode de paiement</strong></p>
     </div>
     <div class="message-body">
       <%= @commitment.payment_method %>
@@ -107,7 +107,7 @@
   </div>
   <div class="message">
     <div class="message-name">
-      <p><strong>Retrieval Mode</strong></p>
+      <p><strong>Réception Facture</strong></p>
     </div>
     <div class="message-body">
       <%= @commitment.retrieval_mode %>
@@ -117,13 +117,13 @@
   </div>
   <div class="message">
     <div class="message-name">
-      <p><strong>Invoice File</strong></p>
+      <p><strong>Facture</strong></p>
     </div>
     <div class="message-body">
       <% if @commitment.invoice? %>
         <%= @commitment.invoice_ref %>
       <% else %>
-        <p>No file uploaded</p>
+        <p>Pas de document</p>
       <% end %>
     </div>
     <div class="message-status">
