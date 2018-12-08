@@ -36,3 +36,15 @@
   justify-content: space-between;
   margin-bottom: 40px;
 }
+
+.cards-commitment{
+  display: flex;
+  margin-bottom: 40px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  .item{
+    width: 400px;
+    height: 200px;
+  }
+}
+
