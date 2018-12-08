@@ -1,0 +1,16 @@
+<div class="container-dashboard">
+  <div class="row">
+    <h2>Membres de l'équipe <%= current_user.organization.name %></h2>
+    <div class="cards">
+      <%  @users.each do |user|%>
+        <div class="card-stat">
+          <h3>
+            <%= user.first_name %> <%= user.last_name %>
+          </h3>
+          <p><%= user.email %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
