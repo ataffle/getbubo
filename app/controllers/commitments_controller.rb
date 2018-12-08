@@ -14,7 +14,7 @@ class CommitmentsController < ApplicationController
         @commitments = @commitments.next_month
       elsif @period == "Mois en cours"
         @commitments = @commitments.current_month
-      elsif @period == "Comul annuel"
+      elsif @period == "Cumul annuel"
         @commitments = @commitments.year_to_date
       elsif @period == "Toutes périodes"
         @commitments = @commitments

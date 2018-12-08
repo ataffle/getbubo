@@ -1,6 +1,10 @@
 <div class="sidebar-info">
-  <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-  <p class="sidebar-info-mail">fred@michel.com</p>
+  <% if user_signed_in? %>
+    <%= image_tag current_user.photo, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+    <p class="sidebar-info-mail"><%= current_user.email %></p>
+  <% else %>
+    <p>No user logged</p>
+  <% end %>
 </div>
 <div class="sidebar-links">
   <ul class="nav">
