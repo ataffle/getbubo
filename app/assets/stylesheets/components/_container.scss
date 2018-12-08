@@ -1,7 +1,3 @@
-.container-closing {
-  display: flex;
-}
-
 .container-table {
   margin: 50px;
   font-size: 13px;
@@ -13,11 +9,11 @@
 
 .container-commmitments {
   background-color: white;
-  box-shadow: 1px 1px 3xp rgba(200, 200, 200, 0.4);
+  box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
   max-width: 95%;
-  margin: 16px auto;
+  margin: 32px auto;
   padding: 20px;
-
+  border-radius: 2px;
 }
 
 .supplier-container {
@@ -31,4 +27,24 @@
   h2 {
     margin-bottom: 24px;
   }
+}
+
+
+.container-suppliers {
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
+  max-width: 75%;
+  margin: 32px auto;
+  padding: 20px;
+  border-radius: 2px;
+}
+
+.container-closing {
+  display: flex;
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
+  max-width: 95%;
+  margin: 32px auto;
+  padding: 20px;
+  border-radius: 2px;
 }
