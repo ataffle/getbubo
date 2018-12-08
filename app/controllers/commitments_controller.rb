@@ -1,5 +1,5 @@
 class CommitmentsController < ApplicationController
-  require 'zip'
+  require 'open-uri'
   def index
     # @commitments = policy_scope(Commitment)
     @commitments = Commitment.all
@@ -126,8 +126,13 @@ class CommitmentsController < ApplicationController
   end
 
   def zip_and_download_files
-    #@commitments = Commitment.all
-    Cloudinary::Utils.download_zip_url(public_ids: ['lus56dee3azuf3tnudmu', 'aqvlquwqnljhpqcasgn1'])
+    @commitments = Commitment.all
+    @cloud_ids = []
+    @commitments.each do |commitment|
+      @cloud_ids << commitment.invoice.file.public_id if commitment.invoice.present?
+    end
+    result = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids)
+    # redirect_to commitments_path
   end
 
   private

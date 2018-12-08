@@ -29,7 +29,8 @@
               <% end %>
             <% else %>
               <%#= link_to "Download it", commitment.invoice.url %>
-              <%= link_to download_file_path(commitment) do %>
+              <%#= link_to download_file_path(commitment) do %>
+              <%= link_to(cl_private_download_url(commitment.invoice_ref, :jpg, :attachment => true)) do %>
                 <i class="fas fa-paperclip"></i>
               <% end %>
             <% end %>
@@ -50,6 +51,7 @@
     </tbody>
   </table>
   <%#= link_to "Download all invoices", download_files_path(format: :zip) %>
+  <%= link_to "Download all invoices", download_files_path %>
 </div>
 
 
