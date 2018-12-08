@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'datatables'
 
 
-$(".table").dataTable( {
+$("#table-commitment").dataTable( {
   language: {
     search: "<i class='fas fa-search'></i>",
     searchPlaceholder: "ex : en attente "
