@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  after_action :verify_authorized, except: :home
+  after_action :verify_authorized, except: [:home, :team]
 
   def home
     @commitments = Commitment.all
@@ -13,4 +13,9 @@ class PagesController < ApplicationController
     @pending_payment_amount = @commitments.pending_payment_commitments
     @unpaid_commitments_amount = @commitments.unpaid_commitments
   end
+
+  def team
+    @users = current_user.organization.users
+  end
+
 end

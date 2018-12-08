@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   get 'pre_closing', to: 'commitments#pre_closing', as: 'pre_closing'
   get 'closing', to: 'commitments#closing', as: 'closing'
+  get 'team', to: 'pages#team', as: 'team'
 
 end

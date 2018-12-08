@@ -3,5 +3,9 @@ class PagePolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+
+    def team?
+      true
+    end
   end
 end

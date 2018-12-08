@@ -37,6 +37,24 @@
   margin-bottom: 40px;
 }
 
+.card-team {
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(15, 51, 78, 0.2);
+  height: 200px;
+  text-align: center;
+  padding-top: 50px;
+  text-decoration: none;
+  h3 {
+    font-weight: bold;
+  }
+  #analytics-dashboard {
+    p{
+      padding-top: 10px;
+    }
+  }
+}
+
 .cards-commitment{
   display: flex;
   margin-bottom: 40px;
