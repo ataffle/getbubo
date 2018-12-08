@@ -16,7 +16,11 @@
   }
 }
 
-.btn-primary-bubo-filter {
-    border-color: #40BEC2;
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+   background : none;
 }
+
+
 
