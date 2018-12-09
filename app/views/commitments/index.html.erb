@@ -40,7 +40,11 @@
               <i class="fas fa-edit"></i>
             <% end %>
           </td>
-          <td><i class="fas fa-trash-alt"></i></td>
+          <td>
+            <%= link_to commitment_path(commitment), method: :delete, data: { confirm: "Etes-vous sûr ?" } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </td>
           <td>
             <%= link_to commitment_path(commitment) do %>
               <i class="fas fa-eye"></i>

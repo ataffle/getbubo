@@ -79,6 +79,12 @@ class CommitmentsController < ApplicationController
     redirect_to commitment_path(@commitment)
   end
 
+  def destroy
+    @commitment = Commitment.find(params[:id])
+    @commitment.destroy
+    redirect_to commitments_path
+  end
+
   def download_file
     @commitment = Commitment.find(params[:id])
     send_file(
