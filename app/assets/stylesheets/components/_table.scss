@@ -47,3 +47,48 @@ padding: 0.2em 0.5em;
     color: $primary;
   }
 }
+
+.table-closing li {
+  display: grid;
+  grid-template-columns: 90px 110px 1fr 110px;
+  grid-template-rows: 1fr;
+  list-style: none;
+
+  border: 3px solid white;
+  align-items: center;
+  padding: 5px;
+  p {
+    margin: 0px;
+  }
+  p:last-child {
+    text-align: center;
+  }
+  .table-btn {
+    text-align: center;
+    a {
+      background: $secondary;
+      padding: 4px 10px !important;
+      border-radius: 7px;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
+}
+
+.grey-cards {
+  background-color: #F4F7FC;
+  &:hover {
+   background-color: #eae5e5;
+  }
+
+}
+
+.table-closing .table-closing-header {
+  p {
+    font-weight: bold;
+    background-color: white;
+    border-bottom: 1px solid black;
+  }
+}

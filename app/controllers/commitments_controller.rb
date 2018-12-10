@@ -107,8 +107,6 @@ class CommitmentsController < ApplicationController
     redirect_to commitments_path
   end
 
-  end
-
   def pre_closing
     @to_be_processed = Commitment.previous_month.where(status: "Facture en attente").or(Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Ponctuel"))
     @processed = Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month.where(status: "Payé", recurrence: "Ponctuel")).or(Commitment.current_month.where(status: "Reporter", recurrence: "Ponctuel"))
