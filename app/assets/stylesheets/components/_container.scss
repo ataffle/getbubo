@@ -1,6 +1,9 @@
 .container-table {
-  margin: 50px;
+  margin: 20px;
   font-size: 13px;
+  td {
+    padding: 5px 15px 5px 0;
+  }
 }
 .container-create{
   background-color: white;

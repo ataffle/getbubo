@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :suppliers, through: :commitments
 
   def name
-    email
+    "#{first_name} #{last_name}"
   end
 
 end
