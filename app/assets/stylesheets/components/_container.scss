@@ -63,13 +63,11 @@
 }
 
 .container-closing {
-  display: flex;
   background-color: white;
   box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
   max-width: 95%;
   margin: 32px auto;
   border-radius: 2px;
-  justify-content: space-around;
 }
 
 .container-pre-closing {
@@ -88,4 +86,10 @@
   margin: 32px auto;
   border-radius: 2px;
   padding: 5px 5px;
+}
+
+.container-table-wrap {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 50px;
 }
