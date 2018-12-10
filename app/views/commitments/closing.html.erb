@@ -1,1 +1,11 @@
-<p>Closing Stats</p>
+<div class="container-commmitments">
+  <% date = Date.today - 1.month %>
+  <h3>Clôture: <%= date.strftime("%B %Y") %></h3>
+  <h4><%= @processed.count %> en-cours traités</h4>
+  <ul>
+    <% @processed.each do |processed_commitment| %>
+      <li><%= processed_commitment.supplier.name %> - <%= processed_commitment.amount %>€</li>
+    <% end %>
+  </ul>
+  <%= link_to "Téléchager toutes les factures", @url, class: "btn-primary-bubo-commitment" %>
+</div>
