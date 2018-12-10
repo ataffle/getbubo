@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   end
 
   resources :commitments do
+    get 'commitment_upload', to: 'commitments#commitment_upload'
+  end
+
+  resources :commitments do
     get 'commitment_postpone', to: 'commitments#commitment_postpone'
   end
 
