@@ -9,10 +9,11 @@ import "../components/init_flatpickr"
 import "../components/datatables"
 import "../components/init_active"
 import "../components/sidebar_not_logged"
+// import { addAllOption } from '../components/add_all_option';
 
 initSelect2();
 modalSupplier();
 initChart();
 myPieChart();
 sidebar();
-
+// addAllOption();

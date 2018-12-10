@@ -7,28 +7,35 @@ class CommitmentsController < ApplicationController
 
     @commitments = Commitment.all
     filters = params[:filters]
+    # @organization_users = current_user.organization.users
     if filters
+      unless filters[:user] == "Tous"
+        @user = User.find_by(email: filters[:user])
+        @commitments = Commitment.where(user: @user)
+      end
+
       @period = filters[:period]
-      @status = filters[:status]
-      @user = filters[:user]
-      if @period == "Mois précédent"
+      case @period
+      when "Mois précédent"
         @commitments = @commitments.previous_month
-      elsif @period == "Mois suivant"
+      when "Mois suivant"
         @commitments = @commitments.next_month
-      elsif @period == "Mois en cours"
+      when "Mois en cours"
         @commitments = @commitments.current_month
-      elsif @period == "Cumul annuel"
+      when "Cumul annuel"
         @commitments = @commitments.year_to_date
-      elsif @period == "Toutes périodes"
+      when "Toutes périodes"
         @commitments = @commitments
-      elsif @status == "Facture en attente"
+      end
+
+      @status = filters[:status]
+      case @status
+      when "Facture en attente"
         @commitments = @commitments.where(status: "Facture en attente")
-      elsif @status == "Paiement en attente"
+      when "Paiement en attente"
         @commitments = @commitments.where(status: "Paiement en attente")
-      elsif @status == "Payé"
+      when "Payé"
         @commitments = @commitments.where(status: "Payé")
-      elsif filters[:user]
-        @commitments = @commitments.where(user_id: filters[:user])
       end
     end
   end

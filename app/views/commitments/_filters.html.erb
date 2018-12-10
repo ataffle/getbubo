@@ -1,5 +1,5 @@
 <%= simple_form_for(:filters, url: commitments_path, method: :get, html: { class: 'form-inline filter-commitment' }) do |f| %>
-  <%= f.input :user, collection: current_user.organization.users, required: false, label: false, input_html: { class: "select2" }, prompt: "Utilisateur", selected: @user %>
+  <%= f.input :user, collection: user_emails_for_select, required: false, label: false, input_html: { class: "select2" }, prompt: "Utilisateur", selected: @user %>
   <%= f.input :period, collection: commitments_periods_for_select, required: false, label: false, input_html: { class: "select2" }, prompt: "Choisir une période", selected: @period %>
   <%= f.input :status, collection: commitments_statuses_for_select, required: false, label: false, input_html: { class: "select2" }, prompt: "Statut", selected: @status %>
 
