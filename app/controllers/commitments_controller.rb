@@ -148,6 +148,8 @@ class CommitmentsController < ApplicationController
       new_commitment.invoice = nil
       new_commitment.save!
     end
+    @processed
+    zip
     # @processed_one_off = Commitment.previous_month.where(status: "Pending invoice", recurrence: "One off")
     # @processed_one_off.each do |one_off_commit_without_invoice_but_processed|
     #   new_commitment = one_off_commit_without_invoice_but_processed.dup
