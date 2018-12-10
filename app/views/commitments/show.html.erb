@@ -1,172 +1,144 @@
 <div class="container-commmitments" id="commitment-show">
-  <h3>Détails</h3>
-  <div class="message" style="justify-content: space-around;">
+  <div class="commitment-show-title">
+    <%= link_to commitments_path do %>
+      <i id="btn-back-to-index" class="fas fa-arrow-left"></i>
+    <% end %>
+    <h3>Détails</h3>
     <%= link_to edit_commitment_path(@commitment) do %>
-      <i class="fas fa-edit"></i>
+      <i id="btn-edit-show-commitment" class="fas fa-edit" ></i>
     <% end %>
   </div>
-
-
-
-
-<div class="cards-commitment">
-  <div class="item">
-    <div class="subitem">
-      <div class="message">
-        <div class="message-name">
+<div class="container-show-commitment">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
           <p><strong>Nom</strong></p>
         </div>
-        <div class="message-body">
+        <div class="detail-body">
           <%= @commitment.title %>
         </div>
-        <div class="message-status">
-        </div>
       </div>
-      <div class="message">
-        <div class="message-name">
+    </div>
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
           <p><strong>Description</strong></p>
         </div>
-        <div class="message-body">
+        <div class="detail-body">
           <%= @commitment.description %>
         </div>
-        <div class="message-status">
-        </div>
       </div>
-      <div class="message">
-        <div class="message-name">
+    </div>
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
           <p><strong>Référence</strong></p>
         </div>
-        <div class="message-body">
+        <div class="detail-body">
           <%= @commitment.order_ref %>
-        </div>
-        <div class="message-status">
         </div>
       </div>
     </div>
   </div>
-  <div class="item">
-    <div class="subitem">
-      <div class="message">
-        <div class="message-name">
-          <p><strong>Référence</strong></p>
-        </div>
-        <div class="message-body">
-          <%= @commitment.order_ref %>
-        </div>
-        <div class="message-status">
-        </div>
-      </div>
-      <div class="message">
-        <div class="message-name">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
           <p><strong>Statut</strong></p>
         </div>
-        <div class="message-body">
+        <div class="detail-body">
           <%= @commitment.status %>
         </div>
-        <div class="message-status">
-        </div>
       </div>
-      <div class="message">
-        <div class="message-name">
+    </div>
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
           <p><strong>Montant</strong></p>
         </div>
-        <div class="message-body">
+        <div class="detail-body">
           <%= number_with_delimiter(@commitment.amount, :delimiter => ',') %> €
         </div>
-        <div class="message-status">
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
+          <p><strong>Fournisseur</strong></p>
+        </div>
+        <div class="detail-body">
+          <%= @commitment.supplier.name %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
+          <p><strong>Récurrence</strong></p>
+        </div>
+        <div class="detail-body">
+          <%= @commitment.recurrence %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
+          <p><strong>Echéance</strong></p>
+        </div>
+        <div class="detail-body">
+          <%= @commitment.due_date %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
+          <p><strong>Paiement</strong></p>
+        </div>
+        <div class="detail-body">
+          <%= @commitment.payment_date %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
+          <p><strong>Mode de paiement</strong></p>
+        </div>
+        <div class="detail-body">
+          <%= @commitment.payment_method %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
+          <p><strong>Réception Facture</strong></p>
+        </div>
+        <div class="detail-body">
+          <%= @commitment.retrieval_mode %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="show-details">
+        <div class="detail-name">
+          <p><strong>Facture</strong></p>
+        </div>
+        <div class="detail-body">
+          <% if @commitment.invoice? %>
+            <%= @commitment.invoice_ref %>
+          <% else %>
+            <p>Pas de document</p>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="cards-commitment">
-    <div class="item">
-      <div class="subitem">
-        <div class="message">
-          <div class="message-name">
-            <p><strong>Fournisseur</strong></p>
-          </div>
-          <div class="message-body">
-            <%= @commitment.supplier.name %>
-          </div>
-          <div class="message-status">
-          </div>
-        </div>
-        <div class="message">
-          <div class="message-name">
-            <p><strong>Récurrence</strong></p>
-          </div>
-          <div class="message-body">
-            <%= @commitment.recurrence %>
-          </div>
-          <div class="message-status">
-          </div>
-        </div>
-        <div class="message">
-          <div class="message-name">
-            <p><strong>Echéance</strong></p>
-          </div>
-          <div class="message-body">
-            <%= @commitment.due_date %>
-          </div>
-          <div class="message-status">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <div class="subitem">
-        <div class="message">
-          <div class="message-name">
-            <p><strong>Paiement</strong></p>
-          </div>
-          <div class="message-body">
-            <%= @commitment.payment_date %>
-          </div>
-          <div class="message-status">
-          </div>
-        </div>
-        <div class="message">
-          <div class="message-name">
-            <p><strong>Mode de paiement</strong></p>
-          </div>
-          <div class="message-body">
-            <%= @commitment.payment_method %>
-          </div>
-          <div class="message-status">
-          </div>
-        </div>
-        <div class="message">
-          <div class="message-name">
-            <p><strong>Réception Facture</strong></p>
-          </div>
-          <div class="message-body">
-            <%= @commitment.retrieval_mode %>
-          </div>
-          <div class="message-status">
-          </div>
-        </div>
-     <!--    <div class="message">
-          <div class="message-name">
-            <p><strong>Facture</strong></p>
-          </div>
-          <div class="message-body">
-            <% if @commitment.invoice? %>
-              <%= @commitment.invoice_ref %>
-            <% else %>
-              <p>Pas de document</p>
-            <% end %>
-          </div>
-          <div class="message-status">
-            <% if @commitment.invoice? %>
-              <i class="fas fa-file-pdf"></i>
-            <% else %>
-              <i class="fas fa-paperclip"></i>
-            <% end %>
-          </div>
-        </div> -->
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>

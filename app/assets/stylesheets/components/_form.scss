@@ -1,4 +1,5 @@
 .form-login {
+  width: 800px;
   background: white;
   padding: 10px 20px;
   margin-top: 50px;
@@ -19,4 +20,19 @@
 
 .select2 {
   width: 100% !important;
+}
+
+.first-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.form-control-create {
+  width: 250px;
+}
+
+.select2-selection__rendered-create {
+  width: 250px;
 }

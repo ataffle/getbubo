@@ -5,9 +5,25 @@
     padding: 5px 15px 5px 0;
   }
 }
+.container-create{
+  background-color: white;
+}
 
 .commitment_container{
   margin: 70px;
+}
+
+.container-show-commitment{
+  margin-top: 35px;
+  padding: 30px 30px;
+  box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
+}
+
+.container-create-commitment{
+  margin-top: 35px;
+  margin-bottom: 35px;
+  padding: 10px 30px;
+  box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
 }
 
 .container-commmitments {
