@@ -1,5 +1,5 @@
 .form-login {
-  width: 800px;
+  width: 400px;
   background: white;
   padding: 10px 20px;
   margin-top: 50px;
@@ -19,7 +19,7 @@
 }
 
 .select2 {
-  width: 100% !important;
+  width: 250px !important;
 }
 
 .first-line {
@@ -33,6 +33,8 @@
   width: 250px;
 }
 
-.select2-selection__rendered-create {
-  width: 250px;
+.select2-width {
+  .third-child {
+    width: 250px;
+  }
 }
