@@ -6,13 +6,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   def filename
-    if original_filename
-      if model && model.read_attribute(mounted_as).present?
-        model.read_attribute(mounted_as)
-      else
-        @name = "#{model.invoice_ref}"
-      end
-    end
+   "#{model.invoice_ref}"
   end
 
   def public_id

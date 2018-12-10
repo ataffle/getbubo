@@ -1,7 +1,10 @@
 class CommitmentsController < ApplicationController
+  require 'json'
   require 'open-uri'
   def index
     # @commitments = policy_scope(Commitment)
+    zip
+
     @commitments = Commitment.all
     filters = params[:filters]
     if filters
@@ -79,20 +82,30 @@ class CommitmentsController < ApplicationController
     redirect_to commitment_path(@commitment)
   end
 
+  # def download_file
+  #   @commitment = Commitment.find(params[:id])
+  #   send_file(
+  #     # "#{Rails.root}/public/uploads/commitment/invoice/#{@commitment.id}/#{@commitment.invoice}",
+  #     "#{Rails.root}/public/#{@commitment.invoice}",
+  #     filename: "#{@commitment.invoice.file.identifier}",
+  #     type: "application/jpg"
+  #   )
+  # end
+
+  def zip
+    @commitments = Commitment.all
+    @cloud_ids = []
+    @commitments.each do |commitment|
+      @cloud_ids << commitment.invoice.file.public_id if commitment.invoice.present?
+    end
+    @url = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids, target_public_id: 'factures', type: 'private')
+
   def destroy
     @commitment = Commitment.find(params[:id])
     @commitment.destroy
     redirect_to commitments_path
   end
-
-  def download_file
-    @commitment = Commitment.find(params[:id])
-    send_file(
-      # "#{Rails.root}/public/uploads/commitment/invoice/#{@commitment.id}/#{@commitment.invoice}",
-      "#{Rails.root}/public/#{@commitment.invoice}",
-      filename: "#{@commitment.invoice.file.identifier}",
-      type: "application/jpg"
-    )
+    
   end
 
   def pre_closing
@@ -131,15 +144,7 @@ class CommitmentsController < ApplicationController
     # end
   end
 
-  def zip_and_download_files
-    @commitments = Commitment.all
-    @cloud_ids = []
-    @commitments.each do |commitment|
-      @cloud_ids << commitment.invoice.file.public_id if commitment.invoice.present?
-    end
-    result = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids)
-    # redirect_to commitments_path
-  end
+
 
   private
 
