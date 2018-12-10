@@ -12,6 +12,7 @@
         <th scope="col"></th>
         <th scope="col"></th>
         <th scope="col"></th>
+        <th scope="col">Echeance</th>
       </tr>
     </thead>
     <tbody>
@@ -48,11 +49,12 @@
               <p>test</p>
             <% end %>
           </td>
+          <td> <%= commitment.due_date %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <%= link_to "Download all invoices", @url %>
+  <%= link_to "Download all invoices", @url, style: "font-size: 14px" %>
 </div>
 
 
