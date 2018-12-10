@@ -99,6 +99,13 @@ class CommitmentsController < ApplicationController
       @cloud_ids << commitment.invoice.file.public_id if commitment.invoice.present?
     end
     @url = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids, target_public_id: 'factures', type: 'private')
+
+  def destroy
+    @commitment = Commitment.find(params[:id])
+    @commitment.destroy
+    redirect_to commitments_path
+  end
+    
   end
 
   def pre_closing
