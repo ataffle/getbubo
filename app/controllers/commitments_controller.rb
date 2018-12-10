@@ -59,8 +59,8 @@ class CommitmentsController < ApplicationController
     @commitments = Commitment.count
     @commitment.order_ref = "PO-2018-#{@commitments + 1}"
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
-    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice != ""
-    @commitment.status = "Paiement en attente" if @commitment.invoice != "" && @commitment.status == "Facture en attente"
+    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice?
+    @commitment.status = "Paiement en attente" if @commitment.invoice? && @commitment.status == "Facture en attente"
     if @commitment.save
       redirect_to commitment_path(@commitment)
     else

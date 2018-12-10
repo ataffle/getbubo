@@ -3,46 +3,50 @@
   <h3><strong>Pré-clôture: <%= date.strftime("%B %Y") %></strong></h3>
 </div>
 <div class="container-closing">
-  <div class="container-table">
-    <ul class="table-closing table-closing-1">
-      <h4><strong>Non Traités</strong></h4>
-      <li class="table-closing-header">
+  <div class="container-table-wrap">
+    <div class="container-table">
+      <ul class="table-closing table-closing-1">
+        <h4><strong>Non Traités</strong></h4>
+        <li class="table-closing-header">
+            <p>Supplier</p>
+            <p>Récurrence</p>
+            <p>Statut</p>
+            <p>Action</p>
+        </li>
+        <% @to_be_processed.each do |commitment_to_be| %>
+        <li class="grey-cards">
+          <p><%= commitment_to_be.supplier.name %></p>
+          <p><%= commitment_to_be.recurrence %></p>
+          <p><%= commitment_to_be.status %></p>
+          <p class = "table-btn"><%= link_for_commitment_proceed(commitment_to_be)%></p>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="container-table">
+      <ul class="table-closing table-closing-1">
+        <h4><strong>Traités</strong></h4>
+        <li class="table-closing-header">
           <p>Supplier</p>
           <p>Récurrence</p>
           <p>Statut</p>
-          <p>Action</p>
-      </li>
-      <% @to_be_processed.each do |commitment_to_be| %>
-      <li class="grey-cards">
-        <p><%= commitment_to_be.supplier.name %></p>
-        <p><%= commitment_to_be.recurrence %></p>
-        <p><%= commitment_to_be.status %></p>
-        <p class = "table-btn"><%= link_for_commitment_proceed(commitment_to_be)%></p>
-      </li>
-      <% end %>
-    </ul>
+          <p>Date</p>
+        </li>
+        <% @processed.each do |monthly_commitment| %>
+        <li class="grey-cards">
+          <p><%= monthly_commitment.supplier.name %></p>
+          <p><%= monthly_commitment.recurrence %></p>
+          <p><%= monthly_commitment.status %></p>
+          <p> <%= monthly_commitment.due_date %> </p>
+        </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-  <div class="container-table">
-    <ul class="table-closing table-closing-1">
-      <h4><strong>Traités</strong></h4>
-      <li class="table-closing-header">
-        <p>Supplier</p>
-        <p>Récurrence</p>
-        <p>Statut</p>
-        <p>Date</p>
-      </li>
-      <% @processed.each do |monthly_commitment| %>
-      <li class="grey-cards">
-        <p><%= monthly_commitment.supplier.name %></p>
-        <p><%= monthly_commitment.recurrence %></p>
-        <p><%= monthly_commitment.status %></p>
-        <p> <%= monthly_commitment.due_date %> </p>
-      </li>
-      <% end %>
-    </ul>
+  <div class="bttn">
+    <h4 style="margin: 0; text-align: center; margin-bottom: 10px;"><%= link_to "Clôturer", closing_path, class: "btn-primary-bubo-commitment" %></h4>
   </div>
 </div>
-<div class="container-btn-closing">
-  <h4><%= link_to "Clôturer", closing_path, class: "btn-primary-bubo-commitment" %></h4>
-</div>
+<!-- <div class="container-btn-closing">
+</div> -->
 
