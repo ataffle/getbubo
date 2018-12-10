@@ -18,9 +18,17 @@ module CommitmentsHelper
 
   def link_for_commitment_proceed(commitment_to_be)
     if commitment_to_be.status == "Paiement en attente"
-      link_to 'Payé', commitment_commitment_payment_proceed_path(commitment_to_be)
+      link_to commitment_commitment_payment_proceed_path(commitment_to_be) do
+        content_tag(:i, "", class: "fas fa-credit-card")
+      end
+    elsif commitment_to_be.status == "Facture en attente" && commitment_to_be.recurrence == "Mensuel"
+      link_to commitment_commitment_upload_path(commitment_to_be) do
+        content_tag(:i, "", class: "fas fa-cloud-upload-alt")
+      end
     else
-      link_to 'Reporter', commitment_commitment_postpone_path(commitment_to_be)
+      link_to commitment_commitment_postpone_path(commitment_to_be) do
+        content_tag(:i, "", class: "fas fa-arrow-circle-right")
+      end
     end
   end
 
