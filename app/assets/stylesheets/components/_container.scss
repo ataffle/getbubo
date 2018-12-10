@@ -1,8 +1,12 @@
 .container-table {
-  margin: 20px;
-  font-size: 13px;
+  margin: 20px 0px;
+  font-size: 15px;
+  border-bottom: 1px solid #9e9a9a;
   td {
     padding: 5px 15px 5px 0;
+  }
+  ul {
+    padding: 0px;
   }
 }
 .container-create{
@@ -64,6 +68,24 @@
   box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
   max-width: 95%;
   margin: 32px auto;
-  padding: 20px;
   border-radius: 2px;
+  justify-content: space-around;
+}
+
+.container-pre-closing {
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
+  max-width: 95%;
+  margin: 32px auto;
+  border-radius: 2px;
+  padding: 5px 5px;
+}
+
+.container-btn-closing {
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
+  max-width: 95%;
+  margin: 32px auto;
+  border-radius: 2px;
+  padding: 5px 5px;
 }

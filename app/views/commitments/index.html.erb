@@ -7,12 +7,11 @@
         <th scope="col">Fournisseur</th>
         <th scope="col">Montant</th>
         <th scope="col">Récurrence</th>
+        <th scope="col">Echéance</th>
         <th scope="col">Statut</th>
+        <th scope="col">Payer</th>
         <th scope="col">Facture</th>
         <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-        <th scope="col">Echeance</th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +21,9 @@
           <td><%= commitment.supplier.name %></td>
           <td><%= number_with_delimiter(commitment.amount, :delimiter => ',') %> €</td>
           <td><%= commitment.recurrence %></td>
+          <td><%= commitment.due_date.strftime('%b %Y') %></td>
           <td><%= commitment.status %></td>
+          <td><%= link_commit(commitment) %></td>
           <td>
             <% if commitment.invoice.file.nil? %>
               <%= link_to edit_commitment_path(commitment) do %>
@@ -35,21 +36,10 @@
             <% end %>
           </td>
           <td>
-            <%= link_to edit_commitment_path(commitment) do %>
-              <i class="fas fa-edit"></i>
-            <% end %>
-          </td>
-          <td>
             <%= link_to commitment_path(commitment), method: :delete, data: { confirm: "Etes-vous sûr ?" } do %>
               <i class="fas fa-trash-alt"></i>
             <% end %>
           </td>
-          <td>
-            <%= link_commit(commitment) do %>
-              <p>test</p>
-            <% end %>
-          </td>
-          <td> <%= commitment.due_date %></td>
         </tr>
       <% end %>
     </tbody>

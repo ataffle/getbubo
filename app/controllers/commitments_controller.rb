@@ -116,7 +116,7 @@ class CommitmentsController < ApplicationController
 
   def pre_closing
     @to_be_processed = Commitment.previous_month.where(status: "Facture en attente").or(Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Ponctuel"))
-    @processed = Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month.where(status: "Payé", recurrence: "Ponctuel")).or(Commitment.current_month.where(status: "Reporter", recurrence: "Ponctuel"))
+    @processed = Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month.where(status: "Payé", recurrence: "Ponctuel")).or(Commitment.current_month.where(postponed?: true, recurrence: "Ponctuel"))
   end
 
   def commitment_payment_proceed
@@ -133,7 +133,7 @@ class CommitmentsController < ApplicationController
 
   def commitment_postpone
     @commitment = Commitment.find(params[:commitment_id])
-    @commitment.update(status: 'Reporter', due_date: @commitment.due_date >> 1)
+    @commitment.update(postponed?: true, due_date: @commitment.due_date >> 1)
     redirect_to pre_closing_path
   end
 
