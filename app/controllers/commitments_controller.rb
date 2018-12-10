@@ -150,16 +150,12 @@ class CommitmentsController < ApplicationController
     # end
   end
 
-
-
   private
 
   def commitment_params
     params.require(:commitment).permit(:title, :amount, :description, :due_date, :payment_date, :status, :recurrence, :supplier_id, :retrieval_mode, :payment_method, :invoice)
   end
 end
-
-
 
 
 
