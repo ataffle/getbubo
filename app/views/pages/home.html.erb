@@ -34,7 +34,9 @@
               <% @current_month_commitments.each do |commitment| %>
                   <% total << commitment.amount %>
               <% end %>
-              <% average = (total.sum / total.length)  %>
+              <% if @commitments.present? %>
+                <% average = (total.sum / total.length)  %>
+              <% end %>
               <li><%= number_with_delimiter(average, delimiters: ".") %>€</li>
               <li><p style="font-size: 15px">Montant moyen d'un en-cours</p></li>
             </ul>

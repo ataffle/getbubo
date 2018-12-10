@@ -2,6 +2,7 @@
   <!-- Logo -->
   <div>
     <% if current_page?(commitments_path) %>
+      <%#= link_to('Click me', 'javascript:;', id: "sidebarCollapse" ) %>
       <%= link_to "+ Ajouter en-cours", new_commitment_path, class: "btn-primary-bubo-commitment" %>
     <% else %>
       <% if user_signed_in? %>
