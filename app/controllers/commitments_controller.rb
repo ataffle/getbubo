@@ -48,12 +48,12 @@ class CommitmentsController < ApplicationController
   def create
     @commitment = Commitment.new(commitment_params)
     @commitment.user = current_user
-    @commitment.status = "Paiement en attente" if @commitment.invoice? && @commitment.status == "Facture en attente"
     @organization = current_user.organization
     @commitments = Commitment.count
     @commitment.order_ref = "PO-2018-#{@commitments + 1}"
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
-    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}"
+    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice?
+    @commitment.status = "Paiement en attente" if @commitment.invoice? && @commitment.status == "Facture en attente"
     if @commitment.save
       redirect_to commitment_path(@commitment)
     else
@@ -74,8 +74,8 @@ class CommitmentsController < ApplicationController
     @commitment = Commitment.find(params[:id])
     @organization = current_user.organization
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
-    @commitment.invoice_ref? ? @commitment.invoice_ref : @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}"
     @commitment.update(commitment_params)
+    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice != ""
     @commitment.status = "Paiement en attente" if @commitment.invoice? && @commitment.status == "Facture en attente"
     @commitment.save
     authorize @commitment
@@ -105,8 +105,6 @@ class CommitmentsController < ApplicationController
     @commitment = Commitment.find(params[:id])
     @commitment.destroy
     redirect_to commitments_path
-  end
-
   end
 
   def pre_closing
