@@ -53,7 +53,7 @@ class CommitmentsController < ApplicationController
     @commitments = Commitment.count
     @commitment.order_ref = "PO-2018-#{@commitments + 1}"
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
-    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}"
+    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice?
     if @commitment.save
       redirect_to commitment_path(@commitment)
     else
@@ -107,8 +107,6 @@ class CommitmentsController < ApplicationController
     redirect_to commitments_path
   end
 
-  end
-
   def pre_closing
     @to_be_processed = Commitment.previous_month.where(status: "Facture en attente").or(Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Ponctuel"))
     @processed = Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month.where(status: "Payé", recurrence: "Ponctuel")).or(Commitment.current_month.where(status: "Reporter", recurrence: "Ponctuel"))
@@ -118,6 +116,12 @@ class CommitmentsController < ApplicationController
     @commitment = Commitment.find(params[:commitment_id])
     @commitment.update(status: 'Payé')
     redirect_to pre_closing_path
+  end
+
+  def commitment_index
+    @commitment = Commitment.find(params[:commitment_id])
+    @commitment.update(status: 'Payé')
+    redirect_to commitments_path
   end
 
   def commitment_postpone
@@ -144,8 +148,6 @@ class CommitmentsController < ApplicationController
     #   new_commitment.save!
     # end
   end
-
-
 
   private
 

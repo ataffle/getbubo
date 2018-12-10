@@ -1,12 +1,19 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <div>
+
+  <div class="title-btn">
+    <% if user_signed_in? %>
+      <div class="bars-item">
+        <%= link_to 'javascript:;', class: "side-btn" do %>
+          <i class='fas fa-bars'></i>
+        <% end %>
+      </div>
+    <% end %>
     <% if current_page?(commitments_path) %>
-      <%#= link_to('Click me', 'javascript:;', id: "sidebarCollapse" ) %>
       <%= link_to "+ Ajouter en-cours", new_commitment_path, class: "btn-primary-bubo-commitment" %>
     <% else %>
       <% if user_signed_in? %>
-        <h3><%= current_user.organization.name %></h3>
+        <h3 class="company-name"><%= current_user.organization.name %></h3>
       <% end %>
     <% end %>
   </div>

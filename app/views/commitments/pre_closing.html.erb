@@ -17,10 +17,10 @@
         <% @to_be_processed.each do |commitment_to_be| %>
           <tr>
             <th scope="row"> <%= commitment_to_be.invoice_ref %></th>
-            <td> <%= commitment_to_be.title %></td>
-            <td> <%= commitment_to_be.recurrence %> </td>
-            <td> <%= commitment_to_be.status %> </td>
-            <td> <%= commitment_to_be.due_date %> </td>
+            <td><%= commitment_to_be.title %></td>
+            <td><%= commitment_to_be.recurrence %></td>
+            <td><%= commitment_to_be.status %></td>
+            <td><%= commitment_to_be.due_date %></td>
             <td><%= link_for_commitment_proceed(commitment_to_be) %></td>
           </tr>
         <% end %>
@@ -35,19 +35,19 @@
         <tr>
           <th scope="col">Ref</th>
           <th scope="col">Titre</th>
-          <th scope="col"> Récurrence</th>
-          <th scope="col"> Statut</th>
-          <th scope="col"> Echéance</th>
+          <th scope="col">Récurrence</th>
+          <th scope="col">Statut</th>
+          <th scope="col">Echéance</th>
         </tr>
       </thead>
       <tbody>
         <% @processed.each do |monthly_commitment| %>
           <tr>
             <th scope="row"> <%= monthly_commitment.invoice_ref %></th>
-            <td> <%= monthly_commitment.title %></td>
-            <td> <%= monthly_commitment.recurrence %> </td>
-            <td> <%= monthly_commitment.status %> </td>
-            <td> <%= monthly_commitment.due_date %> </td>
+            <td><%= monthly_commitment.title %></td>
+            <td><%= monthly_commitment.recurrence %></td>
+            <td><%= monthly_commitment.status %></td>
+            <td><%= monthly_commitment.due_date %></td>
           </tr>
         <% end %>
       </tbody>
