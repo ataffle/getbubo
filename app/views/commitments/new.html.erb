@@ -16,7 +16,7 @@
         </div>
         <div class="first-line">
           <div class="show-details">
-            <%= f.association :supplier, collection: current_user.organization.suppliers.order('created_at DESC'), label: "Fournisseur", selected: @commitment.supplier_id, input_html: { class: "select2-selection__rendered-create" } %>
+            <%= f.association :supplier, collection: current_user.organization.suppliers.order('created_at DESC'), label: "Fournisseur", selected: @commitment.supplier_id, input_html: { class: "select2 select2-width" } %>
           </div>
           <div class="show-details">
             <%= f.input :title, label: "Nom", input_html: { class: "form-control-create" }  %>
@@ -63,5 +63,7 @@
     <% end %>
   </div>
 </div>
+
+<%= render "modal" %>
 
 
