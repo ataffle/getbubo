@@ -23,7 +23,9 @@
 
 .content {
   min-height: 100vh;
-  width: 83%;
+  width: 1700px;
+  position: relative;
+  margin: 0;
 }
 
 .dropdown-active {
@@ -32,4 +34,12 @@
 
 .dropdown-inactive {
   display: none !important;
+}
+
+h1 h2 h3 {
+  font-color: $primary;
+}
+
+body {
+  background-color: #F4F7FC;
 }

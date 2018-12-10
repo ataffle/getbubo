@@ -8,19 +8,19 @@
       </ul>
     </div>
   <% end %>
-  <%= f.association :supplier, collection: current_user.organization.suppliers, label: "Supplier", selected: @commitment.supplier_id, input_html: { class: "select2" } %>
-  <%= f.input :title %>
-  <%= f.input :amount %>
-  <%= f.input :payment_method, collection: Commitment.payment_methods.keys, default: "Credit card"  %>
-  <%= f.input :retrieval_mode, collection: Commitment.retrieval_modes.keys, default: "Email" %>
+  <%= f.association :supplier, collection: current_user.organization.suppliers, label: "Fournisseur", selected: @commitment.supplier_id, input_html: { class: "select2" } %>
+  <%= f.input :title, label: "Nom" %>
+  <%= f.input :amount, label: "Montant" %>
+  <%= f.input :payment_method, label: "Mode de paiement", collection: Commitment.payment_methods.keys, default: "Carte bancaire"  %>
+  <%= f.input :retrieval_mode, label: "Réception facture", collection: Commitment.retrieval_modes.keys, default: "Email" %>
   <%= f.input :description %>
-  <%= f.input :recurrence, collection: Commitment.recurrences.keys, default: "One off" %>
-  <%= f.input :due_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-  <%= f.input :payment_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-  <%= f.input :status, collection: Commitment.statuses.keys, default: "Pending invoice" %>
-  <%= f.input :invoice %>
+  <%= f.input :recurrence, label: "Récurrence", collection: Commitment.recurrences.keys, default: "Ponctuel" %>
+  <%= f.input :due_date, label: "Echéance", as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.input :payment_date, label: "Paiement", as: :string, required: false, input_html: {class: "datepicker"} %>
+  <%= f.input :status, label: "Statut", collection: Commitment.statuses.keys, default: "En attente de facture" %>
+  <%= f.input :invoice, label: "Facture" %>
   <%= f.input :invoice_cache, as: :hidden %>
-  <%= f.submit "Edit this commitment", class: "btn btn-primary-bubo" %>
+  <%= f.submit "Enregistrer cet en-cours", class: "btn btn-primary-bubo" %>
 <% end %>
 
 

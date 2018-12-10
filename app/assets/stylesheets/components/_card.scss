@@ -13,15 +13,17 @@
 }
 
 .card-stat {
-  border-style: solid;
-  border-width: 1.5px;
-  border-color: rgba(54, 162, 235, 0.2);
-  box-shadow: 7px 5px 5px #F4F9FA;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(15, 51, 78, 0.2);
   width: 250px;
   height: 200px;
   text-align: center;
   padding-top: 50px;
   text-decoration: none;
+  h3 {
+    font-weight: bold;
+  }
   #analytics-dashboard {
     p{
       padding-top: 10px;
@@ -32,4 +34,35 @@
 .cards {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
 }
+
+.card-team {
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(15, 51, 78, 0.2);
+  height: 200px;
+  text-align: center;
+  padding-top: 50px;
+  text-decoration: none;
+  h3 {
+    font-weight: bold;
+  }
+  #analytics-dashboard {
+    p{
+      padding-top: 10px;
+    }
+  }
+}
+
+.cards-commitment{
+  display: flex;
+  margin-bottom: 40px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  .item{
+    width: 400px;
+    height: 200px;
+  }
+}
+

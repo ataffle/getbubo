@@ -1,0 +1,19 @@
+<div class="container-dashboard">
+  <div class="row">
+    <h3>Membres de l'équipe <%= current_user.organization.name %></h3>
+    <%  @users.each do |user|%>
+      <div class="col-xs-6 col-sm-4">
+        <div class="card-team">
+          <% if user.photo.present? %>
+            <%= image_tag "#{user.photo}", class: "avatar-large" %>
+          <% end %>
+          <h3>
+            <%= user.first_name %> <%= user.last_name %>
+          </h3>
+          <p><%= user.email %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

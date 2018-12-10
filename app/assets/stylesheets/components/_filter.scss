@@ -2,7 +2,6 @@
   display: flex;
   // justify-content: ;
   font-size: 14px;
-
   align-items: center;
 }
 
@@ -16,3 +15,12 @@
     font-size: 14px;
   }
 }
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+   background : none;
+}
+
+
+

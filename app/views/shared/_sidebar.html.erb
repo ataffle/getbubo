@@ -1,22 +1,28 @@
 <div class="sidebar-info">
-  <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-  <p class="sidebar-info-mail">fred@michel.com</p>
+  <% if user_signed_in? %>
+    <%= image_tag current_user.photo, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+    <p class="sidebar-info-mail"><%= current_user.email %></p>
+  <% else %>
+    <p>No user logged</p>
+  <% end %>
 </div>
 <div class="sidebar-links">
-  <%= link_to root_path do %>
-    <li class="nav-item active"><i class="fas fa-chart-line"></i>Dashboard</li>
-  <% end %>
-  <%= link_to commitments_path do %>
-    <li><i class="fas fa-list"></i>Commitments</li>
-  <% end %>
-  <%= link_to suppliers_path do %>
-    <li><i class="fas fa-address-book"></i>Suppliers</li>
-  <% end %>
-  <%= link_to suppliers_path do %>
-    <li><i class="fas fa-users"></i>Teams</li>
-  <% end %>
-  <%= link_to root_path do %>
-    <li><i class="fas fa-cogs"></i>Settings</li>
-  <% end %>
+  <ul class="nav">
+    <%= link_to root_path do %>
+      <li class="nav-item <%= current_class?(root_path) %>"><i class="fas fa-chart-line"></i>Stats</li>
+    <% end %>
+    <%= link_to commitments_path do %>
+      <li class="nav-item <%= current_class?(commitments_path) %>"><i class="fas fa-list"></i>En-cours</li>
+    <% end %>
+    <%= link_to suppliers_path do %>
+      <li class="nav-item <%= current_class?(suppliers_path) %>"><i class="fas fa-address-book"></i>Fournisseurs</li>
+    <% end %>
+    <%= link_to pre_closing_path do %>
+      <li class="nav-item <%= current_class?(closing_path) %>"><i class="fas fa-calendar-check"></i>Clôture</li>
+    <% end %>
+    <%= link_to team_path do %>
+      <li class="nav-item <%= current_class?(team_path) %>"><i class="fas fa-users"></i>Equipe</li>
+    <% end %>
+  </ul>
 </div>
 

@@ -2,15 +2,13 @@
   <!-- Logo -->
   <div>
     <% if current_page?(commitments_path) %>
-      <%= link_to "New Commitment", new_commitment_path, class: "btn-primary-bubo-commitment" %>
+      <%#= link_to('Click me', 'javascript:;', id: "sidebarCollapse" ) %>
+      <%= link_to "+ Ajouter en-cours", new_commitment_path, class: "btn-primary-bubo-commitment" %>
     <% else %>
       <% if user_signed_in? %>
         <h3><%= current_user.organization.name %></h3>
       <% end %>
     <% end %>
-  </div>
-  <div>
-    <%= link_to "Pre closing", pre_closing_path, class: "btn-primary-bubo-commitment" %>
   </div>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
@@ -18,7 +16,7 @@
     <% if user_signed_in? %>
       <div class="navbar-wagon-item">
         <%= link_to destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" do %>
-          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
         <% end %>
       </div>
     <% else %>

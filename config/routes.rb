@@ -12,9 +12,11 @@ Rails.application.routes.draw do
     get 'commitment_postpone', to: 'commitments#commitment_postpone'
   end
 
-  get 'download_file/:id', to: 'commitments#download_file', as: 'download_file'
+  # get 'download_file/:id', to: 'commitments#download_file', as: 'download_file'
+  # get 'download_zip', to: 'commitments#zip', as: 'download_zip'
+
   get 'pre_closing', to: 'commitments#pre_closing', as: 'pre_closing'
   get 'closing', to: 'commitments#closing', as: 'closing'
-  get 'download_files', to: 'commitments#zip_and_download_files', as: 'download_files'
+  get 'team', to: 'pages#team', as: 'team'
 
 end

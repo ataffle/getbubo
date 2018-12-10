@@ -10,30 +10,41 @@ const initChart = () => {
   const statuses = JSON.parse(ctx.canvas.dataset.statuses);
   // console.log(ctx.canvas.dataset);
   // console.log(typeof statuses);
-  const invoices = statuses.filter(function(x) { return x === "Pending invoice" }).length
-  const payments = statuses.filter(function(x) { return x === "Pending payment" }).length
-  const paid = statuses.filter(function(x) { return x === "Paid" }).length
+  const invoices = statuses.filter(function(x) { return x === "Facture en attente" }).length
+  const payments = statuses.filter(function(x) { return x === "Paiement en attente" }).length
+  const paid = statuses.filter(function(x) { return x === "Payé" }).length
   const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
-          labels: ["Pending Invoice", "Pending Payment", "Paid"],
+          labels: ["Facture en attente", "Paiement en attente", "Payé"],
           datasets: [{
-              label: '# of Commitments',
+              label: "Statut des factures",
               data: [invoices, payments, paid],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(15, 51, 78, 0.2)',
+                  'rgba(64, 190, 194, 0.2)',
               ],
               borderColor: [
                   'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
+                  'rgba(15, 51, 78, 1)',
+                  'rgba(64, 190, 194, 1)',
               ],
               borderWidth: 1
           }]
       },
       options: {
+        legend: {
+          display: false
+        },
+        layout: {
+         padding: {
+             left: 32,
+             right: 32,
+             top: 32,
+             bottom: 32
+           }
+         },
         scales: {
           xAxes: [{
               gridLines: {

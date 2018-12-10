@@ -4,11 +4,11 @@
     <thead>
       <tr>
         <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Recurrence</th>
-        <th scope="col">Status</th>
-        <th scope="col">Invoice</th>
+        <th scope="col">Fournisseur</th>
+        <th scope="col">Montant</th>
+        <th scope="col">Récurrence</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Facture</th>
         <th scope="col"></th>
         <th scope="col"></th>
         <th scope="col"></th>
@@ -29,7 +29,8 @@
               <% end %>
             <% else %>
               <%#= link_to "Download it", commitment.invoice.url %>
-              <%= link_to download_file_path(commitment) do %>
+              <%#= link_to download_file_path(commitment) do %>
+              <%= link_to(cl_private_download_url(commitment.invoice_ref, :jpg, :attachment => true)) do %>
                 <i class="fas fa-paperclip"></i>
               <% end %>
             <% end %>
@@ -39,7 +40,11 @@
               <i class="fas fa-edit"></i>
             <% end %>
           </td>
-          <td><i class="fas fa-trash-alt"></i></td>
+          <td>
+            <%= link_to commitment_path(commitment), method: :delete, data: { confirm: "Etes-vous sûr ?" } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </td>
           <td>
             <%= link_to commitment_path(commitment) do %>
               <i class="fas fa-eye"></i>
@@ -49,7 +54,7 @@
       <% end %>
     </tbody>
   </table>
-  <%#= link_to "Download all invoices", download_files_path(format: :zip) %>
+  <%= link_to "Download all invoices", @url %>
 </div>
 
 

@@ -1,0 +1,7 @@
+<%= simple_form_for(:filters, url: dashboard_path, method: :get, html: { class: 'form-inline filter-commitment' }) do |f| %>
+  <%= f.input :user, collection: User.all, required: false, label: false, input_html: { class: "select2" }, prompt: "Utilisateur", selected: @user %>
+  <%= f.input :period, collection: commitments_periods_for_select, required: false, label: false, input_html: { class: "select2" }, prompt: "Choisir période", selected: @period %>
+  <%= f.input :status, collection: commitments_statuses_for_select, required: false, label: false, input_html: { class: "select2" }, prompt: "Statut", selected: @status %>
+
+  <%= f.submit "Filtrer", class: "btn-primary-bubo-filter" %>
+<% end %>
