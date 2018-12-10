@@ -26,7 +26,7 @@ module CommitmentsHelper
 
   def link_commit(commitment_to_be)
     if commitment_to_be.status == "Paiement en attente"
-      link_to 'Payer', commitment_commitment_edit_path(commitment_to_be)
+      link_to "<i class='fas fa-credit-card'></i>".html_safe, commitment_commitment_edit_path(commitment_to_be)
     end
   end
 end
