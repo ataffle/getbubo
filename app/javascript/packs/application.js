@@ -12,10 +12,10 @@ import "../components/init_active"
 import "../components/sidebar_not_logged"
 import "../components/sidebar_streched"
 
+
 initSelect2();
 modalSupplier();
 initChart();
 myPieChart();
 sidebar();
 sidebarStr();
-

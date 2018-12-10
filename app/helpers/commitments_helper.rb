@@ -7,13 +7,13 @@ module CommitmentsHelper
     Commitment.statuses.keys.unshift('Tous statuts')
   end
 
-  def user_names_for_select
-    @users = User.all
-    @users_names = []
+  def user_emails_for_select
+    @users = current_user.organization.users
+    @users_emails = []
     @users.each do |user|
-      @users_names << user.first_name
+      @users_emails << user.email
     end
-    @users_names.unshift('Tous')
+    @users_emails.unshift("Tous")
   end
 
   def link_for_commitment_proceed(commitment_to_be)

@@ -31,7 +31,7 @@
           <h3>
             <ul id="analytics-dashboard" style="list-style: none; padding-inline-start: 0px;">
               <% total = [] %>
-              <% @current_month_commitments.each do |commitment| %>
+              <% @current_period_commitments.each do |commitment| %>
                   <% total << commitment.amount %>
               <% end %>
               <% if @commitments.present? %>
@@ -46,7 +46,7 @@
           <h3>
             <ul id="analytics-dashboard" style="list-style: none; padding-inline-start: 0px;">
               <% total = [] %>
-              <% @current_month_commitments.each do |commitment| %>
+              <% @current_period_commitments.each do |commitment| %>
                   <% total << commitment.amount %>
               <% end %>
               <li><%= number_with_delimiter(total.sum, delimiters: ".") %>€</li>
