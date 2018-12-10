@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   resources :commitments do
     get 'commitment_upload', to: 'commitments#commitment_upload'
   end
-
-  resources :commitments do
+  
     get 'commitment_postpone', to: 'commitments#commitment_postpone'
+    get 'commitment_edit', to: 'commitments#commitment_index'
+  
   end
 
   # get 'download_file/:id', to: 'commitments#download_file', as: 'download_file'

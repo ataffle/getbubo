@@ -7,28 +7,35 @@ class CommitmentsController < ApplicationController
 
     @commitments = Commitment.all
     filters = params[:filters]
+    # @organization_users = current_user.organization.users
     if filters
+      unless filters[:user] == "Tous"
+        @user = User.find_by(email: filters[:user])
+        @commitments = Commitment.where(user: @user)
+      end
+
       @period = filters[:period]
-      @status = filters[:status]
-      @user = filters[:user]
-      if @period == "Mois précédent"
+      case @period
+      when "Mois précédent"
         @commitments = @commitments.previous_month
-      elsif @period == "Mois suivant"
+      when "Mois suivant"
         @commitments = @commitments.next_month
-      elsif @period == "Mois en cours"
+      when "Mois en cours"
         @commitments = @commitments.current_month
-      elsif @period == "Cumul annuel"
+      when "Cumul annuel"
         @commitments = @commitments.year_to_date
-      elsif @period == "Toutes périodes"
+      when "Toutes périodes"
         @commitments = @commitments
-      elsif @status == "Facture en attente"
+      end
+
+      @status = filters[:status]
+      case @status
+      when "Facture en attente"
         @commitments = @commitments.where(status: "Facture en attente")
-      elsif @status == "Paiement en attente"
+      when "Paiement en attente"
         @commitments = @commitments.where(status: "Paiement en attente")
-      elsif @status == "Payé"
+      when "Payé"
         @commitments = @commitments.where(status: "Payé")
-      elsif filters[:user]
-        @commitments = @commitments.where(user_id: filters[:user])
       end
     end
   end
@@ -48,12 +55,12 @@ class CommitmentsController < ApplicationController
   def create
     @commitment = Commitment.new(commitment_params)
     @commitment.user = current_user
-    @commitment.status = "Paiement en attente" if @commitment.invoice? && @commitment.status == "Facture en attente"
     @organization = current_user.organization
     @commitments = Commitment.count
     @commitment.order_ref = "PO-2018-#{@commitments + 1}"
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
-    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}"
+    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice != ""
+    @commitment.status = "Paiement en attente" if @commitment.invoice != "" && @commitment.status == "Facture en attente"
     if @commitment.save
       redirect_to commitment_path(@commitment)
     else
@@ -74,8 +81,8 @@ class CommitmentsController < ApplicationController
     @commitment = Commitment.find(params[:id])
     @organization = current_user.organization
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
-    @commitment.invoice_ref? ? @commitment.invoice_ref : @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}"
     @commitment.update(commitment_params)
+    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice != ""
     @commitment.status = "Paiement en attente" if @commitment.invoice? && @commitment.status == "Facture en attente"
     @commitment.save
     authorize @commitment
@@ -118,6 +125,12 @@ class CommitmentsController < ApplicationController
     redirect_to pre_closing_path
   end
 
+  def commitment_index
+    @commitment = Commitment.find(params[:commitment_id])
+    @commitment.update(status: 'Payé')
+    redirect_to commitments_path
+  end
+
   def commitment_postpone
     @commitment = Commitment.find(params[:commitment_id])
     @commitment.update(postponed?: true, due_date: @commitment.due_date >> 1)
@@ -143,16 +156,12 @@ class CommitmentsController < ApplicationController
     # end
   end
 
-
-
   private
 
   def commitment_params
     params.require(:commitment).permit(:title, :amount, :description, :due_date, :payment_date, :status, :recurrence, :supplier_id, :retrieval_mode, :payment_method, :invoice)
   end
 end
-
-
 
 
 
