@@ -2,7 +2,8 @@ import "bootstrap";
 import 'select2/dist/css/select2.css';
 import { initSelect2 } from '../components/init_select2';
 import { modalSupplier } from '../components/init_modal';
-import { initChart } from '../components/charts';
+// import { initChart } from '../components/charts';
+import { initDoughnut } from '../components/doughnut';
 import { initLine } from '../components/line';
 import { myPieChart } from '../components/pie';
 import { sidebar } from '../components/sidebar_not_logged';
@@ -16,7 +17,8 @@ import "../components/sidebar_streched"
 
 initSelect2();
 modalSupplier();
-initChart();
+// initChart();
+initDoughnut();
 initLine();
 myPieChart();
 sidebar();
