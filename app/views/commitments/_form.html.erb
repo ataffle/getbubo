@@ -41,10 +41,10 @@
             <%= f.input :recurrence,  label: "Récurrence",collection: Commitment.recurrences.keys, default: "Ponctuel", input_html: { class: "form-control-create" } %>
           </div>
           <div class="show-details">
-            <%= f.input :due_date,  label: "Echéance",as: :string, required: false, input_html: {class: "datepicker form-control-create"} %>
+            <%= f.input :due_date,  label: "Date échéance",as: :string, required: false, input_html: {class: "datepicker form-control-create"} %>
           </div>
           <div class="show-details">
-            <%= f.input :payment_date,  label: "Paiement",as: :string, required: false, input_html: {class: "datepicker form-control-create"} %>
+            <%= f.input :payment_date,  label: "Date paiement",as: :string, required: false, input_html: {class: "datepicker form-control-create"} %>
           </div>
         </div>
       </div>

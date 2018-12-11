@@ -10,8 +10,8 @@
     </thead>
     <tbody>
       <% @suppliers.each do |supplier| %>
-        <tr>
-          <td><%= link_to supplier.name, supplier_path(supplier) %></td>
+        <tr onclick="location.href='<%= supplier_path(supplier) %>'">
+          <td><%= supplier.name %></td>
           <td><%= number_with_delimiter(supplier.total_payable, :delimiter => ',') %> €</td>
           <td><%= supplier.commitments.count %></td>
           <td><%= link_to edit_supplier_path(supplier) do %>
