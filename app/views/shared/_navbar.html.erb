@@ -2,14 +2,14 @@
   <!-- Logo -->
 
   <div class="title-btn">
-    <% if user_signed_in? %>
-      <div class="bars-item">
-        <%= link_to 'javascript:;', class: "side-btn" do %>
-          <i class='fas fa-bars'></i>
-        <% end %>
-      </div>
-    <% end %>
-    <% if current_page?(commitments_path) %>
+    <%# if user_signed_in? %>
+      <!-- <div class="bars-item"> -->
+        <%#= link_to 'javascript:;', class: "side-btn" do %>
+          <!-- <i class='fas fa-bars'></i> -->
+        <%# end %>
+      <!-- </div> -->
+    <%# end %>
+    <% if current_page?(commitments_path) || current_page?(suppliers_path) %>
       <%= link_to "+ Ajouter en-cours", new_commitment_path, class: "btn-primary-bubo-commitment" %>
     <% else %>
       <% if user_signed_in? %>
