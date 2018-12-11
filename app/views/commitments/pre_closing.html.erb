@@ -1,14 +1,13 @@
 <div class="container-pre-closing">
-  <% date = Date.today - 1.month %>
-  <h3>Pré-clôture: <%= date.strftime("%B %Y") %></h3>
+  <h3>Pré-clôture: <%= @pre_closing_month %></h3>
 </div>
 <div class="container-closing">
   <div class="container-table-wrap">
     <div class="container-table">
       <ul class="table-closing table-closing-1">
-        <h4><strong>Non Traités</strong></h4>
+        <h4><strong>Non-Traités</strong></h4>
         <li class="table-closing-header">
-            <p>Supplier</p>
+            <p>Fournisseur</p>
             <p>Récurrence</p>
             <p>Statut</p>
             <p>Action</p>
@@ -27,25 +26,27 @@
       <ul class="table-closing table-closing-1">
         <h4><strong>Traités</strong></h4>
         <li class="table-closing-header">
-          <p>Supplier</p>
+          <p>Fournisseur</p>
           <p>Récurrence</p>
           <p>Statut</p>
-          <p>Date</p>
+          <p>Echèance</p>
         </li>
         <% @processed.each do |monthly_commitment| %>
         <li class="grey-cards">
           <p><%= monthly_commitment.supplier.name %></p>
           <p><%= monthly_commitment.recurrence %></p>
           <p><%= monthly_commitment.status %></p>
-          <p> <%= monthly_commitment.due_date %> </p>
+          <p> <%= monthly_commitment.due_date.strftime("%b %y") %> </p>
         </li>
         <% end %>
       </ul>
     </div>
   </div>
-  <div class="bttn">
-    <h4 style="margin: 0; text-align: center; margin-bottom: 10px;"><%= link_to "Clôturer", closing_path, class: "btn-primary-bubo-commitment" %></h4>
-  </div>
+  <% unless Closing.occurred %>
+    <div class="bttn">
+      <h4 style="margin: 0; text-align: center; margin-bottom: 10px;"><%= link_to "Clôturer", closings_path, method: :post, class: "btn-primary-bubo-commitment" %></h4>
+    </div>
+  <% end %>
 </div>
 <!-- <div class="container-btn-closing">
 </div> -->
