@@ -8,17 +8,11 @@ const initLine = () => {
   //console.log(ctx)
   //console.log(ctx.canvas.dataset.statuses)
   const six = JSON.parse(ctx.canvas.dataset.six);
-  console.log(ctx.canvas);
   const five = JSON.parse(ctx.canvas.dataset.five);
-  console.log(ctx.canvas);
   const four = JSON.parse(ctx.canvas.dataset.four);
-  console.log(ctx.canvas);
   const three = JSON.parse(ctx.canvas.dataset.three);
-  console.log(ctx.canvas);
   const two = JSON.parse(ctx.canvas.dataset.two);
-  console.log(ctx.canvas);
   const current = JSON.parse(ctx.canvas.dataset.current);
-  console.log(ctx.canvas);
   // console.log(typeof statuses);
   // const invoices = statuses.filter(function(x) { return x === "Facture en attente" }).length
   // const payments = statuses.filter(function(x) { return x === "Paiement en attente" }).length
