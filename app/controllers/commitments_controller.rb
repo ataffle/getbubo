@@ -133,6 +133,7 @@ class CommitmentsController < ApplicationController
     end
     @to_be_processed = Commitment.previous_month(offset).where(status: "Facture en attente").or(Commitment.previous_month(offset).where(status: "Paiement en attente", recurrence: "Ponctuel"))
     @processed = Commitment.previous_month(offset).where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month(offset).where(status: "Payé")).or(Commitment.current_month(offset).where(postponed?: true, recurrence: "Ponctuel")).or(Commitment.current_month(offset).where(status: "Facture en attente", recurrence: "Mensuel"))
+  end
 
   def commitment_payment_proceed
     @commitment = Commitment.find(params[:commitment_id])
@@ -183,13 +184,5 @@ class CommitmentsController < ApplicationController
     params.require(:commitment).permit(:title, :amount, :description, :due_date, :payment_date, :status, :recurrence, :supplier_id, :retrieval_mode, :payment_method, :invoice)
   end
 end
-
-
-
-
-
-
-
-
 
 

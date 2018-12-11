@@ -18,17 +18,17 @@ const initChart = () => {
       data: {
           labels: ["Facture en attente", "Paiement en attente", "Payé"],
           datasets: [{
-              label: "Statut des factures",
+              label: "Nombre de factures",
               data: [invoices, payments, paid],
               backgroundColor: [
-                  'rgba(64, 190, 194, 1)',
-                  'rgba(15, 51, 78, 1)',
-                  'rgba(255, 99, 132, 1)',
+                  'rgba(0, 102, 150, 1)',
+                  'rgba(238, 135, 136, 1)',
+                  'rgba(113, 229, 138, 1)',
               ],
               borderColor: [
-                  'rgba(64, 190, 194, 1)',
-                  'rgba(15, 51, 78, 1)',
-                  'rgba(255,99,132,1)',
+                  'rgba(0, 102, 150, 1)',
+                  'rgba(238, 135, 136, 1)',
+                  'rgba(113, 229, 138, 1)',
               ],
               borderWidth: 1
           }]
