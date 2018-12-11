@@ -100,6 +100,23 @@
   }
 }
 
+.card-show {
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(15, 51, 78, 0.2);
+  text-align: justify;
+  text-decoration: none;
+  margin-bottom: 24px;
+  font-size: 16px;
+  padding: 10px 40px;
+  height: 280px;
+  hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+
 
 .cards-commitment{
   display: flex;
