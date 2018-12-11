@@ -1,4 +1,4 @@
-<div class="container-commmitments">
+<div class="container-commmitments" style="background: none; box-shadow: none; border: none;">
   <%= render "filters", locals: {user: @user} %>
   <table class="table table-hover" id="table-commitment">
     <thead>
@@ -40,7 +40,9 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to "Téléchager toutes les factures", @url, style: "font-size: 14px" %>
+  <% unless @cloud_ids.sum.to_i <= 1 %>
+    <%= link_to "Téléchager toutes les factures", @url, style: "font-size: 14px" %>
+  <% end %>
 </div>
 
 

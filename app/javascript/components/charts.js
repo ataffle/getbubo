@@ -21,14 +21,14 @@ const initChart = () => {
               label: "Statut des factures",
               data: [invoices, payments, paid],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(15, 51, 78, 0.2)',
-                  'rgba(64, 190, 194, 0.2)',
+                  'rgba(64, 190, 194, 1)',
+                  'rgba(15, 51, 78, 1)',
+                  'rgba(255, 99, 132, 1)',
               ],
               borderColor: [
-                  'rgba(255,99,132,1)',
-                  'rgba(15, 51, 78, 1)',
                   'rgba(64, 190, 194, 1)',
+                  'rgba(15, 51, 78, 1)',
+                  'rgba(255,99,132,1)',
               ],
               borderWidth: 1
           }]

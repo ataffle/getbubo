@@ -2,14 +2,32 @@
   i {
   color: $primary;
   }
-  th {
-    color : $primary !important
-  }
   tbody tr {
     font-size: 16px;
     cursor: pointer;
   }
   margin-bottom: 18px;
+  border-collapse: separate;
+  border-spacing: 0px 10px;
+  td {
+    padding: 20px 0px;
+    border: none;
+  }
+  tr td:first-child, tr td:last-child {
+    padding: 20px;
+  }
+  tr {
+    box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
+    border-radius: 2px;
+  }
+  tr:first-child {
+    box-shadow: none;
+    border: none;
+  }
+  th {
+    border: none;
+    color: #929497 !important;
+  }
 }
 
 .dataTables_length, .dataTables_info {
@@ -78,6 +96,35 @@ padding: 0.2em 0.5em;
   }
 }
 
+.table-closing-processed li {
+  display: grid;
+  grid-template-columns: 90px 110px 1fr;
+  grid-template-rows: 1fr;
+  list-style: none;
+
+  border: 3px solid white;
+  align-items: center;
+  padding: 5px;
+  p {
+    margin: 0px;
+  }
+  p:last-child {
+    text-align: center;
+  }
+  .table-btn {
+    text-align: center;
+    a {
+      background: $secondary;
+      padding: 4px 10px !important;
+      border-radius: 7px;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
+}
+
 .grey-cards {
   background-color: #F4F7FC;
   &:hover {
@@ -87,6 +134,14 @@ padding: 0.2em 0.5em;
 }
 
 .table-closing .table-closing-header {
+  p {
+    font-weight: bold;
+    background-color: white;
+    border-bottom: 1px solid #9e9a9a;
+  }
+}
+
+.table-closing-processed .table-closing-header {
   p {
     font-weight: bold;
     background-color: white;

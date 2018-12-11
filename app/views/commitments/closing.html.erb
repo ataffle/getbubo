@@ -1,11 +1,46 @@
 <div class="container-commmitments">
   <% date = Date.today - 1.month %>
   <h3>Clôture: <%= date.strftime("%B %Y") %></h3>
-  <h4><%= @processed.length %> factures traitées</h4>
-  <ul>
-    <% @processed.each do |processed_commitment| %>
-      <li><%= processed_commitment.supplier.name %> - <%= processed_commitment.amount %>€ - <%= processed_commitment.recurrence %> - <%= processed_commitment.status %></li>
-    <% end %>
-  </ul>
   <%= link_to "Téléchager toutes les factures", @url, class: "btn-primary-bubo-commitment" %>
+</div>
+
+<div class="container-closing">
+  <div class="container-table-wrap">
+    <div class="container-table">
+      <ul class="table-closing-processed table-closing-1">
+        <h4><%= @processed.length %> en-cours traités</h4>
+        <li class="table-closing-header">
+            <p>Fournisseur</p>
+            <p>Montant</p>
+            <p>Récurrence</p>
+        </li>
+        <% @processed.each do |commitment_paid| %>
+        <li class="grey-cards">
+          <p><%= commitment_paid.supplier.name %></p>
+          <p><%= number_with_delimiter(commitment_paid.amount, :delimiter => ",") %> €</p>
+          <p><%= commitment_paid.recurrence %></p>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="container-table">
+      <ul class="table-closing table-closing-1">
+        <h4><%= @postponed.length %> en-cours reportés</h4>
+        <li class="table-closing-header">
+          <p>Fournisseur</p>
+          <p>Montant</p>
+          <p>Récurrence</p>
+          <p>Echèance</p>
+        </li>
+        <% @postponed.each do |commitment_postpone| %>
+        <li class="grey-cards">
+          <p><%= commitment_postpone.supplier.name %></p>
+          <p><%= number_with_delimiter(commitment_postpone.amount, :delimiter => ",") %> €</p>
+          <p><%= commitment_postpone.recurrence %></p>
+          <p> <%= commitment_postpone.due_date.strftime("%b %y") %> </p>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-#commitments-statuses, #total-amount {
+#commitments-statuses, #total-amount, #monthly-amount {
   background-color: white;
   border-radius: 2px;
   box-shadow: 1px 1px 3px rgba(15, 51, 78, 0.2);
@@ -13,4 +13,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 24px;
 }
+
