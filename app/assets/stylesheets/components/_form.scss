@@ -18,7 +18,19 @@
   }
 }
 
-.select2 {
+// .select2 {
+//   width: 250px !important;
+// }
+
+.show-details .select2 {
+  width: 250px !important;
+}
+
+.container-commitments .select2 {
+  width: 170px !important;
+}
+
+.container-create-commitment .select2 {
   width: 250px !important;
 }
 
@@ -31,10 +43,4 @@
 
 .form-control-create {
   width: 250px;
-}
-
-.select2-width {
-  .third-child {
-    width: 250px;
-  }
 }
