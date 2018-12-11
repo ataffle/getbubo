@@ -13,13 +13,16 @@
 }
 
 .card-stat {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   background-color: white;
   border-radius: 2px;
   box-shadow: 1px 1px 3px rgba(15, 51, 78, 0.2);
   width: 250px;
   height: 200px;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 24px;
   text-decoration: none;
   h3 {
     font-weight: bold;
@@ -28,6 +31,44 @@
     p{
       padding-top: 10px;
     }
+  }
+  i {
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 50%;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+  }
+
+  #first-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff1414;
+    background-color: #ffd9d9;
+    height: 50px;
+    width: 50px;
+  }
+
+  #second-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #007EFF;
+    background-color: #E5F3FD;
+    height: 50px;
+    width: 50px;
+  }
+
+  #third-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFC010;
+    background-color: #FFF8E5;
+    height: 50px;
+    width: 50px;
   }
 }
 

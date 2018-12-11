@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   resources :commitments do
     get 'commitment_payment_proceed', to: 'commitments#commitment_payment_proceed'
-    get 'commitment_upload', to: 'commitments#commitment_upload'
     get 'commitment_postpone', to: 'commitments#commitment_postpone'
     get 'commitment_edit', to: 'commitments#commitment_index'
   end
