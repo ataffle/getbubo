@@ -43,6 +43,10 @@ class PagesController < ApplicationController
     @current = current_month(Commitment.all)
   end
 
+  def team
+    @users = current_user.organization.users
+  end
+
   private
 
   def six_ago(commitments)
@@ -103,11 +107,6 @@ class PagesController < ApplicationController
     end
     total_amount = array.sum
     return total_amount
-  end
-
-
-  def team
-    @users = current_user.organization.users
   end
 
 end
