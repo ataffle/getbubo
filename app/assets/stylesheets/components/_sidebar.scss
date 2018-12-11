@@ -1,5 +1,5 @@
 .sidebar {
-  width: 7%;
+  width: 24%;
   background: #163c5b;
   opacity: 1;
   color: #fff;
@@ -15,7 +15,7 @@
   li {
     opacity: 0.7;
     list-style:none;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     &:hover {
       opacity: 1;
     }
@@ -29,33 +29,31 @@
   }
   .sidebar-info-mail{
     padding-top: 15px;
+    display:block;
   }
-  .side-element {
-    display: none;
-  }
-  .sidebar-info-mail {
-    display:none;
-  }
-}
-
-.sidebar.active-side {
-  width: 24%;
   .side-element {
     display: inline-block;
   }
-  .sidebar-info-mail {
-    display:block;
-  }
-  li {
-    margin-bottom:0;
-  }
-  p {
-    margin: 0;
-  }
-  .sidebar-info {
-    padding-top: 35px;
-  }
 }
+
+// .sidebar.active-side {
+//   width: 24%;
+//   .side-element {
+//     display: inline-block;
+//   }
+//   .sidebar-info-mail {
+//     display:block;
+//   }
+//   li {
+//     margin-bottom:0;
+//   }
+//   p {
+//     margin: 0;
+//   }
+//   .sidebar-info {
+//     padding-top: 35px;
+//   }
+// }
 
 .sidebar-info {
   padding-top: 21px;
