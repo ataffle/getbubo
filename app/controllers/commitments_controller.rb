@@ -108,6 +108,15 @@ class CommitmentsController < ApplicationController
     @url = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids, target_public_id: 'factures', type: 'private')
   end
 
+  def zip_closing
+    @commitments = @processed
+    @cloud_ids = []
+    @commitments.each do |commitment|
+      @cloud_ids << commitment.invoice.file.public_id if commitment.invoice.present?
+    end
+    @url = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids, target_public_id: 'factures', type: 'private')
+  end
+
   def destroy
     @commitment = Commitment.find(params[:id])
     @commitment.destroy
@@ -116,7 +125,7 @@ class CommitmentsController < ApplicationController
 
   def pre_closing
     if Closing.occurred
-      @pre_closing_month = Time.now.strftime("%B %Y")
+      @pre_closing_month = Time.now.strftime("%b %Y")
       offset = 1
     else
       @pre_closing_month = (Time.now - 1.month).strftime("%B %Y")
@@ -124,7 +133,6 @@ class CommitmentsController < ApplicationController
     end
     @to_be_processed = Commitment.previous_month(offset).where(status: "Facture en attente").or(Commitment.previous_month(offset).where(status: "Paiement en attente", recurrence: "Ponctuel"))
     @processed = Commitment.previous_month(offset).where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month(offset).where(status: "Payé")).or(Commitment.current_month(offset).where(postponed?: true, recurrence: "Ponctuel")).or(Commitment.current_month(offset).where(status: "Facture en attente", recurrence: "Mensuel"))
-  end
 
   def commitment_payment_proceed
     @commitment = Commitment.find(params[:commitment_id])
@@ -160,7 +168,7 @@ class CommitmentsController < ApplicationController
         new_commitment.save!
       end
     end
-    zip
+    zip_closing
     # @processed_one_off = Commitment.previous_month.where(status: "Pending invoice", recurrence: "One off")
     # @processed_one_off.each do |one_off_commit_without_invoice_but_processed|
     #   new_commitment = one_off_commit_without_invoice_but_processed.dup
