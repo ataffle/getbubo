@@ -47,9 +47,18 @@
           </h3>
         </div>
       </div>
-      <div class="charts-wrapper">
-        <div class="bar-chart">
-          <canvas id="commitments-statuses" width="450" height="300" data-statuses="<%= @statuses.to_json %>"></canvas>
+        <div class="charts-wrapper">
+          <div class="bar-chart">
+            <canvas id="commitments-statuses" width="500" height="300" data-statuses="<%= @statuses.to_json %>"></canvas>
+          </div>
+         <!--  <div class="pie-chart">
+            <canvas id="total-amount" width="450" height="300" data-paid="<%= @paid_commitment_amount.to_json %>" data-invoice="<%= @pending_invoice_amount.to_json %>" data-payment="<%= @pending_payment_amount.to_json %>">
+            </canvas>
+          </div> -->
+          <div class="line-chart">
+            <canvas id="monthly-amount" width="500px" height="300px" data-six="<%= @six_ago.to_json %>" data-five="<%= @five_ago.to_json %>" data-four="<%= @four_ago.to_json %>" data-three="<%= @three_ago.to_json %>" data-two="<%= @two_ago.to_json %>" data-current="<%= @current.to_json %>">
+            </canvas>
+          </div>
         </div>
         <div class="pie-chart">
           <canvas id="total-amount" width="450" height="300" data-paid="<%= @paid_commitment_amount.to_json %>" data-invoice="<%= @pending_invoice_amount.to_json %>" data-payment="<%= @pending_payment_amount.to_json %>">

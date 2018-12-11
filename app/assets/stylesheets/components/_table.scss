@@ -96,6 +96,35 @@ padding: 0.2em 0.5em;
   }
 }
 
+.table-closing-processed li {
+  display: grid;
+  grid-template-columns: 90px 110px 1fr;
+  grid-template-rows: 1fr;
+  list-style: none;
+
+  border: 3px solid white;
+  align-items: center;
+  padding: 5px;
+  p {
+    margin: 0px;
+  }
+  p:last-child {
+    text-align: center;
+  }
+  .table-btn {
+    text-align: center;
+    a {
+      background: $secondary;
+      padding: 4px 10px !important;
+      border-radius: 7px;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
+}
+
 .grey-cards {
   background-color: #F4F7FC;
   &:hover {
@@ -105,6 +134,14 @@ padding: 0.2em 0.5em;
 }
 
 .table-closing .table-closing-header {
+  p {
+    font-weight: bold;
+    background-color: white;
+    border-bottom: 1px solid #9e9a9a;
+  }
+}
+
+.table-closing-processed .table-closing-header {
   p {
     font-weight: bold;
     background-color: white;

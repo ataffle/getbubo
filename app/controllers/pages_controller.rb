@@ -35,7 +35,76 @@ class PagesController < ApplicationController
     @pending_invoice_amount = @commitments.pending_invoice_commitmment
     @pending_payment_amount = @commitments.pending_payment_commitments
 
+    @six_ago = six_ago(Commitment.all)
+    @five_ago = five_ago(Commitment.all)
+    @four_ago = four_ago(Commitment.all)
+    @three_ago = three_ago(Commitment.all)
+    @two_ago = two_ago(Commitment.all)
+    @current = current_month(Commitment.all)
   end
+
+  private
+
+  def six_ago(commitments)
+    array = []
+    six_months_ago = commitments.six_months_ago
+    six_months_ago.each do |commitment|
+      array << commitment.amount
+    end
+    total_amount = array.sum
+    return total_amount
+  end
+
+  def five_ago(commitments)
+    array = []
+    five_months_ago = commitments.five_months_ago
+    five_months_ago.each do |commitment|
+      array << commitment.amount
+    end
+    total_amount = array.sum
+    return total_amount
+  end
+
+  def four_ago(commitments)
+    array = []
+    four_months_ago = commitments.four_months_ago
+    four_months_ago.each do |commitment|
+      array << commitment.amount
+    end
+    total_amount = array.sum
+    return total_amount
+  end
+
+  def three_ago(commitments)
+    array = []
+    three_months_ago = commitments.three_months_ago
+    three_months_ago.each do |commitment|
+      array << commitment.amount
+    end
+    total_amount = array.sum
+    return total_amount
+  end
+
+  def two_ago(commitments)
+    array = []
+    two_months_ago = commitments.two_months_ago
+    two_months_ago.each do |commitment|
+      array << commitment.amount
+    end
+    total_amount = array.sum
+    return total_amount
+  end
+
+  def current_month(commitments)
+    array = []
+    current_month = commitments.current_month
+    current_month.each do |commitment|
+      array << commitment.amount
+    end
+    total_amount = array.sum
+    return total_amount
+  end
+
 
   def team
     @users = current_user.organization.users

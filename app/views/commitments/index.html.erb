@@ -40,7 +40,9 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to "Téléchager toutes les factures", @url, style: "font-size: 14px" %>
+  <% unless @cloud_ids.sum.to_i <= 1 %>
+    <%= link_to "Téléchager toutes les factures", @url, style: "font-size: 14px" %>
+  <% end %>
 </div>
 
 
