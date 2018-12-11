@@ -81,8 +81,8 @@ class CommitmentsController < ApplicationController
     @commitment = Commitment.find(params[:id])
     @organization = current_user.organization
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
+    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice_ref == "" || @commitment.invoice_ref.nil?
     @commitment.update(commitment_params)
-    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice != ""
     @commitment.status = "Paiement en attente" if @commitment.invoice? && @commitment.status == "Facture en attente"
     @commitment.save
     authorize @commitment
@@ -115,8 +115,15 @@ class CommitmentsController < ApplicationController
   end
 
   def pre_closing
-    @to_be_processed = Commitment.previous_month.where(status: "Facture en attente").or(Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Ponctuel"))
-    @processed = Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month.where(status: "Payé", recurrence: "Ponctuel")).or(Commitment.current_month.where(postponed?: true, recurrence: "Ponctuel"))
+    if Closing.occurred
+      @pre_closing_month = Time.now.strftime("%B %Y")
+      offset = 1
+    else
+      @pre_closing_month = (Time.now - 1.month).strftime("%B %Y")
+      offset = 0
+    end
+    @to_be_processed = Commitment.previous_month(offset).where(status: "Facture en attente").or(Commitment.previous_month(offset).where(status: "Paiement en attente", recurrence: "Ponctuel"))
+    @processed = Commitment.previous_month(offset).where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month(offset).where(status: "Payé")).or(Commitment.current_month(1).where(postponed?: true, recurrence: "Ponctuel"))
   end
 
   def commitment_payment_proceed
@@ -138,17 +145,19 @@ class CommitmentsController < ApplicationController
   end
 
   def closing
-    @processed = Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Mensuel")
+    @processed = Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month.where(status: "Payé", recurrence: "Mensuel")).or(Commitment.previous_month.where(status: "Payé", recurrence: "Ponctuel"))
+    @postponed = Commitment.current_month.where(postponed?: true)
     @processed.each do |monthly_commitment|
-      monthly_commitment.status = "Payé"
-      monthly_commitment.save!
-      new_commitment = monthly_commitment.dup
-      new_commitment.status = "Facture en attente"
-      new_commitment.due_date = monthly_commitment.due_date >> 1
-      new_commitment.invoice = nil
-      new_commitment.save!
+      if monthly_commitment.status == "Paiement en attente"
+        monthly_commitment.status = "Payé"
+        monthly_commitment.save!
+        new_commitment = monthly_commitment.dup
+        new_commitment.status = "Facture en attente"
+        new_commitment.due_date = monthly_commitment.due_date >> 1
+        new_commitment.invoice = nil
+        new_commitment.save!
+      end
     end
-    @processed
     zip
     # @processed_one_off = Commitment.previous_month.where(status: "Pending invoice", recurrence: "One off")
     # @processed_one_off.each do |one_off_commit_without_invoice_but_processed|
