@@ -36,7 +36,11 @@ const initLine = () => {
               borderColor: [
                   'rgba(15, 51, 78, 1)',
               ],
-              borderWidth: 1
+              pointBackgroundColor:
+                  'rgba(64, 190, 194, 1)',
+              pointBorderColor:
+                  'rgba(15, 51, 78, 1)',
+              borderWidth: 1,
           }]
       },
       options: {

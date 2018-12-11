@@ -1,14 +1,14 @@
-<div class="container-commmitments">
+<div class="container-closing-head">
   <% date = Date.today - 1.month %>
-  <h3>Clôture: <%= date.strftime("%B %Y") %></h3>
-  <%= link_to "Téléchager toutes les factures", @url, class: "btn-primary-bubo-commitment" %>
+  <h3>Clôture: <%= date.strftime("%b %Y") %></h3>
+  <%= link_to "Exporter factures", @url, class: "btn-primary-bubo-commitment" %>
 </div>
 
 <div class="container-closing">
   <div class="container-table-wrap">
     <div class="container-table">
       <ul class="table-closing-processed table-closing-1">
-        <h4><%= @processed.length %> en-cours traités</h4>
+        <h4><%= @processed.length %> en-cours traité(s)</h4>
         <li class="table-closing-header">
             <p>Fournisseur</p>
             <p>Montant</p>
@@ -25,7 +25,7 @@
     </div>
     <div class="container-table">
       <ul class="table-closing table-closing-1">
-        <h4><%= @postponed.length %> en-cours reportés</h4>
+        <h4><%= @postponed.length %> en-cours reporté(s)</h4>
         <li class="table-closing-header">
           <p>Fournisseur</p>
           <p>Montant</p>

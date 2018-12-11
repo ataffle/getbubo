@@ -1,5 +1,8 @@
 <div class="container-pre-closing">
   <h3>Pré-clôture: <%= @pre_closing_month %></h3>
+  <% unless Closing.occurred %>
+    <h4 style="margin: 0; text-align: center; margin-top: 20px; margin-bottom: 10px;"><%= link_to "Clôturer", closings_path, method: :post, class: "btn-primary-bubo-commitment" %></h4>
+  <% end %>
 </div>
 <div class="container-closing">
   <div class="container-table-wrap">
@@ -42,11 +45,6 @@
       </ul>
     </div>
   </div>
-  <% unless Closing.occurred %>
-    <div class="bttn">
-      <h4 style="margin: 0; text-align: center; margin-bottom: 10px;"><%= link_to "Clôturer", closings_path, method: :post, class: "btn-primary-bubo-commitment" %></h4>
-    </div>
-  <% end %>
 </div>
 <!-- <div class="container-btn-closing">
 </div> -->
