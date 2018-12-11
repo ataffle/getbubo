@@ -12,10 +12,10 @@
     </thead>
     <tbody>
       <% @commitments_by_supplier.each do |commitment| %>
-        <tr>
+        <tr onclick="location.href='<%= commitment_path(commitment) %>'">
           <td><img src="http://kitt.lewagon.com/placeholder/users/ssaunier" alt="" class="avatar"></td>
             <div class="card-description">
-              <td><%= link_to commitment.title, commitment_path(commitment) %></td>
+              <td><%= commitment.title %></td>
               <td><%= number_with_delimiter(commitment.amount, :delimiter => ',') %> €</td>
               <td><%= commitment.status %></td>
               <td><%= commitment.payment_date %></td>
