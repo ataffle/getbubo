@@ -151,12 +151,14 @@ class CommitmentsController < ApplicationController
       if monthly_commitment.status == "Paiement en attente"
         monthly_commitment.status = "Payé"
         monthly_commitment.save!
+        new_commitment = monthly_commitment.dup
+        new_commitment.invoice = nil
+      elsif monthly_commitment.status == "Facture en attente"
+        new_commitment.due_date = monthly_commitment.due_date >> 1
+        new_commitment = monthly_commitment.dup
+        new_commitment.invoice = nil
+        new_commitment.save!
       end
-      new_commitment = monthly_commitment.dup
-      new_commitment.status = "Facture en attente"
-      new_commitment.due_date = monthly_commitment.due_date >> 1
-      new_commitment.invoice = nil
-      new_commitment.save!
     end
     zip
     # @processed_one_off = Commitment.previous_month.where(status: "Pending invoice", recurrence: "One off")
