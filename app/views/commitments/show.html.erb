@@ -38,8 +38,12 @@
         <h4>Paiement</h4>
         <hr>
         <p><strong>Mode de Paiement :</strong> <%= @commitment.payment_method %></p>
-        <p><strong>Date échéance :</strong> <%= @commitment.due_date.strftime('%d %b %y') %></p>
-        <p><strong>Date paiement :</strong> <%= @commitment.payment_date.strftime('%d %b %y') %></p>
+        <% if @commitment.due_date %>
+          <p><strong>Date échéance :</strong> <%= @commitment.due_date.strftime('%d %b %y') %></p>
+        <% end %>
+        <% if @commitment.payment_date %>
+          <p><strong>Date paiement :</strong> <%= @commitment.payment_date.strftime('%d %b %y') %></p>
+        <% end %>
         <p><strong>Facture :</strong>
         <% if @commitment.invoice? %>
           <%= @commitment.invoice_ref %></p>
