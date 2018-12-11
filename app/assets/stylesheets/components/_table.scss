@@ -2,14 +2,32 @@
   i {
   color: $primary;
   }
-  th {
-    color : $primary !important
-  }
   tbody tr {
     font-size: 16px;
     cursor: pointer;
   }
   margin-bottom: 18px;
+  border-collapse: separate;
+  border-spacing: 0px 10px;
+  td {
+    padding: 20px 0px;
+    border: none;
+  }
+  tr td:first-child, tr td:last-child {
+    padding: 20px;
+  }
+  tr {
+    box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
+    border-radius: 2px;
+  }
+  tr:first-child {
+    box-shadow: none;
+    border: none;
+  }
+  th {
+    border: none;
+    color: #929497 !important;
+  }
 }
 
 .dataTables_length, .dataTables_info {

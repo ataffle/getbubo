@@ -1,7 +1,7 @@
 <div class="container-dashboard">
   <div class="dashboard-header-wrapper">
     <div>
-      <h2>Stats</h2>
+      <h4>Bonjour <%= current_user.first_name %>, voici le récap de vos en-cours</h4>
     </div>
     <div>
       <%= simple_form_for(:filters, url: root_path, method: :get, html: { class: 'form-inline filter-commitment' }) do |f| %>
@@ -10,12 +10,9 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
-    <!-- <div class="chart-filters">
-    </div> -->
-    <div class="col-md-12">
       <div class="cards">
         <div class="card-stat">
+          <i class="fas fa-wallet" id="first-card"></i>
           <h3>
             <ul id="analytics-dashboard" style="list-style: none; padding-inline-start: 0px;">
               <% total = [] %>
@@ -23,26 +20,12 @@
                   <% total << item.amount %>
               <% end %>
               <li><%= number_with_delimiter(total.sum, delimiters: ".") %>€</li>
-              <li><p style="font-size: 15px">Total des en-cours</p></li>
+              <li><p style="font-size: 15px">En-cours à payer</p></li>
             </ul>
           </h3>
         </div>
         <div class="card-stat">
-          <h3>
-            <ul id="analytics-dashboard" style="list-style: none; padding-inline-start: 0px;">
-              <% total = [] %>
-              <% @current_period_commitments.each do |commitment| %>
-                  <% total << commitment.amount %>
-              <% end %>
-              <% if @commitments.present? %>
-                <% average = (total.sum / total.length)  %>
-              <% end %>
-              <li><%= number_with_delimiter(average, delimiters: ".") %>€</li>
-              <li><p style="font-size: 15px">Montant moyen d'un en-cours</p></li>
-            </ul>
-          </h3>
-        </div>
-        <div class="card-stat">
+          <i class="fas fa-euro-sign" id="second-card"></i>
           <h3>
             <ul id="analytics-dashboard" style="list-style: none; padding-inline-start: 0px;">
               <% total = [] %>
@@ -50,7 +33,16 @@
                   <% total << commitment.amount %>
               <% end %>
               <li><%= number_with_delimiter(total.sum, delimiters: ".") %>€</li>
-              <li><p style="font-size: 15px">Montant des en-cours du mois</p></li>
+              <li><p style="font-size: 15px">En-cours sur la période</p></li>
+            </ul>
+          </h3>
+        </div>
+        <div class="card-stat">
+          <i class="fas fa-list" id="third-card"></i>
+          <h3>
+            <ul id="analytics-dashboard" style="list-style: none; padding-inline-start: 0px;">
+              <li><%= @current_period_commitments.count %></li>
+              <li><p style="font-size: 15px">Nombre d'en-cours</p></li>
             </ul>
           </h3>
         </div>
@@ -68,7 +60,10 @@
             </canvas>
           </div>
         </div>
-    </div>
-  </div>
+        <div class="pie-chart">
+          <canvas id="total-amount" width="450" height="300" data-paid="<%= @paid_commitment_amount.to_json %>" data-invoice="<%= @pending_invoice_amount.to_json %>" data-payment="<%= @pending_payment_amount.to_json %>">
+          </canvas>
+        </div>
+      </div>
 </div>
 
