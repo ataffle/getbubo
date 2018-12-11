@@ -18,8 +18,8 @@ class Commitment < ApplicationRecord
 
   mount_uploader :invoice, PhotoUploader
 
-  scope :current_month, -> { where("due_date >= ? AND due_date <= ?", Time.now.beginning_of_month, Time.now.end_of_month) }
-  scope :previous_month, -> { where("due_date >= ? AND due_date <= ?", Time.now.prev_month.beginning_of_month, Time.now.prev_month.end_of_month) }
+  scope :current_month, ->(offset = 0) { where("due_date >= ? AND due_date <= ?", Time.now.beginning_of_month + offset.month, Time.now.end_of_month + offset.month) }
+  scope :previous_month, ->(offset = 0) { where("due_date >= ? AND due_date <= ?", Time.now.prev_month.beginning_of_month + offset.month, Time.now.prev_month.end_of_month + offset.month) }
   scope :next_month, -> { where("due_date >= ? AND due_date <= ?", Time.now.next_month.beginning_of_month, Time.now.next_month.end_of_month) }
   scope :year_to_date, -> { where("due_date >= ? AND due_date <= ?", Time.now.beginning_of_year, Time.now) }
   scope :paid_commitments, -> { where(status: "Payé") }
