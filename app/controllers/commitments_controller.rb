@@ -81,8 +81,8 @@ class CommitmentsController < ApplicationController
     @commitment = Commitment.find(params[:id])
     @organization = current_user.organization
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
+    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice_ref == "" || @commitment.invoice_ref.nil?
     @commitment.update(commitment_params)
-    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice != ""
     @commitment.status = "Paiement en attente" if @commitment.invoice? && @commitment.status == "Facture en attente"
     @commitment.save
     authorize @commitment
