@@ -33,8 +33,10 @@
 .commitment-show-title{
   display: flex;
   align-items: center;
-  border-bottom: solid 0.5px rgba(15, 51, 78, 0.8);
   justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
 }
 
 .commitment-create-title{
