@@ -17,7 +17,7 @@
         </li>
         <% @to_be_processed.each do |commitment_to_be| %>
         <li class="grey-cards">
-          <p><%= commitment_to_be.supplier.name %> <%= commitment_to_be.id %></p>
+          <p><%= commitment_to_be.supplier.name %></p>
           <p><%= commitment_to_be.recurrence %></p>
           <p><%= commitment_to_be.status %></p>
           <p class = "table-btn"><%= link_for_commitment_proceed(commitment_to_be)%></p>
@@ -36,7 +36,7 @@
         </li>
         <% @processed.each do |monthly_commitment| %>
         <li class="grey-cards">
-          <p><%= monthly_commitment.supplier.name %> <%= monthly_commitment.id %></p>
+          <p><%= monthly_commitment.supplier.name %></p>
           <p><%= monthly_commitment.recurrence %></p>
           <p><%= monthly_commitment.status %></p>
           <p> <%= monthly_commitment.due_date.strftime("%b %y") %> </p>

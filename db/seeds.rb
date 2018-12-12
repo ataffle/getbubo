@@ -37,9 +37,9 @@ user4 = User.create(first_name: "Carine", last_name: "Desachats", email: "carine
 user5 = User.create(first_name: "Gus", last_name: "Duwagon", email: "gus@letrain.com", organization: Organization.last, password: "123456", photo: "user5.jpg")
 user6 = User.create(first_name: "Guy", last_name: "Deschamps", email: "guy@letrain.com", organization: Organization.last, password: "123456", photo: "user6.jpg")
 user7 = User.create(first_name: "Boris", last_name: "du Design", email: "boris@letrain.com", organization: Organization.last, password: "123456", photo: "user7.png")
-user8 = User.create(first_name: "Edward", last_name: "Gourou", email: "edward@letrain.com", organization: Organization.last, password: "123456", photo: "user8.jpeg")
+user8 = User.create(first_name: "Edward", last_name: "Gourou", email: "edward@letrain.com", organization: Organization.last, password: "123456", photo: "user8.jpg")
 user9 = User.create(first_name: "Seb", last_name: "Delanavbar", email: "seb@letrain.com", organization: Organization.last, password: "123456", photo: "user9.jpg")
-user10 = User.create(first_name: "Alix", last_name: "Thezbar", email: "fabien@letrain.com", organization: Organization.last, password: "123456", photo: "user10.jpg")
+user10 = User.create(first_name: "Alix", last_name: "Thezbar", email: "alix@letrain.com", organization: Organization.last, password: "123456", photo: "user10.jpg")
 users = [user1, user2, user3, user4, user5, user6, user7, user8, user9, user10]
 puts "#{users.length} users created"
 
