@@ -172,14 +172,19 @@ padding: 0.2em 0.5em;
     }
   }
 }
-
 .grey-cards {
   background-color: #F4F7FC;
   &:hover {
    background-color: #eae5e5;
   }
-
 }
+.red-cards {
+  background-color: #f4bcbc;
+  &:hover {
+   background-color: #f29393;
+  }
+}
+
 
 .table-closing .table-closing-header {
   p {
@@ -195,4 +200,4 @@ padding: 0.2em 0.5em;
     background-color: white;
     border-bottom: 1px solid #9e9a9a;
   }
-}
+ }

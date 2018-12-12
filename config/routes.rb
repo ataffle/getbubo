@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'commitment_payment_proceed', to: 'commitments#commitment_payment_proceed'
     get 'commitment_postpone', to: 'commitments#commitment_postpone'
     get 'commitment_edit', to: 'commitments#commitment_index'
+    get 'commitment_mark_as_paid', to: 'commitments#mark_as_paid'
   end
   get 'dashboard', to: 'pages#dashboard'
 

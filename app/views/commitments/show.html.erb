@@ -4,17 +4,21 @@
       <i id="btn-back-to-index" class="fas fa-arrow-left"></i>
     <% end %>
     <h3><%= @commitment.title %></h3>
-    <%= link_to edit_commitment_path(@commitment) do %>
-      <i id="btn-edit-show-commitment" class="fas fa-edit" ></i>
-    <% end %>
+    <div class="show-actions">
+      <%= link_to edit_commitment_path(@commitment) do %>
+        <i id="btn-edit-show-commitment" class="fas fa-edit" ></i>
+      <% end %>
+      <%= link_to commitment_path(@commitment), method: :delete, data: { confirm: "Etes-vous sûr ?" } do %>
+          <i id="btn-edit-show-commitment" class="fas fa-trash-alt"></i>
+      <% end %>
+    </div>
   </div>
   <div class="col-sm-4">
     <div class="card-show">
       <div class="show-body">
-        <h4>Infos</h4>
+        <h4><%= @commitment.supplier.name %></h4>
         <hr>
-        <p><strong>Fournisseur :</strong> <%= @commitment.supplier.name %></p>
-        <p><strong>Nom :</strong> <%= @commitment.title %></p>
+        <p><strong>Nom en-cours :</strong> <%= @commitment.title %></p>
         <p><strong>Description :</strong> <%= @commitment.description %></p>
         <p><strong>Référence :</strong> <%= @commitment.order_ref %></p>
       </div>
@@ -23,11 +27,15 @@
   <div class="col-sm-4">
     <div class="card-show">
       <div class="show-body">
-        <h4>Détails</h4>
+        <h4 style="font-weight: bold; color: #007EFF"><%= number_with_delimiter(@commitment.amount, :delimiter => ',') %> €</h4>
         <hr>
         <p><strong>Récurrence :</strong> <%= @commitment.recurrence %></p>
-        <p><strong>Montant :</strong> <%= number_with_delimiter(@commitment.amount, :delimiter => ',') %> €</p>
-        <p><strong>Statut :</strong> <%= @commitment.status %></p>
+        <p><strong>Facture :</strong>
+        <% if @commitment.invoice? %>
+          <%= @commitment.invoice_ref %></p>
+        <% else %>
+          Pas de document</p>
+        <% end %>
         <p><strong>Réception Facture :</strong> <%= @commitment.retrieval_mode %></p>
       </div>
     </div>
@@ -35,21 +43,30 @@
   <div class="col-sm-4">
     <div class="card-show">
       <div class="show-body">
-        <h4>Paiement</h4>
+        <div class="show-payment">
+          <% if @commitment.status == "Payé" %>
+            <span class="label-paid"><%= @commitment.status %></span>
+          <% elsif @commitment.status == "Paiement en attente" %>
+            <span class="label-pending-payment"><%= @commitment.status %></span>
+          <% elsif @commitment.status == "Facture en attente" %>
+            <span class="label-pending-invoice"><%= @commitment.status %></span>
+          <% end %>
+        </div>
         <hr>
-        <p><strong>Mode de Paiement :</strong> <%= @commitment.payment_method %></p>
+        <p><strong>Paiement :</strong> <%= @commitment.payment_method %></p>
         <% if @commitment.due_date %>
           <p><strong>Date échéance :</strong> <%= @commitment.due_date.strftime('%d %b %y') %></p>
         <% end %>
         <% if @commitment.payment_date %>
           <p><strong>Date paiement :</strong> <%= @commitment.payment_date.strftime('%d %b %y') %></p>
         <% end %>
-        <p><strong>Facture :</strong>
-        <% if @commitment.invoice? %>
-          <%= @commitment.invoice_ref %></p>
-        <% else %>
-          Pas de document</p>
-        <% end %>
+        <div id="show-btn">
+          <% if @commitment.status == "Paiement en attente" %>
+            <%= link_to "Passer en payé", commitment_commitment_mark_as_paid_path(@commitment), class: "btn-primary-bubo-show" %>
+          <% elsif @commitment.status == "Facture en attente" %>
+            <%= link_to "Charger facture", edit_commitment_path(@commitment), class: "btn-primary-bubo-show" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

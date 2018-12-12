@@ -66,10 +66,28 @@
   }
 }
 
+.btn-primary-bubo-show {
+  background-color: $secondary;
+  color: white;
+  padding: 10px 13px;
+  font-weight: bold;
+  text-decoration:none;
+  width: 100%;
+  a {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+    color:white;
+    opacity: 0.8;
+  }
+}
+
+
 #btn-edit-show-commitment {
   color: #0F334E;
   padding-top: 5px;
-  padding-left: 50px;
+  padding-left: 20px;
   margin-top: 9px;
 }
 

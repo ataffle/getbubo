@@ -1,0 +1,69 @@
+<div class="container-dashboard">
+  <div class="dashboard-header-wrapper">
+    <div class="welcome">
+      <h4>Bonjour <%= current_user.first_name %>, voici le récap de vos en-cours</h4>
+    </div>
+    <div>
+      <%= simple_form_for(:filters, url: root_path, method: :get, html: { class: 'form-inline filter-commitment' }) do |f| %>
+        <%= f.input :period, collection: commitments_periods_for_select, required: false, label: false, input_html: { class: "select2" }, prompt: "Choisir une période", selected: @period %>
+        <%= f.submit "Filtrer", class: "btn-primary-bubo-filter" %>
+      <% end %>
+    </div>
+  </div>
+      <div class="cards">
+        <div class="card-stat" style="text-decoration: none;">
+          <i class="fas fa-wallet" id="first-card"></i>
+          <h3>
+            <ul id="analytics-dashboard" style="list-style: none; padding-inline-start: 0px;">
+              <% total = [] %>
+              <% @unpaid_commitments_amount.each do |item| %>
+                  <% total << item.amount %>
+              <% end %>
+              <li><%= number_with_delimiter(total.sum, delimiters: ".") %>€</li>
+              <li><p style="font-size: 15px">En-cours à payer</p></li>
+            </ul>
+          </h3>
+        </div>
+        <div class="card-stat">
+          <i class="fas fa-euro-sign" id="second-card"></i>
+          <h3>
+            <ul id="analytics-dashboard" style="list-style: none; padding-inline-start: 0px;">
+              <% total = [] %>
+              <% @current_period_commitments.each do |commitment| %>
+                  <% total << commitment.amount %>
+              <% end %>
+              <li><%= number_with_delimiter(total.sum, delimiters: ".") %>€</li>
+              <li><p style="font-size: 15px">En-cours sur la période</p></li>
+            </ul>
+          </h3>
+        </div>
+        <div class="card-stat">
+          <i class="fas fa-list" id="third-card"></i>
+          <h3>
+            <ul id="analytics-dashboard" style="list-style: none; padding-inline-start: 0px;">
+              <li><%= @current_period_commitments.count %></li>
+              <li><p style="font-size: 15px">Nombre d'en-cours</p></li>
+            </ul>
+          </h3>
+        </div>
+      </div>
+        <div class="charts-wrapper">
+          <!-- <div class="bar-chart">
+            <canvas id="commitments-statuses" width="500" height="300" data-statuses="<%= @statuses.to_json %>"></canvas>
+          </div -->
+          <div class="doughnut-chart">
+            <div class="chart-legend">
+              <div class="chart-stat"><%= @pending_invoice_amount.length + @pending_payment_amount.length %></div>
+              <div class="chart-tagline">en-cours non traités</div>
+            </div>
+            <div class="bottom-hide"></div>
+            <canvas id="commitments-statuses" width="450" height="300" data-paid="<%= @paid_commitment_amount.to_json %>" data-invoice="<%= @pending_invoice_amount.to_json %>" data-payment="<%= @pending_payment_amount.to_json %>">
+            </canvas>
+          </div>
+          <div class="line-chart">
+            <canvas id="monthly-amount" width="500px" height="300px" data-two="<%= @two_ago.to_json %>" data-five="<%= @five_ago.to_json %>" data-four="<%= @four_ago.to_json %>" data-three="<%= @three_ago.to_json %>" data-one="<%= @one_ago.to_json %>" data-current="<%= @current.to_json %>">
+            </canvas>
+          </div>
+        </div>
+      </div>
+</div>

@@ -37,43 +37,16 @@ user6 = User.create(first_name: "Guy", last_name: "Deschamps", email: "guy@letra
 user7 = User.create(first_name: "Boris", last_name: "du Design", email: "boris@letrain.com", organization: Organization.last, password: "123456", photo: "user7.png")
 user8 = User.create(first_name: "Edward", last_name: "Gourou", email: "edward@letrain.com", organization: Organization.last, password: "123456", photo: "user8.jpg")
 user9 = User.create(first_name: "Seb", last_name: "Delanavbar", email: "seb@letrain.com", organization: Organization.last, password: "123456", photo: "user9.jpg")
-user10 = User.create(first_name: "Alix", last_name: "Thezbar", email: "alix@letrain.com", organization: Organization.last, password: "123456", photo: "user10.jpg")
+user10 = User.create(first_name: "Alix", last_name: "Tafflé", email: "alix@letrain.com", organization: Organization.last, password: "123456", photo: "user10.jpg")
 users = [user1, user2, user3, user4, user5, user6, user7, user8, user9, user10]
 puts "#{users.length} users created"
 
 
-puts "Creating facture en attente mensuelle"
-1.times do
-  due_date = "15/11/2018"
-  supplier = suppliers.sample
-  title = "achat"
-  amount = rand(50..2000)
-  status = 0
-  retrieval_mode = retrieval_modes.sample
-  user = user10
-  recurrence = 1
-  payment_method = payment_methods.sample
-  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice: "invoice")
-end
-puts "CCreating facture en attente mensuelle"
-
-puts "Creating paiement en attente mensuelle"
-1.times do
-  due_date = "15/11/2018"
-  supplier = suppliers.sample
-  title = "achat"
-  amount = rand(50..2000)
-  status = 1
-  retrieval_mode = retrieval_modes.sample
-  user = user10
-  recurrence = 1
-  payment_method = payment_methods.sample
-  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice: "invoice")
-end
-puts "Creating paiement en attente mensuelle"
-
-puts "Creating Payé mensuelle"
-2.times do
+puts "Creating Payé Mensuel"
+10.times do
+  commitments = Commitment.all
+  commitments_count = commitments.count
+  order_ref = "PO-2018-#{commitments_count + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
   title = "achat"
@@ -83,12 +56,15 @@ puts "Creating Payé mensuelle"
   user = user10
   recurrence = 1
   payment_method = payment_methods.sample
-  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice: "invoice")
+  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
 end
-puts "Creating Payé mensuelle"
+puts "Creating Payé Mensuel"
 
-puts "Creating Facture en attente Ponctuelle"
+puts "Creating Facture en attente Ponctuel"
 2.times do
+  commitments = Commitment.all
+  commitments_count = commitments.count
+  order_ref = "PO-2018-#{commitments_count + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
   title = "achat"
@@ -98,12 +74,33 @@ puts "Creating Facture en attente Ponctuelle"
   user = user10
   recurrence = 0
   payment_method = payment_methods.sample
-  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice: "invoice")
+  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
 end
-puts "Created Facture en attente Ponctuelle"
+puts "Created Facture en attente Ponctuel"
 
-puts "Creating Paiment en attente Ponctuelle"
+puts "Creating Facture en attente Mensuel"
+2.times do
+  commitments = Commitment.all
+  commitments_count = commitments.count
+  order_ref = "PO-2018-#{commitments_count + 1}"
+  due_date = "15/11/2018"
+  supplier = suppliers.sample
+  title = "achat"
+  amount = rand(50..2000)
+  status = 0
+  retrieval_mode = retrieval_modes.sample
+  user = user10
+  recurrence = 1
+  payment_method = payment_methods.sample
+  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
+end
+puts "Created Facture en attente Mensuel"
+
+puts "Creating Paiment en attente Ponctuel"
 3.times do
+  commitments = Commitment.all
+  commitments_count = commitments.count
+  order_ref = "PO-2018-#{commitments_count + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
   title = "achat"
@@ -113,12 +110,15 @@ puts "Creating Paiment en attente Ponctuelle"
   user = user10
   recurrence = 0
   payment_method = payment_methods.sample
-  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice: "invoice")
+  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
 end
-puts "Created Paiement en attente Ponctuelle"
+puts "Created Paiement en attente Ponctuel"
 
-puts "Creating Payé Ponctuelle"
-3.times do
+puts "Creating Payé Ponctuel"
+4.times do
+  commitments = Commitment.all
+  commitments_count = commitments.count
+  order_ref = "PO-2018-#{commitments_count + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
   title = "achat"
@@ -128,8 +128,8 @@ puts "Creating Payé Ponctuelle"
   user = user10
   recurrence = 0
   payment_method = payment_methods.sample
-  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice: "invoice")
+  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
 end
-puts "Created Payé Ponctuelle"
+puts "Created Payé Ponctuel"
 
 #Cloudinary::Uploader.upload("invoice.pdf")
