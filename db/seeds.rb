@@ -57,22 +57,22 @@ puts "Creating November commitments"
   payment_method = payment_methods.sample
   Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice: "invoice")
 end
-puts "Created 10 commitments"
-#Cloudinary::Uploader.upload("invoice.pdf")
+puts "Created 10 Nov commitments"
+Cloudinary::Uploader.upload("invoice.pdf")
 puts "Creating December commitments"
 10.times do
-    due_date = "15/12/2018"
-    supplier = suppliers.sample
-    title = "achat"
-    amount = rand(50..2000)
-    status = rand(0..1)
-    retrieval_mode = retrieval_modes.sample
-    user = users.sample
-    recurrence = 0
-    payment_method = payment_methods.sample
-    Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice: "invoice")
+  due_date = "15/12/2018"
+  supplier = suppliers.sample
+  title = "achat"
+  amount = rand(50..2000)
+  status = rand(0..1)
+  retrieval_mode = retrieval_modes.sample
+  user = users.sample
+  recurrence = 0
+  payment_method = payment_methods.sample
+  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice: "invoice")
 end
-puts "Created 10 commitments"
+puts "Created 10 dec commitments"
 # leboncoin1 = Commitment.create!(title: "achat d'un meuble", amount: 1400, due_date: "01/11/2018".to_date, payment_date: "02/11/2018".to_date, status: 0, supplier: leboncoin, user: User.first, recurrence: 0, payment_method: 0, retrieval_mode: 1)
 # amazon2 = Commitment.create!(title: "achat d'ordinateurs", amount: 10000, due_date: "27/11/2018".to_date, payment_date: "28/11/2018".to_date, status: 1, supplier: amazon, user: User.second, recurrence: 0, payment_method: 1, retrieval_mode: 0)
 # appleios = Commitment.create!(title: "ios dev apple", amount: 4000, due_date: "01/11/2018".to_date, payment_date: "02/11/2018".to_date, status: 1, supplier: apple, user: User.third, recurrence: 0, payment_method: 0, retrieval_mode: 1)

@@ -154,19 +154,20 @@ class CommitmentsController < ApplicationController
   end
 
   def closing
-    @processed = Commitment.previous_month.where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month.where(status: "Payé", recurrence: "Mensuel")).or(Commitment.previous_month.where(status: "Payé", recurrence: "Ponctuel"))
+    @processed = Commitment.previous_month.where(recurrence: "Mensuel").or(Commitment.previous_month.where(status: "Payé", recurrence: "Mensuel")).or(Commitment.previous_month.where(status: "Payé", recurrence: "Ponctuel"))
     @postponed = Commitment.current_month.where(postponed?: true)
     @processed.each do |monthly_commitment|
-      if monthly_commitment.status == "Paiement en attente"
+      if monthly_commitment.recurrence == "Mensuel"
         monthly_commitment.status = "Payé"
         monthly_commitment.save!
         new_commitment = monthly_commitment.dup
+        new_commitment.due_date = monthly_commitment.due_date >> 1
         new_commitment.invoice = nil
         new_commitment.status = "Facture en attente"
-      elsif monthly_commitment.status == "Facture en attente"
-        new_commitment.due_date = monthly_commitment.due_date >> 1
+        new_commitment.save!
+      elsif monthly_commitment.recurrence == "Ponctuel" && monthly_commitment.postponed? == true
         new_commitment = monthly_commitment.dup
-        new_commitment.invoice = nil
+        new_commitment.due_date = monthly_commitment.due_date >> 1
         new_commitment.save!
       end
     end
