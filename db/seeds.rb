@@ -1,13 +1,11 @@
-Commitment.destroy_all
-puts "Commitment destroyed"
-Supplier.destroy_all
-puts "Supplier destroyed"
-User.destroy_all
-puts "User destroyed"
-Closing.destroy_all
-puts "Closing destroyed"
-Organization.destroy_all
-puts "Organization destroyed"
+# Commitment.destroy_all
+# puts "Commitment destroyed"
+# Supplier.destroy_all
+# puts "Supplier destroyed"
+# User.destroy_all
+# puts "User destroyed"
+# Organization.destroy_all
+# puts "Organization destroyed"
 
 letrain = Organization.create!(name: "Le train")
 puts "Organization Created"
