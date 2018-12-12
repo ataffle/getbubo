@@ -4,9 +4,14 @@
       <i id="btn-back-to-index" class="fas fa-arrow-left"></i>
     <% end %>
     <h3><%= @commitment.title %></h3>
-    <%= link_to edit_commitment_path(@commitment) do %>
-      <i id="btn-edit-show-commitment" class="fas fa-edit" ></i>
-    <% end %>
+    <div class="show-actions">
+      <%= link_to edit_commitment_path(@commitment) do %>
+        <i id="btn-edit-show-commitment" class="fas fa-edit" ></i>
+      <% end %>
+      <%= link_to commitment_path(@commitment), method: :delete, data: { confirm: "Etes-vous sûr ?" } do %>
+          <i id="btn-edit-show-commitment" class="fas fa-trash-alt"></i>
+      <% end %>
+    </div>
   </div>
   <div class="col-sm-4">
     <div class="card-show">

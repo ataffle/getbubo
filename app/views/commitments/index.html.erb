@@ -9,9 +9,7 @@
         <th scope="col">Récurrence</th>
         <th scope="col">Echéance</th>
         <th scope="col">Statut</th>
-        <th scope="col">Payé</th>
         <th scope="col">Facture</th>
-        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -29,17 +27,11 @@
           <% elsif commitment.status == "Facture en attente" %>
             <td><span class="label-pending-invoice"><%= commitment.status %></span></td>
           <% end %>
-          <td><%= link_commit(commitment) %></td>
           <td>
             <% if commitment.invoice.file.present? %>
               <%= link_to(cl_private_download_url(commitment.invoice_ref, :jpg, :attachment => true)) do %>
                 <i class="fas fa-cloud-download-alt"></i>
               <% end %>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to commitment_path(commitment), method: :delete, data: { confirm: "Etes-vous sûr ?" } do %>
-              <i class="fas fa-trash-alt"></i>
             <% end %>
           </td>
         </tr>
