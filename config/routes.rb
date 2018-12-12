@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'commitment_postpone', to: 'commitments#commitment_postpone'
     get 'commitment_edit', to: 'commitments#commitment_index'
   end
-
+  get 'dashboard', to: 'pages#dashboard'
 
   # get 'download_file/:id', to: 'commitments#download_file', as: 'download_file'
   # get 'download_zip', to: 'commitments#zip', as: 'download_zip'

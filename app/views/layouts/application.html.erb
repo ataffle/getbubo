@@ -30,16 +30,43 @@
   </head>
 
   <body>
-    <div class="wrapper">
-      <div class="sidebar">
-        <%= render 'shared/sidebar' %>
+    <% if current_page?(root_path) %>
+      <div class="banner">
+        <div class="banner-logo">
+          <%= image_tag "logo.png", style: "width: 30px; height: 30px;" %>
+          <p>Bubo</p>
+        </div>
+        <div class="banner-connect">
+          <% if user_signed_in? %>
+            <%= link_to destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" do %>
+              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
+            <% end %>
+          <% else %>
+            <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <% end %>
+        </div>
+        <div class="banner-content">
+          <h1>Bubo</h1>
+          <p>Suivi des achats simplifié pour les TPE et PME</p>
+          <%= link_to "Voir mon dashboard", dashboard_path, class: "btn-primary-bubo-home" %>
+        </div>
+        <div class="banner-image">
+          <%= image_tag "wallet.svg", style: "width: 500px; height: 500px;" %>
+        </div>
       </div>
-      <div class="content">
-        <%= render 'shared/navbar' %>
-        <%= render 'shared/flashes' %>
-        <%= yield %>
+    <% else %>
+      <div class="wrapper">
+        <div class="sidebar">
+          <%= render 'shared/sidebar' %>
+        </div>
+        <div class="content">
+          <%= render 'shared/navbar' %>
+          <%= render 'shared/flashes' %>
+          <%= yield %>
+        </div>
       </div>
-    </div>
+    <% end %>
+
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
