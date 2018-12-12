@@ -7,7 +7,7 @@
         <th scope="col">Nom</th>
         <th scope="col">Montant Total</th>
         <th scope="col">Statut</th>
-        <th scope="col">Date Paiement</th>
+        <th scope="col">Echèance</th>
       </tr>
     </thead>
     <tbody>
@@ -18,7 +18,7 @@
               <td><%= commitment.title %></td>
               <td><%= number_with_delimiter(commitment.amount, :delimiter => ',') %> €</td>
               <td><%= commitment.status %></td>
-              <td><%= commitment.payment_date %></td>
+              <td><%= commitment.due_date %></td>
               <td><%= link_to edit_commitment_path(commitment) do %>
                   <i class="fas fa-edit"></i>
                   <% end %>

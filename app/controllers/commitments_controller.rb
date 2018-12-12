@@ -134,6 +134,12 @@ class CommitmentsController < ApplicationController
     end
     @to_be_processed = Commitment.previous_month(offset).where(status: "Facture en attente").or(Commitment.previous_month(offset).where(status: "Paiement en attente", recurrence: "Ponctuel"))
     @processed = Commitment.previous_month(offset).where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month(offset).where(status: "Payé")).or(Commitment.current_month(offset).where(postponed?: true, recurrence: "Ponctuel")).or(Commitment.current_month(offset).where(status: "Facture en attente", recurrence: "Mensuel", postponed?: true))
+    @processed.each do |monthly_commitment|
+      if monthly_commitment.status == "Paiement en attente" && monthly_commitment.recurrence == "Mensuel"
+        monthly_commitment.update(status: "Payé")
+        monthly_commitment.save!
+      end
+    end
   end
 
   def commitment_payment_proceed
@@ -159,8 +165,6 @@ class CommitmentsController < ApplicationController
     @postponed = Commitment.current_month.where(postponed?: true)
     @processed.each do |monthly_commitment|
       if monthly_commitment.recurrence == "Mensuel"
-        monthly_commitment.status = "Payé"
-        monthly_commitment.save!
         new_commitment = monthly_commitment.dup
         new_commitment.due_date = monthly_commitment.due_date >> 1
         new_commitment.invoice = nil
@@ -187,5 +191,3 @@ class CommitmentsController < ApplicationController
     params.require(:commitment).permit(:title, :amount, :description, :due_date, :payment_date, :status, :recurrence, :supplier_id, :retrieval_mode, :payment_method, :invoice)
   end
 end
-
-
