@@ -23,7 +23,7 @@ const initDoughnut = () => {
   const myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
-          labels: ["Facture en attente", "Paiement en attente", "Payé"],
+          labels: ["Facture", "Paiement", "Payé"],
           datasets: [{
               label: "Nombre de factures",
               data: [invoices, payments, paid],
@@ -41,11 +41,17 @@ const initDoughnut = () => {
           }]
       },
       options: {
+        responsive: false,
         cutoutPercentage: 90,
         rotation: 1 * Math.PI,
         circumference: 1 * Math.PI,
         legend: {
-          display: false
+          display: true,
+          position: 'bottom',
+          padding: {
+            bottom: 100,
+          },
+          maxWidth: 50,
         },
         layout: {
          padding: {

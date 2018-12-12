@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 15px;
 }
 
 .doughnut-chart {
@@ -44,6 +44,13 @@
   height: 3px;
   width: 450px;
   position: absolute;
-  top: 89%;
+  top: 78%;
+}
+
+.welcome {
+  h4 {
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.82)
+  }
 }
 
