@@ -1,15 +1,15 @@
 <div class="sidebar-info">
   <% if user_signed_in? %>
     <%= image_tag current_user.photo, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-    <p class="sidebar-info-mail"><%= current_user.first_name %> <%= current_user.last_name %></p>
+    <p class="sidebar-info-mail"><%= current_user.first_name %> <%=  current_user.last_name %></p>
   <% else %>
     <p>No user logged</p>
   <% end %>
 </div>
 <div class="sidebar-links">
   <ul class="nav">
-    <%= link_to root_path do %>
-      <li class="nav-item <%= current_class?(root_path) %>"><i class="fas fa-chart-line"></i><p class="side-element">Stats</p></li>
+    <%= link_to dashboard_path do %>
+      <li class="nav-item <%= current_class?(dashboard_path) %>"><i class="fas fa-chart-line"></i><p class="side-element">Stats</p></li>
     <% end %>
     <%= link_to commitments_path do %>
       <li class="nav-item <%= current_class?(commitments_path) %>"><i class="fas fa-list"></i><p class="side-element">En-cours</p></li>

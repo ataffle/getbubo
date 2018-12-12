@@ -1,7 +1,11 @@
 class PagesController < ApplicationController
-  after_action :verify_authorized, except: [:home, :team]
+  after_action :verify_authorized, except: [:home, :dashboard, :team]
 
   def home
+
+  end
+
+  def dashboard
     @commitments = Commitment.all
     @unpaid_commitments_amount = @commitments.unpaid_commitments
 

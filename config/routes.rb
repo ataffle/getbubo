@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'commitment_edit', to: 'commitments#commitment_index'
     get 'commitment_mark_as_paid', to: 'commitments#mark_as_paid'
   end
-
+  get 'dashboard', to: 'pages#dashboard'
 
   # get 'download_file/:id', to: 'commitments#download_file', as: 'download_file'
   # get 'download_zip', to: 'commitments#zip', as: 'download_zip'

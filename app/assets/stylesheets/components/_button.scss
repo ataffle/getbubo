@@ -2,6 +2,22 @@
   text-decoration: none;
 }
 
+.btn-primary-bubo-home {
+  background-color: $secondary;
+  color: white;
+  padding: 13px 25px;
+  font-weight: bold;
+  text-decoration:none;
+  a {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+    color:white;
+    opacity: 0.8;
+  }
+}
+
 .btn-primary-bubo {
   background-color: $secondary;
   color: white;
