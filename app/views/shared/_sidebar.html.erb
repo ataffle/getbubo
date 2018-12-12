@@ -1,7 +1,7 @@
 <div class="sidebar-info">
   <% if user_signed_in? %>
     <%= image_tag current_user.photo, class: "avatar-large dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-    <p class="sidebar-info-mail"><%= current_user.email %></p>
+    <p class="sidebar-info-mail"><%= current_user.first_name %> <%= current_user.last_name %></p>
   <% else %>
     <p>No user logged</p>
   <% end %>
