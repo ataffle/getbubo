@@ -173,6 +173,7 @@ class CommitmentsController < ApplicationController
       if monthly_commitment.recurrence == "Mensuel"
         new_commitment = monthly_commitment.dup
         new_commitment.due_date = monthly_commitment.due_date >> 1
+        new_commitment.update(postponed?: false)
         new_commitment.invoice = nil
         new_commitment.status = "Facture en attente"
         new_commitment.save!

@@ -16,12 +16,21 @@
             <p>Action</p>
         </li>
         <% @to_be_processed.each do |commitment_to_be| %>
-        <li class="grey-cards">
-          <p><%= commitment_to_be.supplier.name %></p>
-          <p><%= commitment_to_be.recurrence %></p>
-          <p><%= commitment_to_be.status %></p>
-          <p class = "table-btn"><%= link_for_commitment_proceed(commitment_to_be)%></p>
-        </li>
+          <% if commitment_to_be.postponed? == true %>
+            <li class="red-cards">
+              <p><%= commitment_to_be.supplier.name %></p>
+              <p><%= commitment_to_be.recurrence %></p>
+              <p><%= commitment_to_be.status %></p>
+              <p class = "table-btn"><%= link_for_commitment_proceed(commitment_to_be)%></p>
+            </li>
+          <% else %>
+            <li class="grey-cards">
+              <p><%= commitment_to_be.supplier.name %></p>
+              <p><%= commitment_to_be.recurrence %></p>
+              <p><%= commitment_to_be.status %></p>
+              <p class = "table-btn"><%= link_for_commitment_proceed(commitment_to_be)%></p>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </div>
