@@ -38,6 +38,7 @@ class CommitmentsController < ApplicationController
         @commitments = @commitments.where(status: "Payé")
       end
     end
+    @commitments = @commitments.order(created_at: :desc)
   end
 
   def show
