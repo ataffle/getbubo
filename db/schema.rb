@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_112426) do
+ActiveRecord::Schema.define(version: 2019_01_16_112427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_01_16_112426) do
     t.datetime "updated_at", null: false
     t.string "invoice"
     t.string "invoice_ref"
-    t.boolean "postponed?"
+    t.boolean "postponed?", default: false
     t.index ["supplier_id"], name: "index_commitments_on_supplier_id"
     t.index ["user_id"], name: "index_commitments_on_user_id"
   end
