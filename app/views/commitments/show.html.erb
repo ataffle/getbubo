@@ -31,7 +31,7 @@
         <h4>Détails</h4>
         <hr>
         <p><strong>Récurrence :</strong> <%= @commitment.recurrence %></p>
-        <p><strong>Montant :</strong> <%= number_with_delimiter(@commitment.amount, :delimiter => ',') %> €</p>
+        <p><strong>Montant: </strong> <%= number_with_delimiter(@commitment.amount, :delimiter => ',') %> €</p>
         <p><strong>Statut :</strong> <%= @commitment.status %></p>
         <p><strong>Réception Facture :</strong> <%= @commitment.retrieval_mode %></p>
       </div>
@@ -42,7 +42,7 @@
       <div class="show-body">
         <h4>Paiement</h4>
         <hr>
-        <p><strong>Mode de Paiement :</strong> <%= @commitment.payment_method %></p>
+        <p><strong>Paiement :</strong> <%= @commitment.payment_method %></p>
         <% if @commitment.due_date %>
           <p><strong>Date échéance :</strong> <%= @commitment.due_date.strftime('%d %b %y') %></p>
         <% end %>
@@ -55,6 +55,14 @@
         <% else %>
           Pas de document</p>
         <% end %>
+
+        <div id="show-btn">
+          <% if @commitment.status == "Paiement en attente" %>
+            <%= link_to "Passer en payé", commitment_commitment_mark_as_paid_path(@commitment), class: "btn-primary-bubo-show" %>
+          <% elsif @commitment.status == "Facture en attente" %>
+            <%= link_to "Charger facture", edit_commitment_path(@commitment), class: "btn-primary-bubo-show" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
