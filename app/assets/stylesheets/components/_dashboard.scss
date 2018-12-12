@@ -16,3 +16,34 @@
   margin-bottom: 24px;
 }
 
+.doughnut-chart {
+  position:relative;
+}
+
+.chart-legend {
+  position:absolute;
+  top: 40%;
+  left: 144px;
+  text-align: center;
+}
+
+.chart-stat {
+  margin-bottom: 10px;
+  font-size: 50px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.82)
+}
+
+.chart-tagline {
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.82)
+}
+
+.bottom-hide {
+  background-color: white;
+  height: 3px;
+  width: 450px;
+  position: absolute;
+  top: 89%;
+}
+
