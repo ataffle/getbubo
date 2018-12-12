@@ -1,5 +1,5 @@
 meta_product_name: "Getbubo"
 meta_title: "Suivi des achats simplifié pour les TPE et PME"
 meta_description: "Gagnez du temps et de la visibilité sur vos encours et factures fournisseurs grâce à Bubo, un outil simple de suivi adapté aux TPE-PME"
-meta_image: "cover.png"                       # should exist in `app/assets/images/`
+meta_image: "cover2.png"                       # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"
