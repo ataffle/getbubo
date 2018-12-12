@@ -7,7 +7,7 @@ const initLine = () => {
 
   //console.log(ctx)
   //console.log(ctx.canvas.dataset.statuses)
-  const six = JSON.parse(ctx.canvas.dataset.six);
+  const one = JSON.parse(ctx.canvas.dataset.one);
   const five = JSON.parse(ctx.canvas.dataset.five);
   const four = JSON.parse(ctx.canvas.dataset.four);
   const three = JSON.parse(ctx.canvas.dataset.three);
@@ -20,10 +20,10 @@ const initLine = () => {
   const myChart = new Chart(ctx, {
       type: 'line',
       data: {
-          labels: ["M-6", "M-5", "M-4", "M-3", "M-2", "Courant"],
+          labels: ["M-5", "M-4", "M-3", "M-2", "M-1", "Courant"],
           datasets: [{
               label: "Montant mensuel",
-              data: [six, five, four, three, two, current],
+              data: [five, four, three, two, one, current],
               backgroundColor: [
                   'rgba(0, 0, 0, 0)',
               ],
@@ -60,7 +60,7 @@ const initLine = () => {
               color: "rgba(0, 0, 0, 0)"
             },
             ticks: {
-              stepSize: 100
+              stepSize: 10000
             }
           }]
         }

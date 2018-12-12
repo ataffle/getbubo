@@ -44,7 +44,7 @@ puts "#{users.length} users created"
 
 puts "Creating November commitments"
 50.times do
-    due_date = "30/11/2018"
+    due_date = "15/11/2018"
     supplier = suppliers.sample
     title = "achat"
     amount = rand(50..2000)
@@ -59,7 +59,7 @@ puts "Created 50 commitments"
 
 puts "Creating December commitments"
 50.times do
-    due_date = "30/12/2018"
+    due_date = "15/12/2018"
     supplier = suppliers.sample
     title = "achat"
     amount = rand(50..2000)
