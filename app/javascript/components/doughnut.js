@@ -46,10 +46,12 @@ const initDoughnut = () => {
         legend: {
           display: true,
           position: 'bottom',
-          padding: {
-            bottom: 100,
-          },
-          maxWidth: 50,
+          labels: {
+            boxWidth: 50,
+            paddingRight: 0,
+            paddingLeft: 10,
+            marginLeft: 10,
+          }
         },
         layout: {
          padding: {
@@ -73,7 +75,7 @@ const initDoughnut = () => {
               ticks: {
                 beginAtZero:true,
                 display: false,
-              }
+            }
           }]
         }
       }

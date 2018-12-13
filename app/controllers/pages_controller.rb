@@ -20,16 +20,18 @@ class PagesController < ApplicationController
     case @period
     when "Mois précédent"
       @commitments = @commitments.previous_month
+      @month = "Novembre"
     when "Mois suivant"
       @commitments = @commitments.next_month
+      @month = "Janvier"
     when "Mois en cours"
       @commitments = @commitments.current_month
+      @month = "Décembre"
     when "Cumul annuel"
       @commitments = @commitments.year_to_date
     when "Toutes périodes"
       @commitments = @commitments
     end
-
     @statuses = @commitments.map do |commitment|
       commitment.status
     end

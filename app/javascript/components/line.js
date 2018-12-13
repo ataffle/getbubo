@@ -20,7 +20,7 @@ const initLine = () => {
   const myChart = new Chart(ctx, {
       type: 'line',
       data: {
-          labels: ["Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov."],
+          labels: ["Juil.", "Août", "Sept.", "Oct.", "Nov.", "Dec."],
           datasets: [{
               label: "Montant mensuel",
               data: [five, four, three, two, one, current],
@@ -61,7 +61,16 @@ const initLine = () => {
               color: "rgba(0, 0, 0, 0)"
             },
             ticks: {
-              stepSize: 10000
+              stepSize: 10000,
+              callback: function(value, index, values) {
+                return '€' + value
+              },
+              userCallback: function(value, index, values) {
+                  value = value.toString();
+                  value = value.split(/(?=(?:...)*$)/);
+                  value = value.join(',');
+                  return '€' + value;
+              }
             }
           }]
         }

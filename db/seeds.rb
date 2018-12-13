@@ -55,7 +55,7 @@ puts "Creating Payé Mensuel"
   amount = rand(50..2000)
   status = 2
   retrieval_mode = retrieval_modes.sample
-  user = user10
+  user = user1
   recurrence = 1
   payment_method = payment_methods.sample
   te =Commitment.new(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice_ref: invoice_ref, order_ref: order_ref, invoice: Cloudinary::Uploader.upload("invoice.pdf", options = {public_id: invoice_ref, type: 'private'}))
@@ -116,7 +116,7 @@ puts "Creating Facture en attente Ponctuel"
   amount = rand(50..2000)
   status = 0
   retrieval_mode = retrieval_modes.sample
-  user = user10
+  user = user9
   recurrence = 0
   payment_method = payment_methods.sample
   te =Commitment.new(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
@@ -135,7 +135,7 @@ puts "Creating Facture en attente Mensuel"
   amount = rand(50..2000)
   status = 0
   retrieval_mode = retrieval_modes.sample
-  user = user10
+  user = user4
   recurrence = 1
   payment_method = payment_methods.sample
   te =Commitment.new(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
