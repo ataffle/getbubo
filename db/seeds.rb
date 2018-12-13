@@ -46,7 +46,9 @@ puts "Creating Payé Mensuel"
 10.times do
   commitments = Commitment.all
   commitments_count = commitments.count
+  commitments_count_sec = commitments.count
   order_ref = "PO-2018-#{commitments_count + 1}"
+  invoice_ref = "AC-#{commitments_count_sec + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
   title = "achat"
@@ -56,7 +58,8 @@ puts "Creating Payé Mensuel"
   user = user10
   recurrence = 1
   payment_method = payment_methods.sample
-  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
+  te =Commitment.new(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice_ref: invoice_ref, order_ref: order_ref, invoice: Cloudinary::Uploader.upload("invoice.pdf", options = {public_id: invoice_ref, type: 'private'}))
+  te.save!
 end
 puts "Creating Payé Mensuel"
 
@@ -64,7 +67,9 @@ puts "Creating Facture en attente Ponctuel"
 2.times do
   commitments = Commitment.all
   commitments_count = commitments.count
+  commitments_count_sec = commitments.count
   order_ref = "PO-2018-#{commitments_count + 1}"
+  invoice_ref = "AC-#{commitments_count_sec + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
   title = "achat"
@@ -74,7 +79,8 @@ puts "Creating Facture en attente Ponctuel"
   user = user10
   recurrence = 0
   payment_method = payment_methods.sample
-  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
+  te =Commitment.new(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice_ref: invoice_ref, order_ref: order_ref, invoice: Cloudinary::Uploader.upload("invoice.pdf", options = {public_id: invoice_ref, type: 'private'}))
+  te.save!
 end
 puts "Created Facture en attente Ponctuel"
 
@@ -82,7 +88,9 @@ puts "Creating Facture en attente Mensuel"
 2.times do
   commitments = Commitment.all
   commitments_count = commitments.count
+  commitments_count_sec = commitments.count
   order_ref = "PO-2018-#{commitments_count + 1}"
+  invoice_ref = "AC-#{commitments_count_sec + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
   title = "achat"
@@ -92,7 +100,8 @@ puts "Creating Facture en attente Mensuel"
   user = user10
   recurrence = 1
   payment_method = payment_methods.sample
-  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
+  te =Commitment.new(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice_ref: invoice_ref, order_ref: order_ref, invoice: Cloudinary::Uploader.upload("invoice.pdf", options = {public_id: invoice_ref, type: 'private'}))
+  te.save!
 end
 puts "Created Facture en attente Mensuel"
 
@@ -100,7 +109,9 @@ puts "Creating Paiment en attente Ponctuel"
 3.times do
   commitments = Commitment.all
   commitments_count = commitments.count
+  commitments_count_sec = commitments.count
   order_ref = "PO-2018-#{commitments_count + 1}"
+  invoice_ref = "AC-#{commitments_count_sec + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
   title = "achat"
@@ -110,7 +121,8 @@ puts "Creating Paiment en attente Ponctuel"
   user = user10
   recurrence = 0
   payment_method = payment_methods.sample
-  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
+  te = Commitment.new(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice_ref: invoice_ref, order_ref: order_ref, invoice: Cloudinary::Uploader.upload("invoice.pdf", options = {public_id: invoice_ref, type: 'private'}))
+  te.save!
 end
 puts "Created Paiement en attente Ponctuel"
 
@@ -118,7 +130,9 @@ puts "Creating Payé Ponctuel"
 4.times do
   commitments = Commitment.all
   commitments_count = commitments.count
+  commitments_count_sec = commitments.count
   order_ref = "PO-2018-#{commitments_count + 1}"
+  invoice_ref = "AC-#{commitments_count_sec + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
   title = "achat"
@@ -128,8 +142,7 @@ puts "Creating Payé Ponctuel"
   user = user10
   recurrence = 0
   payment_method = payment_methods.sample
-  Commitment.create!(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, order_ref: order_ref, invoice: "invoice")
+  te =Commitment.new(title: title, amount: amount, due_date: due_date.to_date, payment_date: due_date.to_date, status: status, supplier: supplier, user: user, recurrence: recurrence, payment_method: payment_method, retrieval_mode: retrieval_mode, invoice_ref: invoice_ref, order_ref: order_ref, invoice: Cloudinary::Uploader.upload("invoice.pdf", options = {public_id: invoice_ref, type: 'private'}))
+  te.save!
 end
 puts "Created Payé Ponctuel"
-
-#Cloudinary::Uploader.upload("invoice.pdf")
