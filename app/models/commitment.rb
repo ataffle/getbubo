@@ -41,7 +41,7 @@ class Commitment < ApplicationRecord
   scope :pending_invoice_commitmment, -> { where(status: "Facture en attente") }
   scope :pending_payment_commitments, -> { where(status: "Paiement en attente") }
 
-  PERIODS = ["Mois en cours", "Mois suivant", "Mois précédent", "Cumul annuel", "Toutes périodes"]
+  PERIODS = ["Mois précédent", "Mois en cours", "Mois suivant", "Cumul annuel", "Toutes périodes"]
 
   # def payment_date_greater_than_due_date
   #   if payment_date < due_date

@@ -7,7 +7,7 @@ puts "User destroyed"
 Organization.destroy_all
 puts "Organization destroyed"
 
-letrain = Organization.create!(name: "Le train")
+letrain = Organization.create!(name: "Le Train")
 puts "Organization Created"
 
 suppliers_names = ["Leboncoin", "Seloger", "Orange", "Gates Avocats", "Direct Energie", "Lucca", "Dropbox", "Google", "Facebook", "Front", "Aircall", "Lunchr", "Pipedrive", "Basecamp", "Eufonie", "Octopush", "OVH", "Matterport", "Sendgrid", "SensioLabs", "Github", "CI Circle", "Bouygues Telecom", "Gandi" ]
@@ -62,8 +62,6 @@ puts "Creating Payé Mensuel"
   te.save!
 end
 puts "Creating Payé Mensuel"
-
-
 
 puts "Creating Paiment en attente Ponctuel"
 3.times do
