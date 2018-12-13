@@ -3,7 +3,7 @@ class CommitmentsController < ApplicationController
   require 'open-uri'
   def index
     # @commitments = policy_scope(Commitment)
-    zip
+    #zip
 
     @commitments = Commitment.all
     filters = params[:filters]
@@ -103,14 +103,14 @@ class CommitmentsController < ApplicationController
   #   )
   # end
 
-  def zip
-    @commitments = Commitment.all
-    @cloud_ids = []
-    @commitments.each do |commitment|
-      @cloud_ids << commitment.invoice.file.public_id
-    end
-    @url = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids, target_public_id: 'factures', type: 'private')
-  end
+  # def zip
+  #   @commitments = Commitment.all
+  #   @cloud_ids = []
+  #   @commitments.each do |commitment|
+  #     @cloud_ids << commitment.invoice.file.public_id
+  #   end
+  #   @url = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids, target_public_id: 'factures', type: 'private')
+  # end
 
   def zip_closing
     @commitments = @processed
@@ -118,7 +118,7 @@ class CommitmentsController < ApplicationController
     @commitments.each do |commitment|
       @cloud_ids << commitment.invoice.file.public_id
     end
-    @url = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids, target_public_id: 'factures', type: 'private')
+    @url = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids, target_public_id: "Factures - #{(Time.now - 1.month).strftime('%b')}", type: 'private')
   end
 
   def destroy
