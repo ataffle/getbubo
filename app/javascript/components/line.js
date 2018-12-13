@@ -20,7 +20,7 @@ const initLine = () => {
   const myChart = new Chart(ctx, {
       type: 'line',
       data: {
-          labels: ["M-5", "M-4", "M-3", "M-2", "M-1", "Courant"],
+          labels: ["Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov."],
           datasets: [{
               label: "Montant mensuel",
               data: [five, four, three, two, one, current],
@@ -38,6 +38,7 @@ const initLine = () => {
           }]
       },
       options: {
+        animation: false,
         legend: {
           display: false
         },
@@ -53,7 +54,7 @@ const initLine = () => {
           xAxes: [{
               gridLines: {
 
-              }
+              },
           }],
           yAxes: [{
             gridLines: {

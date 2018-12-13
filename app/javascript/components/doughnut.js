@@ -8,18 +8,16 @@ const initDoughnut = () => {
 
   // console.log(ctx.canvas.dataset.invoice)
   const invoices_group = JSON.parse(ctx.canvas.dataset.invoice);
-  console.log(invoices_group);
+  // console.log(invoices_group);
   const payments_group = JSON.parse(ctx.canvas.dataset.payment);
-  console.log(payments_group);
+  // console.log(payments_group);
   const paid_group = JSON.parse(ctx.canvas.dataset.paid);
-  console.log(paid_group);
+  // console.log(paid_group);
   // console.log(statuses);
   // console.log(typeof statuses);
   const invoices = invoices_group.length
   const payments = payments_group.length
   const paid = paid_group.length
-  const repartition = `<div>${(invoices + payments)}</div><div>hello</div>`
-  const test = 'test'
   const myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
