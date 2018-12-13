@@ -107,7 +107,7 @@ class CommitmentsController < ApplicationController
     @commitments = Commitment.all
     @cloud_ids = []
     @commitments.each do |commitment|
-      @cloud_ids << commitment.invoice.file.public_id if commitment.invoice.present?
+      @cloud_ids << commitment.invoice.file.public_id
     end
     @url = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids, target_public_id: 'factures', type: 'private')
   end
@@ -116,7 +116,7 @@ class CommitmentsController < ApplicationController
     @commitments = @processed
     @cloud_ids = []
     @commitments.each do |commitment|
-      @cloud_ids << commitment.invoice.file.public_id if commitment.invoice.present?
+      @cloud_ids << commitment.invoice.file.public_id
     end
     @url = Cloudinary::Utils.download_zip_url(public_ids: @cloud_ids, target_public_id: 'factures', type: 'private')
   end
