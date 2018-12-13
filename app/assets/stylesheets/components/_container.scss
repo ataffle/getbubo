@@ -1,7 +1,6 @@
 .container-table {
   margin: 20px 0px;
   font-size: 15px;
-  border-bottom: 1px solid #9e9a9a;
   td {
     padding: 5px 15px 5px 0;
   }
@@ -9,6 +8,11 @@
     padding: 0px;
   }
 }
+
+.container-table-wrap {
+  background: #F4F7FC;
+}
+
 .container-create{
   background-color: white;
 }
@@ -52,6 +56,14 @@
   }
 }
 
+.container-super-closing {
+  padding:20px 40px;
+  max-width: 95%;
+  margin: 1px auto;
+  h2 {
+    margin-bottom: 24px;
+  }
+}
 
 .container-suppliers {
   max-width: 75%;
@@ -62,9 +74,8 @@
 
 .container-closing {
   background-color: white;
-  box-shadow: 1px 1px 3px rgba(200, 200, 200, 0.4);
   max-width: 95%;
-  margin: 32px auto;
+  margin: 0px auto;
   border-radius: 2px;
 }
 
@@ -73,9 +84,7 @@
   justify-content: space-between;
   align-items: center;
   max-width: 95%;
-  margin: 32px auto;
   border-radius: 2px;
-  padding: 5px 5px;
 }
 
 .container-btn-closing {
@@ -89,6 +98,6 @@
 
 .container-table-wrap {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding-bottom: 50px;
 }
