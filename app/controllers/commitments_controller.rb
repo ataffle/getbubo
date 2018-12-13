@@ -60,7 +60,7 @@ class CommitmentsController < ApplicationController
     @commitments = Commitment.count
     @commitment.order_ref = "PO-2018-#{@commitments + 1}"
     @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
-    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice?
+    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice.present?
     @commitment.status = "Paiement en attente" if @commitment.invoice? && @commitment.status == "Facture en attente"
     if @commitment.save
       redirect_to commitment_path(@commitment)
@@ -81,18 +81,15 @@ class CommitmentsController < ApplicationController
   def update
     @commitment = Commitment.find(params[:id])
     @organization = current_user.organization
-    @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
-    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice_ref.nil?
+    # binding.pry
     @commitment.update(commitment_params)
+    @commitment_with_invoices = Commitment.select{|commitment| commitment.invoice?}.count
+    # binding.pry
+    @commitment.invoice_ref = "AC-#{@commitment_with_invoices + 1}" if @commitment.invoice.metadata.present? && !@commitment.invoice_ref.present?
     @commitment.status = "Paiement en attente" if @commitment.invoice? && @commitment.status == "Facture en attente"
     @commitment.save
+    #raise
     authorize @commitment
-    redirect_to commitment_path(@commitment)
-  end
-
-  def mark_as_paid
-    @commitment = Commitment.find(params[:commitment_id])
-    @commitment.update(status: 'Payé')
     redirect_to commitment_path(@commitment)
   end
 
@@ -173,7 +170,6 @@ class CommitmentsController < ApplicationController
       if monthly_commitment.recurrence == "Mensuel"
         new_commitment = monthly_commitment.dup
         new_commitment.due_date = monthly_commitment.due_date >> 1
-        new_commitment.update(postponed?: false)
         new_commitment.invoice = nil
         new_commitment.status = "Facture en attente"
         new_commitment.save!
