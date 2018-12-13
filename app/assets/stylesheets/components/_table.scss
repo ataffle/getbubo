@@ -117,7 +117,7 @@ padding: 0.2em 0.5em;
 
 .table-closing li {
   display: grid;
-  grid-template-columns: 130px 110px 140px 80px;
+  grid-template-columns: 135px 100px 140px 80px;
   grid-template-rows: 1fr;
   list-style: none;
   padding: 12px 15px;
@@ -145,7 +145,7 @@ padding: 0.2em 0.5em;
 
 .table-closing-processed li {
   display: grid;
-  grid-template-columns: 130px 110px 110px 80px;
+  grid-template-columns: 135px 110px 110px 80px;
   grid-template-rows: 1fr;
   list-style: none;
   padding: 12px 15px;
@@ -181,8 +181,8 @@ padding: 0.2em 0.5em;
 .table-closing .table-closing-header {
   p {
     font-weight: bold;
-    background-color: white;
     background: #F4F7FC;
+    color: #929497 !important;
   }
   background: #F4F7FC;
 }
@@ -190,8 +190,21 @@ padding: 0.2em 0.5em;
 .table-closing-processed .table-closing-header {
   p {
     font-weight: bold;
-    background-color: white;
     background: #F4F7FC;
+    color: #929497 !important;
+    font-weight: 600;
   }
   background: #F4F7FC;
+}
+
+.tabler-closing-header {
+  border: none;
+  font-weight: 600;
+  padding-left: 0;
+}
+
+.table-closing, .table-closing-processed {
+  h4 {
+    font-weight: bold;
+  }
 }

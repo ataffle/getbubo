@@ -78,6 +78,11 @@
   margin: 0px auto;
   border-radius: 2px;
 }
+.container-pre-closing {
+  h3 {
+    font-weight:bold;
+  }
+}
 
 .container-pre-closing, .container-closing-head {
   display: flex;
