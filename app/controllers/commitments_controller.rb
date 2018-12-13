@@ -93,6 +93,12 @@ class CommitmentsController < ApplicationController
     redirect_to commitment_path(@commitment)
   end
 
+  def mark_as_paid
+    @commitment = Commitment.find(params[:commitment_id])
+    @commitment.update(status: 'Payé')
+    redirect_to commitment_path(@commitment)
+  end
+
   # def download_file
   #   @commitment = Commitment.find(params[:id])
   #   send_file(
