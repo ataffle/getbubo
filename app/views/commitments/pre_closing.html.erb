@@ -1,7 +1,11 @@
 <div class="container-pre-closing">
   <h3>Pré-clôture: <%= @pre_closing_month %></h3>
   <% unless Closing.occurred %>
-    <h4 style="margin: 0; text-align: center; margin-top: 20px; margin-bottom: 10px;"><%= link_to "Clôturer", closings_path, method: :post, class: "btn-primary-bubo-commitment" %></h4>
+  <% if @to_be_processed.count != 0 %>
+      <h4 style="margin: 0; text-align: center; margin-top: 20px; margin-bottom: 10px;" class="btn-primary-bubo-commitment">En-cours en attente</h4>
+    <% else %>
+      <h4 style="margin: 0; text-align: center; margin-top: 20px; margin-bottom: 10px;"><%= link_to "Clôturer", closings_path, method: :post, class: "btn-primary-bubo-commitment" %></h4>
+    <% end %>
   <% end %>
 </div>
 <div class="container-closing">
