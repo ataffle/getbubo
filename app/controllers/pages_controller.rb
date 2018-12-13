@@ -14,7 +14,7 @@ class PagesController < ApplicationController
     if filters
       @period = filters[:period]
     else
-      @period = "Mois en cours"
+      @period = "Mois précédent"
     end
 
     case @period
