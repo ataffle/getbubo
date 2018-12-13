@@ -1,10 +1,9 @@
-<div class="container-closing-head">
-  <% date = Date.today - 1.month %>
-  <h3>Clôture: <%= date.strftime("%b %Y") %></h3>
-  <%= link_to "Exporter factures", @url, class: "btn-primary-bubo-commitment" %>
-</div>
-
-<div class="container-closing">
+<div class="container-super-closing">
+  <div class="container-pre-closing">
+    <% date = Date.today - 1.month %>
+    <h3>Clôture: <%= date.strftime("%b %Y") %></h3>
+    <%= link_to "Exporter factures", @url, class: "btn-primary-bubo-commitment" %>
+  </div>
   <div class="container-table-wrap">
     <div class="container-table">
       <ul class="table-closing-processed table-closing-1">
@@ -13,12 +12,14 @@
             <p>Fournisseur</p>
             <p>Montant</p>
             <p>Récurrence</p>
+            <p>Echéance</p>
         </li>
         <% @processed.each do |commitment_paid| %>
         <li class="grey-cards">
           <p><%= commitment_paid.supplier.name %></p>
           <p><%= number_with_delimiter(commitment_paid.amount, :delimiter => ",") %> €</p>
           <p><%= commitment_paid.recurrence %></p>
+          <p><%= commitment_paid.due_date.strftime("%b %y") %></p>
         </li>
         <% end %>
       </ul>
