@@ -20,7 +20,7 @@
                   <% total << item.amount %>
               <% end %>
               <li><%= number_with_delimiter(total.sum, delimiters: ".") %>€</li>
-              <li><p style="font-size: 15px">En-cours à payer</p></li>
+              <li><p style="font-size: 15px">Reste à payer</p></li>
             </ul>
           </h3>
         </div>
@@ -33,7 +33,7 @@
                   <% total << commitment.amount %>
               <% end %>
               <li><%= number_with_delimiter(total.sum, delimiters: ".") %>€</li>
-              <li><p style="font-size: 15px">En-cours sur la période</p></li>
+              <li><p style="font-size: 15px">Montant sur <%= @month %></p></li>
             </ul>
           </h3>
         </div>
@@ -42,7 +42,7 @@
           <h3>
             <ul id="analytics-dashboard" style="list-style: none; padding-inline-start: 0px;">
               <li><%= @current_period_commitments.count %></li>
-              <li><p style="font-size: 15px">Nombre d'en-cours</p></li>
+              <li><p style="font-size: 15px">En-cours sur <%= @month %></p></li>
             </ul>
           </h3>
         </div>
