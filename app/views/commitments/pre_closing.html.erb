@@ -1,40 +1,31 @@
-<div class="container-pre-closing">
-  <h3>Pré-clôture: <%= @pre_closing_month %></h3>
-  <% unless Closing.occurred %>
-  <% if @to_be_processed.count != 0 %>
-      <h4 style="margin: 0; text-align: center; margin-top: 20px; margin-bottom: 10px;" class="btn-primary-bubo-commitment">En-cours en attente</h4>
-    <% else %>
-      <h4 style="margin: 0; text-align: center; margin-top: 20px; margin-bottom: 10px;"><%= link_to "Clôturer", closings_path, method: :post, class: "btn-primary-bubo-commitment" %></h4>
+<div class="container-super-closing">
+  <div class="container-pre-closing">
+    <h3>Pré-clôture: <%= @pre_closing_month %></h3>
+    <% unless Closing.occurred %>
+    <% if @to_be_processed.count != 0 %>
+        <h4 style="margin: 0; text-align: center; margin-top: 20px; margin-bottom: 10px;" class="btn-primary-bubo-commitment">En-cours en attente</h4>
+      <% else %>
+        <h4 style="margin: 0; text-align: center; margin-top: 20px; margin-bottom: 10px;"><%= link_to "Clôturer", closings_path, method: :post, class: "btn-primary-bubo-commitment" %></h4>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
-<div class="container-closing">
+  </div>
   <div class="container-table-wrap">
     <div class="container-table">
       <ul class="table-closing table-closing-1">
         <h4><strong>Non-Traités</strong></h4>
         <li class="table-closing-header">
-            <p>Fournisseur</p>
-            <p>Récurrence</p>
-            <p>Statut</p>
-            <p>Action</p>
+          <p>Fournisseur</p>
+          <p>Récurrence</p>
+          <p>Statut</p>
+          <p>Action</p>
         </li>
         <% @to_be_processed.each do |commitment_to_be| %>
-          <% if commitment_to_be.postponed? == true %>
-            <li class="red-cards">
-              <p><%= commitment_to_be.supplier.name %></p>
-              <p><%= commitment_to_be.recurrence %></p>
-              <p><%= commitment_to_be.status %></p>
-              <p class = "table-btn"><%= link_for_commitment_proceed(commitment_to_be)%></p>
-            </li>
-          <% else %>
-            <li class="grey-cards">
-              <p><%= commitment_to_be.supplier.name %></p>
-              <p><%= commitment_to_be.recurrence %></p>
-              <p><%= commitment_to_be.status %></p>
-              <p class = "table-btn"><%= link_for_commitment_proceed(commitment_to_be)%></p>
-            </li>
-          <% end %>
+          <li class="grey-cards">
+            <p><%= commitment_to_be.supplier.name %></p>
+            <p><%= commitment_to_be.recurrence %></p>
+            <p><%= commitment_to_be.status %></p>
+            <p class = "table-btn"><%= link_for_commitment_proceed(commitment_to_be)%></p>
+          </li>
         <% end %>
       </ul>
     </div>
@@ -59,6 +50,3 @@
     </div>
   </div>
 </div>
-<!-- <div class="container-btn-closing">
-</div> -->
-
