@@ -142,7 +142,7 @@ class CommitmentsController < ApplicationController
       offset = 0
     end
     @to_be_processed = Commitment.previous_month(offset).where(status: "Facture en attente").or(Commitment.previous_month(offset).where(status: "Paiement en attente", recurrence: "Ponctuel"))
-    @processed = Commitment.previous_month(offset).where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month(offset).where(status: "Payé")).or(Commitment.current_month(offset).where(postponed?: true, recurrence: "Ponctuel")).or(Commitment.current_month(offset).where(status: "Facture en attente", recurrence: "Mensuel", postponed?: true))
+    @processed = Commitment.previous_month(offset).where(status: "Paiement en attente", recurrence: "Mensuel").or(Commitment.previous_month(offset).where(status: "Payé")).or(Commitment.current_month(offset).where(postponed?: true, recurrence: "Ponctuel")).or(Commitment.current_month(offset).where(status: "Facture en attente", recurrence: "Mensuel", postponed?: true)).order('updated_at desc')
     @processed.each do |monthly_commitment|
       if monthly_commitment.status == "Paiement en attente" && monthly_commitment.recurrence == "Mensuel"
         monthly_commitment.update(status: "Payé")
