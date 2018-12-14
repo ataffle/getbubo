@@ -51,7 +51,7 @@ puts "Creating Payé Mensuel"
   invoice_ref = "AC-#{commitments_count_sec + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
-  title = "achat"
+  title = "Abonnement"
   amount = rand(50..2000)
   status = 2
   retrieval_mode = retrieval_modes.sample
@@ -64,7 +64,7 @@ end
 puts "Creating Payé Mensuel"
 
 puts "Creating Paiment en attente Ponctuel"
-3.times do
+1.times do
   commitments = Commitment.all
   commitments_count = commitments.count
   commitments_count_sec = commitments.count
@@ -72,7 +72,7 @@ puts "Creating Paiment en attente Ponctuel"
   invoice_ref = "AC-#{commitments_count_sec + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
-  title = "achat"
+  title = "Achat"
   amount = rand(50..2000)
   status = 1
   retrieval_mode = retrieval_modes.sample
@@ -85,7 +85,7 @@ end
 puts "Created Paiement en attente Ponctuel"
 
 puts "Creating Payé Ponctuel"
-4.times do
+20.times do
   commitments = Commitment.all
   commitments_count = commitments.count
   commitments_count_sec = commitments.count
@@ -93,7 +93,7 @@ puts "Creating Payé Ponctuel"
   invoice_ref = "AC-#{commitments_count_sec + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
-  title = "achat"
+  title = "Achat"
   amount = rand(50..2000)
   status = 2
   retrieval_mode = retrieval_modes.sample
@@ -112,7 +112,7 @@ puts "Creating Facture en attente Ponctuel"
   order_ref = "PO-2018-#{commitments_count + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
-  title = "achat"
+  title = "Achat"
   amount = rand(50..2000)
   status = 0
   retrieval_mode = retrieval_modes.sample
@@ -131,7 +131,7 @@ puts "Creating Facture en attente Mensuel"
   order_ref = "PO-2018-#{commitments_count + 1}"
   due_date = "15/11/2018"
   supplier = suppliers.sample
-  title = "achat"
+  title = "Abonnement"
   amount = rand(50..2000)
   status = 0
   retrieval_mode = retrieval_modes.sample
