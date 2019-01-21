@@ -49,9 +49,9 @@ class PagesController < ApplicationController
     @current = current_month(Commitment.all)
   end
 
-  def team
-    @users = current_user.organization.users
-  end
+  # def team
+  #   @users = current_user.organization.users
+  # end
 
   private
 
