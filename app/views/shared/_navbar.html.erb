@@ -12,7 +12,7 @@
     <% if current_page?(commitments_path) || current_page?(suppliers_path) %>
       <%= link_to "+ Ajouter en-cours", new_commitment_path, class: "btn-primary-bubo-commitment" %>
     <% elsif current_page?(users_path) %>
-      <%=  link_to "+ Ajouter une personne", new_user_path, class: "btn-primary-bubo-commitment" %>
+      <%=  link_to "+ Ajouter une personne", new_organization_user_path(current_user.organization), class: "btn-primary-bubo-commitment" %>
     <% else %>
       <% if user_signed_in? %>
         <h3 class="company-name"><%= current_user.organization.name %></h3>

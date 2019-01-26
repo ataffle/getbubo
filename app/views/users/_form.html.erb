@@ -1,4 +1,4 @@
-<%= simple_form_for(@user) do |f| %>
+<%= simple_form_for [@organization, @user] do |f| %>
   <% if @user.errors.any? %>
     <div class="errors-container">
       <ul>
@@ -8,8 +8,13 @@
       </ul>
     </div>
   <% end %>
-  <%= f.input :first_name, label: "Prénom" %>
-  <%= f.input :last_name, label: "Nom" %>
-  <%= f.input :email, label: "Email" %>
+  <%= f.input :first_name, label: "Prénom", required: true, autofocus: true %>
+  <%= f.input :last_name, label: "Nom", required: true, autofocus: true %>
+  <%= f.input :email,
+              label: "Email",
+              required: true,
+              autofocus: true ,
+              input_html: { autocomplete: "email" }
+  %>
   <%= f.submit "Enregistrer", class: "btn-primary-bubo" %>
 <% end %>

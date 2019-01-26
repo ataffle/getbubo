@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :suppliers
-  resources :users, only: [ :index, :new, :create ]
+  resources :users, only: [ :index ]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :organizations do
+    resources :users, only: [ :new, :create ]
+  end
 
   resources :commitments do
     get 'commitment_payment_proceed', to: 'commitments#commitment_payment_proceed'
