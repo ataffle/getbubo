@@ -28,16 +28,16 @@ puts " #{suppliers.length} suppliers created"
 
 
 puts "Creating users..."
-user1 = User.create(first_name: "Clémentine", last_name: "Delacompta", email: "clementine@letrain.com", organization: Organization.last, password: "127456", photo: "user1.jpg")
-user2 = User.create(first_name: "Marion", last_name: "Mbappe", email: "marion@letrain.com", organization: Organization.last, password: "123456", photo: "user2.jpg")
-user3 = User.create(first_name: "Adrien", last_name: "Torsen", email: "adrien@letrain.com", organization: Organization.last, password: "123456", photo: "user3.jpg")
-user4 = User.create(first_name: "Carine", last_name: "Desachats", email: "carine@letrain.com", organization: Organization.last, password: "123456", photo: "user4.jpg")
-user5 = User.create(first_name: "Gus", last_name: "Duwagon", email: "gus@letrain.com", organization: Organization.last, password: "123456", photo: "user5.jpg")
-user6 = User.create(first_name: "Guy", last_name: "Deschamps", email: "guy@letrain.com", organization: Organization.last, password: "123456", photo: "user6.jpg")
-user7 = User.create(first_name: "Boris", last_name: "du Design", email: "boris@letrain.com", organization: Organization.last, password: "123456", photo: "user7.png")
-user8 = User.create(first_name: "Edward", last_name: "Gourou", email: "edward@letrain.com", organization: Organization.last, password: "123456", photo: "user8.jpg")
-user9 = User.create(first_name: "Seb", last_name: "Delanavbar", email: "seb@letrain.com", organization: Organization.last, password: "123456", photo: "user9.jpg")
-user10 = User.create(first_name: "Alix", last_name: "Tafflé", email: "alix@letrain.com", organization: Organization.last, password: "123456", photo: "user10.jpg")
+user1 = User.create(first_name: "Clémentine", last_name: "Delacompta", email: "clementine@letrain.com", organization: Organization.last, password: "127456", photo: "user1.jpg", admin: false)
+user2 = User.create(first_name: "Marion", last_name: "Mbappe", email: "marion@letrain.com", organization: Organization.last, password: "123456", photo: "user2.jpg", admin: false)
+user3 = User.create(first_name: "Adrien", last_name: "Torsen", email: "adrien@letrain.com", organization: Organization.last, password: "123456", photo: "user3.jpg", admin: false)
+user4 = User.create(first_name: "Carine", last_name: "Desachats", email: "carine@letrain.com", organization: Organization.last, password: "123456", photo: "user4.jpg", admin: false)
+user5 = User.create(first_name: "Gus", last_name: "Duwagon", email: "gus@letrain.com", organization: Organization.last, password: "123456", photo: "user5.jpg", admin: false)
+user6 = User.create(first_name: "Guy", last_name: "Deschamps", email: "guy@letrain.com", organization: Organization.last, password: "123456", photo: "user6.jpg", admin: false)
+user7 = User.create(first_name: "Boris", last_name: "du Design", email: "boris@letrain.com", organization: Organization.last, password: "123456", photo: "user7.png", admin: false)
+user8 = User.create(first_name: "Edward", last_name: "Gourou", email: "edward@letrain.com", organization: Organization.last, password: "123456", photo: "user8.jpg", admin: false)
+user9 = User.create(first_name: "Seb", last_name: "Delanavbar", email: "seb@letrain.com", organization: Organization.last, password: "123456", photo: "user9.jpg", admin: false)
+user10 = User.create(first_name: "Alix", last_name: "Tafflé", email: "alix@letrain.com", organization: Organization.last, password: "123456", photo: "user10.jpg", admin: true)
 users = [user1, user2, user3, user4, user5, user6, user7, user8, user9, user10]
 puts "#{users.length} users created"
 
